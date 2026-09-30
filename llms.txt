@@ -1,0 +1,7 @@
+# 陈与小金 · 视频幕后（cyxj-videos）
+
+> 陈与小金是非程序员，用 Claude Code 做视频。这里是每期视频的制作幕后：用了什么模型、AI 做了什么、花了多少钱、学到了什么。每期有网页版和 Markdown 文字版。
+
+## 各期
+
+- [Opus 5.5 思考档位盲测幕后（2026-09-30）](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/index.md)：同一个提示词、同一段旁白，只改 Opus 5.5 的思考档位（medium / high / xhigh / max）各做一条 Remotion 画面并盲看。含 19 次跑片的耗时和花费、隔离测试方法、人和 AI 的分工数据，结论是「想要画面惊艳先改旁白，不先加档位」。

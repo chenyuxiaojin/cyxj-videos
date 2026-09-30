@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>陈与小金 · 视频幕后</title>
+<meta name="description" content="陈与小金每期视频的制作幕后：用了什么模型、AI 做了什么、花了多少钱、学到了什么。">
+<meta name="author" content="陈与小金">
+<link rel="canonical" href="https://chenyuxiaojin.github.io/cyxj-videos/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="陈与小金 · 视频幕后">
+<meta property="og:description" content="陈与小金每期视频的制作幕后：用了什么模型、AI 做了什么、花了多少钱、学到了什么。">
+<meta property="og:url" content="https://chenyuxiaojin.github.io/cyxj-videos/">
+<meta property="og:image" content="https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://chenyuxiaojin.github.io/cyxj-videos/#person", "name": "陈与小金", "url": "https://chenyuxiaojin.github.io/cyxj-videos/", "sameAs": ["https://github.com/chenyuxiaojin"]}, {"@type": "CollectionPage", "@id": "https://chenyuxiaojin.github.io/cyxj-videos/#page", "name": "陈与小金 · 视频幕后", "description": "陈与小金每期视频的制作幕后：用了什么模型、AI 做了什么、花了多少钱、学到了什么。", "url": "https://chenyuxiaojin.github.io/cyxj-videos/", "inLanguage": "zh-CN", "author": {"@id": "https://chenyuxiaojin.github.io/cyxj-videos/#person"}, "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/", "name": "Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍"}]}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700;900&display=swap">
+<style>
+/* 版式:和幕后页同一套深海军蓝;首页只做一面封面墙,每期一张卡 */
+:root {
+  --bg: #070F1E; --panel: #0D1830; --line: #1F2F4F; --ink: #E9EFF9; --ink-2: #A6B5CF; --ink-3: #7487A6; --accent: #4A8AE6; --accent-hi: #9CC4FF;
+  --display: "Noto Serif SC", "Songti SC", "STSong", serif;
+  --body: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 72px 96px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-hi); }
+h1 { font-family: var(--display); font-weight: 900; font-size: clamp(34px, 5vw, 56px); line-height: 1.2; margin: 14px 0 0; text-wrap: balance; }
+.lead { color: var(--ink-2); max-width: 36em; margin: 16px 0 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 22px; margin-top: 48px; }
+.ep { display: grid; text-decoration: none; color: inherit; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; transition: border-color .2s, transform .2s; }
+.ep:hover { border-color: var(--accent); transform: translateY(-2px); }
+.ep:focus-visible { outline: 2px solid var(--accent-hi); outline-offset: 3px; }
+.ep img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.ep-b { padding: 16px 18px 18px; display: grid; gap: 8px; }
+.ep .d { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+.ep h2 { font-family: var(--display); font-size: 19px; line-height: 1.45; margin: 0; text-wrap: balance; }
+.ep p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.65; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span { font-family: var(--mono); font-size: 11px; color: var(--ink-2); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; }
+footer { margin-top: 64px; font-size: 13px; color: var(--ink-3); }
+footer a { color: var(--accent-hi); }
+@media (prefers-reduced-motion: reduce) { .ep { transition: none; } .ep:hover { transform: none; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="eyebrow">陈与小金 · 视频幕后</div>
+  <h1>每期视频是怎么做出来的</h1>
+  <p class="lead">我是非程序员，视频几乎全靠 AI 做。这里记下每一期用了什么模型、AI 做了什么、花了多少钱、学到了什么。</p>
+  <div class="grid">
+    <a class="ep" href="2026-09-30-opus55/">
+      <img src="2026-09-30-opus55/cover.jpg" alt="Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍 封面" loading="lazy">
+      <div class="ep-b">
+        <span class="d">2026-09-30</span>
+        <h2>Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍</h2>
+        <p>同一个提示词只改思考档位，四档各做一条再盲看。max 比 medium 多花 7 倍时间，盲看却分不出来；真正让画面变样的是旁白。</p>
+        <div class="tags"><span>Opus 5.5</span><span>Claude Code</span><span>Remotion</span><span>思考档位</span></div>
+      </div>
+    </a>
+  </div>
+  <footer>陈与小金 · <a href="https://github.com/chenyuxiaojin/cyxj-videos">GitHub 仓库</a> · <a href="llms.txt">llms.txt</a></footer>
+</main>
+</body>
+</html>

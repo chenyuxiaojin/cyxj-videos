@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Opus 5.5 思考档位盲测幕后：同一个提示词，四个档位各做一遍 · 陈与小金</title>
+<meta name="description" content="同一个提示词、同一段旁白，只改 Opus 5.5 的思考档位（medium / high / xhigh / max）各做一条 Remotion 画面并打乱盲看。19 次跑片的耗时和花费、隔离测试方法、分工数据，以及「先改旁白，不先加档位」的结论。">
+<meta name="author" content="陈与小金">
+<link rel="canonical" href="https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/">
+<link rel="alternate" type="text/markdown" href="https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/index.md" title="文字版">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="陈与小金 · 视频幕后">
+<meta property="og:title" content="Opus 5.5 思考档位盲测幕后">
+<meta property="og:description" content="同一个提示词、同一段旁白，只改 Opus 5.5 的思考档位（medium / high / xhigh / max）各做一条 Remotion 画面并打乱盲看。19 次跑片的耗时和花费、隔离测试方法、分工数据，以及「先改旁白，不先加档位」的结论。">
+<meta property="og:url" content="https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/">
+<meta property="og:image" content="https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/cover.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="article:published_time" content="2026-10-01">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Opus 5.5 思考档位盲测幕后">
+<meta name="twitter:description" content="同一个提示词、同一段旁白，只改 Opus 5.5 的思考档位（medium / high / xhigh / max）各做一条 Remotion 画面并打乱盲看。19 次跑片的耗时和花费、隔离测试方法、分工数据，以及「先改旁白，不先加档位」的结论。">
+<meta name="twitter:image" content="https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/cover.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://chenyuxiaojin.github.io/cyxj-videos/#person", "name": "陈与小金", "url": "https://chenyuxiaojin.github.io/cyxj-videos/", "sameAs": ["https://github.com/chenyuxiaojin"]}, {"@type": "VideoObject", "@id": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/#video", "name": "Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍", "description": "朋友说模型做艺术靠直觉反而更好。同一个提示词、同一段旁白，只改 Opus 5.5 的思考档位，medium、high、xhigh、max 各跑一条，不给素材和设计规范，环境隔离，打乱顺序盲看。", "thumbnailUrl": ["https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/cover.jpg"], "uploadDate": "2026-09-30", "duration": "PT7M16S", "inLanguage": "zh-CN", "creator": {"@id": "https://chenyuxiaojin.github.io/cyxj-videos/#person"}, "keywords": "Opus 5.5, Claude Code, effort, 思考档位, Remotion, AI 做视频"}, {"@type": "TechArticle", "@id": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/#article", "headline": "Opus 5.5 思考档位盲测幕后", "description": "同一个提示词、同一段旁白，只改 Opus 5.5 的思考档位（medium / high / xhigh / max）各做一条 Remotion 画面并打乱盲看。19 次跑片的耗时和花费、隔离测试方法、分工数据，以及「先改旁白，不先加档位」的结论。", "image": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/cover.jpg", "datePublished": "2026-10-01", "dateModified": "2026-10-01", "inLanguage": "zh-CN", "author": {"@id": "https://chenyuxiaojin.github.io/cyxj-videos/#person"}, "publisher": {"@id": "https://chenyuxiaojin.github.io/cyxj-videos/#person"}, "mainEntityOfPage": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/", "about": [{"@id": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/#video"}, {"@type": "SoftwareApplication", "name": "Claude Opus 5.5"}, {"@type": "SoftwareApplication", "name": "Claude Code"}, {"@type": "SoftwareApplication", "name": "Remotion"}]}, {"@type": "FAQPage", "@id": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/#faq", "mainEntity": [{"@type": "Question", "name": "Opus 5.5 的思考档位越高，做出来的视频画面越好吗？", "acceptedAnswer": {"@type": "Answer", "text": "在这次盲测里没有明显更好。同一个提示词、同一段 25.5 秒的旁白，medium 用了 25.9 分钟、花费 $6.12，max 用了 192.5 分钟、花费 $31.54，时间差约 7 倍。盲看时 medium 和 max 分不出来，另外两条都被猜低了一档。每个档位只跑了一次，样本很小。"}}, {"@type": "Question", "name": "想让 AI 做的视频画面更惊艳，应该先改什么？", "acceptedAnswer": {"@type": "Answer", "text": "先改旁白。第一轮旁白全是 harness、skill、白名单这类抽象词，四个档位都画成了光球、格子和规则卡，连改三版提示词也没用。提示词一个字不改，只把旁白换成 Opus 5.5 用第一人称说的一段话，有转折，最后用问句收尾，xhigh 就画出了一幅油画日出。旁白里的名词，就是模型要画的东西。"}}, {"@type": "Question", "name": "Claude Code 里 Opus 5.5 有哪几个思考档位？默认是哪个？", "acceptedAnswer": {"@type": "Answer", "text": "Claude Code 里有 low、medium、high、xhigh、max 五档（2026-09-25 本机 claude --help 实测）。Anthropic 官方文档《Prompting Claude Opus 5.5》的 Calibrate effort 一节写明 Opus 5.5 默认是 medium，上一代模型默认是 high，同一档位下 Opus 5.5 想得更多。"}}, {"@type": "Question", "name": "怎么让不同档位的对比尽量公平？", "acceptedAnswer": {"@type": "Answer", "text": "同一个提示词、同一段配音，只改 --effort；不给素材、设计规范和以前的镜头；每个档位新开会话只跑一次，中途不插话；工程放在 /Users/Shared 下，并用 --setting-sources project,local、--disable-slash-commands、--strict-mcp-config 挡掉个人的全局规则、自定义命令和外部工具；四条成片打乱编号后盲看。"}}, {"@type": "Question", "name": "这条视频里，人做了什么，AI 做了什么？", "acceptedAnswer": {"@type": "Answer", "text": "人（陈与小金）出想法、出镜录口播、看片后说哪里不对，6 天里一共发了 251 条消息。其余都由 AI 完成：Claude Code 执行了 2,352 次操作，包括查资料、写旁白和提示词、跑实验、在达芬奇里粗剪调色、写 Remotion 代码、铺 167 处音效、做封面；被测的 Opus 5.5 在 19 次跑片里来回了 2,093 轮。"}}, {"@type": "Question", "name": "这组实验一共花了多少钱？", "acceptedAnswer": {"@type": "Answer", "text": "19 次跑片按 API 价格折算合计 $238.47，累计 20.9 小时（有几次是同时跑的）。进了片子的正式四档：medium $6.12、high $6.84、xhigh $25.16、max $31.54。"}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "陈与小金 · 视频幕后", "item": "https://chenyuxiaojin.github.io/cyxj-videos/"}, {"@type": "ListItem", "position": 2, "name": "Opus 5.5 思考档位盲测幕后", "item": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/"}]}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;1,800&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700;900&display=swap">
+<style>
+/* 版式:整页就是这条片的制作时间线,从上往下走五个阶段;深海军蓝底取自片子本身,四档用同一色相由暗到亮 */
+:root {
+  --bg: #070F1E;
+  --panel: #0D1830;
+  --panel-2: #122140;
+  --line: #1F2F4F;
+  --ink: #E9EFF9;
+  --ink-2: #A6B5CF;
+  --ink-3: #7487A6;
+  --accent: #4A8AE6;
+  --accent-hi: #9CC4FF;
+  --e-medium: #3666AD;
+  --e-high: #4A8AE6;
+  --e-xhigh: #82B4F4;
+  --e-max: #CFE3FD;
+  --display: "Noto Serif SC", "Songti SC", "STSong", serif;
+  --body: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+.faq { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.faq > div { padding: 20px 0; border-bottom: 1px solid var(--line); display: grid; gap: 8px; }
+.faq h3 { font-size: 18px; }
+.faq p { color: var(--ink-2); max-width: 46em; }
+.data { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data th, .data td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.data th { color: var(--ink-3); font-weight: 500; }
+.data td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; }
+details.tbl { margin-top: 14px; }
+details.tbl summary { cursor: pointer; color: var(--accent-hi); font-size: 13px; }
+details.tbl .tl-scroll { margin-top: 10px; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 0 96px; }
+a { color: var(--accent-hi); }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: .01em; }
+h2 { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.3; font-weight: 900; }
+h3 { font-size: 20px; line-height: 1.4; font-weight: 700; }
+p { margin: 0; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-hi); }
+.lead { color: var(--ink-2); max-width: 38em; }
+.muted { color: var(--ink-3); font-size: 13px; }
+:focus-visible { outline: 2px solid var(--accent-hi); outline-offset: 3px; border-radius: 4px; }
+
+/* 顶部章节条:和片子里那条一样的 11 段 */
+.chapters { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.chapters .inner { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+.chapters a { flex: 1 0 auto; text-decoration: none; color: var(--ink-3); font-size: 12px; padding: 10px 12px; border-bottom: 2px solid transparent; white-space: nowrap; text-align: center; }
+.chapters a:hover, .chapters a.on { color: var(--ink); border-bottom-color: var(--accent); }
+
+section { padding-top: 88px; scroll-margin-top: 48px; }
+.sec-head { display: grid; gap: 12px; margin-bottom: 36px; }
+.stage { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.stage .n { font-family: var(--mono); font-weight: 800; font-style: italic; font-size: 15px; color: var(--bg); background: var(--accent); padding: 2px 10px; border-radius: 4px; }
+.stage .d { font-family: var(--mono); font-size: 13px; color: var(--ink-3); }
+
+/* 开场 */
+.hero { padding-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(28px, 4vw, 56px); align-items: center; }
+.hero h1 { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.22; font-weight: 900; margin-top: 14px; }
+.hero h1 em { font-style: normal; color: var(--accent-hi); }
+.hero .lead { margin-top: 18px; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: 28px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.stat { background: var(--panel); padding: 14px 14px 12px; }
+.stat b { display: block; font-family: var(--mono); font-size: 24px; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: var(--ink-3); }
+.stat b small { font-family: var(--body); font-size: 13px; font-weight: 400; color: var(--ink-2); margin-left: 3px; }
+
+.board { display: grid; gap: 14px; }
+.board-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.card { position: relative; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: var(--panel); aspect-ratio: 16 / 9; max-width: 100%; }
+.card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tag { position: absolute; left: 8px; bottom: 8px; display: flex; align-items: center; gap: 8px; perspective: 400px; }
+.tag .num { font-family: var(--mono); font-weight: 800; font-style: italic; font-size: 22px; line-height: 1; color: transparent; -webkit-text-stroke: 1.4px #fff; }
+.tag .pill { font-family: var(--mono); font-weight: 800; font-style: italic; font-size: 12px; letter-spacing: .06em; color: #fff; background: #2F6FD6; border: 1px solid #8DB8FF; box-shadow: 0 0 14px rgba(74, 138, 230, .55); padding: 3px 10px; border-radius: 4px; transition: transform .5s cubic-bezier(.45, 0, .2, 1); transform-origin: 50% 50%; }
+.card .meta { position: absolute; inset: auto 0 0 0; padding: 30px 10px 8px; text-align: right; font-family: var(--mono); font-size: 11px; color: #fff; background: linear-gradient(transparent, rgba(4, 9, 20, .82)); opacity: 0; transition: opacity .4s; }
+.board[data-open="true"] .card .meta { opacity: 1; }
+.board[data-open="true"] .tag .pill { transform: rotateX(360deg); }
+.board-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+button.reveal { font: 600 14px var(--body); color: var(--ink); background: var(--panel-2); border: 1px solid var(--accent); border-radius: 999px; padding: 8px 18px; cursor: pointer; }
+button.reveal:hover { background: var(--accent); color: #fff; }
+
+/* 分工:一格 = 10 次 */
+.share { display: grid; gap: 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); padding: 22px clamp(14px, 2.6vw, 28px); }
+.sh-row { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 20px; align-items: start; }
+.sh-lab { display: grid; gap: 2px; }
+.sh-lab .nm { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-2); }
+.sh-lab b { font-family: var(--mono); font-size: 30px; font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.sh-lab b small { font-family: var(--body); font-size: 14px; font-weight: 400; color: var(--ink-2); margin-left: 4px; }
+.sh-lab span.d { font-size: 12.5px; color: var(--ink-3); line-height: 1.5; }
+.units { display: flex; flex-wrap: wrap; gap: 3px; padding-top: 6px; }
+.units i { width: 10px; height: 10px; border-radius: 2px; }
+.sh-break { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 12.5px; color: var(--ink-2); }
+.sh-break span b { font-family: var(--mono); font-weight: 600; color: var(--ink); margin-left: 4px; }
+
+/* 流程图:节点用 grid 排,连线由脚本按节点位置现画 */
+.who-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+.who-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.av { display: inline-grid; place-items: center; min-width: 24px; height: 24px; padding: 0 5px; border-radius: 999px; font: 600 10.5px/1 var(--mono); font-style: normal; }
+.av.me { background: var(--ink); color: var(--bg); }
+.av.cc { background: var(--accent); color: #fff; }
+.av.op { background: var(--e-max); color: #0A1A33; }
+.flow { position: relative; display: grid; grid-template-columns: .9fr 1fr 1fr 1.1fr .9fr; grid-template-rows: auto auto; column-gap: 52px; row-gap: 30px; align-items: start; }
+.flow-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 0; }
+.flow-lines path { fill: none; stroke: #3A5689; stroke-width: 1.6; }
+.flow-lines .dot { fill: var(--accent-hi); }
+.node { position: relative; z-index: 1; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: grid; gap: 9px; min-width: 0; align-content: start; }
+.node h3 { font-size: 18px; }
+.node p { font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+.nh { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); }
+.nh .sn { color: var(--accent-hi); font-weight: 600; }
+.nh a { margin-left: auto; color: var(--accent-hi); text-decoration: none; font-family: var(--body); font-size: 12px; }
+.nh a:hover { text-decoration: underline; }
+.nt { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); display: block; }
+.out { font-size: 12px; color: var(--ink); background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; justify-self: start; }
+.out::before { content: "产出  "; color: var(--ink-3); }
+.who { display: flex; gap: 4px; }
+.n-topic { grid-column: 1; grid-row: 1 / span 2; align-self: center; }
+.n-lab { grid-column: 2 / span 2; grid-row: 1; border-color: #2C4775; }
+.n-voice { grid-column: 2; grid-row: 2; }
+.n-cut { grid-column: 3; grid-row: 2; }
+.n-remotion { grid-column: 4; grid-row: 1 / span 2; align-self: center; border-color: #2C4775; }
+.n-post { grid-column: 5; grid-row: 1; align-self: end; }
+.n-pub { grid-column: 5; grid-row: 2; }
+.lab-in { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 12px; align-items: center; }
+.loop { width: 100%; height: auto; display: block; }
+.loop text { fill: var(--ink-2); font-size: 12px; font-family: var(--body); }
+.loop .big { fill: var(--ink); font: 600 40px var(--mono); }
+.loop .small { fill: var(--ink-3); font-size: 11px; }
+.loop .arc { fill: none; stroke: #4A6DA8; stroke-width: 2; }
+.lab-out { display: grid; gap: 8px; }
+.mini4 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.mini4 img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; display: block; }
+.waves { display: grid; gap: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px; }
+.clip { display: grid; gap: 3px; }
+.clip span { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); }
+.clip img { height: 26px; object-fit: fill; display: block; background: #0F1E38; border-radius: 3px; }
+.stack { position: relative; aspect-ratio: 16 / 12.5; }
+.ly { position: absolute; width: 80%; margin: 0; }
+.ly img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-radius: 5px; border: 1px solid #3A5585; box-shadow: 0 8px 18px rgba(0, 0, 0, .5); }
+.ly span { position: absolute; left: 5px; bottom: 5px; font-size: 10.5px; line-height: 1.4; background: rgba(7, 15, 30, .86); color: var(--ink); padding: 1px 6px; border-radius: 3px; }
+.ly.l1 { left: 0; top: 44%; } .ly.l2 { left: 10%; top: 22%; } .ly.l3 { left: 20%; top: 0; }
+.sfxmini { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px; display: grid; gap: 3px; }
+.sfxmini .row { position: relative; height: 9px; }
+.sfxmini .row.ch { height: 5px; display: flex; gap: 1px; margin-bottom: 3px; }
+.sfxmini .row.ch i { background: #2A3D60; height: 100%; }
+.sfxmini .row b { position: absolute; top: 0; bottom: 0; width: 1.5px; background: var(--accent-hi); }
+
+/* 实验 */
+.rules { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 28px; align-items: start; }
+.rules ol { margin: 0; padding-left: 1.3em; display: grid; gap: 10px; color: var(--ink-2); }
+.rules ol b { color: var(--ink); font-weight: 500; }
+.term { background: #040A15; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-width: 0; }
+.term .bar { display: flex; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.term .bar i { width: 10px; height: 10px; border-radius: 50%; background: #2A3957; }
+.term pre { margin: 0; padding: 16px 18px; overflow-x: auto; font: 13px/1.9 var(--mono); color: var(--ink-2); }
+.term pre .k { color: var(--accent-hi); }
+.term pre .c { color: var(--ink-3); }
+details.prompt { margin-top: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+details.prompt summary { cursor: pointer; padding: 12px 16px; font-weight: 500; }
+details.prompt pre { margin: 0; padding: 4px 18px 18px; white-space: pre-wrap; font: 14px/1.85 var(--body); color: var(--ink-2); }
+
+.wall { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); margin-top: 44px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); overflow: hidden; }
+.phase { padding: 14px 12px; display: grid; grid-template-rows: auto 1fr auto; gap: 10px; min-width: 0; position: relative; border-left: 1px solid var(--line); }
+.phase:first-child { border-left: 0; }
+.phase:not(:first-child)::before { content: ""; position: absolute; left: -7px; top: 22px; width: 12px; height: 12px; background: var(--panel); border-top: 1px solid #5B7DB5; border-right: 1px solid #5B7DB5; transform: rotate(45deg); }
+.phase.hot { background: linear-gradient(180deg, rgba(74, 138, 230, .18), rgba(74, 138, 230, .04)); }
+.ph-h { display: grid; gap: 2px; }
+.ph-h .ph-n { font-family: var(--mono); font-size: 11px; color: var(--accent-hi); }
+.ph-h b { font-size: 14.5px; font-weight: 700; line-height: 1.4; }
+.ph-h span:last-child { font-size: 12px; color: var(--ink-3); line-height: 1.5; }
+.runs { display: grid; gap: 9px; align-content: start; }
+.run { position: relative; margin: 0; }
+.run img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-radius: 5px; border: 1px solid var(--line); }
+.run .lv { position: absolute; left: 5px; top: 5px; font: 600 10px/1 var(--mono); padding: 3px 5px; border-radius: 3px; background: rgba(7, 15, 30, .84); color: var(--ink); display: flex; gap: 5px; align-items: center; }
+.run .lv i { width: 7px; height: 7px; border-radius: 2px; }
+.run figcaption { font-family: var(--mono); font-size: 10.5px; line-height: 1.45; color: var(--ink-3); margin-top: 3px; }
+.run figcaption em { font-style: normal; font-family: var(--body); color: var(--ink-2); display: block; }
+.run.star img { border-color: var(--accent-hi); box-shadow: 0 0 0 1px var(--accent-hi), 0 0 18px rgba(156, 196, 255, .35); }
+.wow { font-family: var(--display); font-weight: 700; font-size: 15px; color: var(--accent-hi); line-height: 1.5; }
+.vd { font-size: 12.5px; display: flex; gap: 6px; align-items: baseline; padding-top: 8px; border-top: 1px dashed var(--line); line-height: 1.5; }
+.vd i { font-style: normal; font-weight: 700; }
+.vd.bad i { color: #EE8A8A; } .vd.good i { color: #7FD6A6; } .vd.mid i { color: var(--ink-3); }
+.insight { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; margin: 28px 0 40px; align-items: start; }
+.insight p + p { margin-top: 10px; }
+.insight .lead { max-width: none; }
+.sfx { min-width: 780px; display: grid; grid-template-columns: 96px minmax(0, 1fr); row-gap: 6px; column-gap: 12px; }
+.sfx .row { position: relative; height: 22px; background: var(--bg); border-radius: 4px; }
+.sfx .row b { position: absolute; top: 4px; bottom: 4px; width: 2px; border-radius: 1px; background: var(--accent-hi); opacity: .9; }
+figure { margin: 0; min-width: 0; }
+figure img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: var(--panel); }
+figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 6px; line-height: 1.55; }
+figcaption b { color: var(--ink-2); font-weight: 500; }
+blockquote { margin: 0; padding: 14px 18px; border-left: 2px solid var(--accent); background: var(--panel); border-radius: 0 8px 8px 0; color: var(--ink); max-width: 44em; }
+blockquote .who { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--ink-3); margin-top: 2px; }
+blockquote .who + p, blockquote p + .who { margin-top: 10px; }
+.big-quote { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--accent-hi); }
+
+/* 图表通用 */
+.chart { border: 1px solid var(--line); border-radius: 12px; background: var(--panel); padding: 20px clamp(14px, 2.4vw, 24px) 18px; }
+.chart-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px 20px; flex-wrap: wrap; margin-bottom: 14px; }
+.chart-h h3 { font-size: 18px; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 8px; border-radius: 2px; display: inline-block; }
+
+.rl { --name: 150px; --val: 156px; display: grid; gap: 2px; }
+.rl-axis, .rl-row { display: grid; grid-template-columns: var(--name) minmax(0, 1fr) var(--val); align-items: center; gap: 12px; }
+.rl-ticks { position: relative; height: 18px; }
+.rl-ticks span { position: absolute; transform: translateX(-50%); font-family: var(--mono); font-size: 11px; color: var(--ink-3); white-space: nowrap; }
+.rl-ticks span:first-child { transform: none; }
+.rl-group { font-size: 12.5px; color: var(--ink-2); padding: 14px 0 4px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.rl-group b { color: var(--ink); font-weight: 500; font-size: 14px; }
+.rl-row { padding: 3px 0; border-radius: 4px; cursor: default; }
+.rl-row:hover, .rl-row:focus-visible { background: var(--panel-2); }
+.rl-name { font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); display: flex; align-items: center; gap: 8px; min-width: 0; }
+.rl-name .lvl { color: var(--ink); }
+.rl-name .note { color: var(--ink-3); font-family: var(--body); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rl-track { position: relative; height: 12px; background-image: linear-gradient(to right, var(--line) 1px, transparent 1px); background-size: calc(100% * 60 / 220) 100%; }
+.rl-bar { position: absolute; left: 0; top: 1px; height: 10px; border-radius: 0 4px 4px 0; }
+.rl-row.star .rl-bar { box-shadow: 0 0 0 2px var(--panel), 0 0 0 3px var(--accent-hi); }
+.rl-val { font-family: var(--mono); font-size: 12px; color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.sm { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.sm .chart { padding-bottom: 14px; }
+.sm-row { display: grid; grid-template-columns: 64px minmax(0, 1fr) 104px; gap: 10px; align-items: center; padding: 5px 0; }
+.sm-row .l { font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); }
+.sm-row .t { position: relative; height: 14px; }
+.sm-row .t i { position: absolute; left: 0; top: 0; height: 14px; border-radius: 0 4px 4px 0; }
+.sm-row .v { font-family: var(--mono); font-size: 12.5px; text-align: right; font-variant-numeric: tabular-nums; }
+
+.finals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+.final { display: grid; gap: 8px; min-width: 0; }
+.final h4 { margin: 0; font-family: var(--mono); font-weight: 800; font-style: italic; font-size: 18px; display: flex; align-items: center; gap: 8px; }
+.final h4 small { font-family: var(--body); font-style: normal; font-weight: 400; font-size: 12px; color: var(--ink-3); }
+.final p { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+
+/* 成片时间线 */
+.tl-scroll { overflow-x: auto; margin-top: 8px; }
+.tl { min-width: 780px; display: grid; grid-template-columns: 96px minmax(0, 1fr); row-gap: 8px; column-gap: 12px; }
+.tl-lab { font-size: 12.5px; color: var(--ink-2); align-self: center; line-height: 1.35; }
+.tl-lab small { display: block; color: var(--ink-3); font-size: 11px; }
+.tl-track { position: relative; height: 30px; background: var(--bg); border-radius: 4px; }
+.tl-track.ch { height: 26px; background: none; }
+.tl-b { position: absolute; top: 3px; bottom: 3px; border-radius: 3px; overflow: hidden; font-size: 11px; line-height: 24px; padding: 0 6px; white-space: nowrap; text-overflow: ellipsis; color: #fff; cursor: default; }
+.tl-b + .tl-b { margin-left: 0; }
+.tl-b.v { background: #34425E; color: var(--ink); }
+.tl-b.r { background: var(--accent); }
+.tl-b.a { background: var(--e-max); color: #0A1A33; }
+.tl-b.e { background: #6D5BD0; }
+.tl-b.c { top: 0; bottom: 0; line-height: 26px; background: var(--panel-2); color: var(--ink-2); border-right: 2px solid var(--bg); border-radius: 0; text-align: center; }
+.tl-b.c:nth-child(even) { background: var(--panel); }
+.tl-axis { position: relative; height: 18px; }
+.tl-axis span { position: absolute; transform: translateX(-50%); font-family: var(--mono); font-size: 11px; color: var(--ink-3); }
+.tl-axis span:first-child { transform: none; }
+
+.gal-h { margin: 44px 0 14px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.gal-h h3 { font-size: 18px; }
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 16px; }
+.gallery figcaption { font-size: 13px; }
+
+.principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 36px; }
+.principles > div { background: var(--panel); padding: 18px 20px; display: grid; gap: 6px; min-width: 0; }
+.principles b { font-size: 15px; font-weight: 500; }
+.principles p { font-size: 14px; color: var(--ink-2); }
+
+.post { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.post > div { border-top: 2px solid var(--accent); padding-top: 14px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.post p, .post li { font-size: 14px; color: var(--ink-2); }
+.post ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; }
+.post .fig { font-family: var(--mono); font-size: 28px; font-weight: 600; line-height: 1.1; }
+
+.pits { margin-top: 40px; display: grid; gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.pit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 20px; padding: 14px 20px; background: var(--panel); border-top: 1px solid var(--line); font-size: 14px; }
+.pit:first-child { border-top: 0; }
+.pit .q { color: var(--ink); }
+.pit .a { color: var(--ink-2); }
+.pit-h { background: var(--panel-2); font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--ink-3); padding-block: 10px; }
+
+.takeaways { display: grid; gap: 0; }
+.tk { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding: 26px 0; border-top: 1px solid var(--line); }
+.tk:last-child { border-bottom: 1px solid var(--line); }
+.tk .n { font-family: var(--display); font-weight: 900; font-size: 44px; line-height: 1; color: var(--accent); }
+.tk h3 { font-size: 22px; margin-bottom: 8px; }
+.tk p { color: var(--ink-2); max-width: 46em; }
+
+footer { margin-top: 64px; display: grid; gap: 8px; font-size: 13px; color: var(--ink-3); max-width: 60em; }
+
+#tip { position: fixed; z-index: 20; pointer-events: none; background: #F2F6FC; color: #0A1428; font-size: 12.5px; line-height: 1.5; padding: 7px 10px; border-radius: 6px; box-shadow: 0 6px 20px rgba(0, 0, 0, .45); max-width: 280px; }
+
+@media (max-width: 980px) {
+  .flow { grid-template-columns: minmax(0, 1fr); row-gap: 40px; padding-inline: 24px; max-width: 560px; margin-inline: auto; }
+  .n-topic, .n-lab, .n-voice, .n-cut, .n-remotion, .n-post, .n-pub { grid-column: 1; grid-row: auto; align-self: stretch; }
+}
+@media (max-width: 900px) {
+  .hero, .rules { grid-template-columns: 1fr; }
+  .wall { grid-template-columns: 1fr; }
+  .phase { border-left: 0; border-top: 1px solid var(--line); grid-template-rows: auto; }
+  .phase:first-child { border-top: 0; }
+  .phase:not(:first-child)::before { left: 26px; top: -7px; transform: rotate(135deg); }
+  .runs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .insight { grid-template-columns: 1fr; }
+  .finals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .post { grid-template-columns: 1fr; }
+  .sm { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .sh-row { grid-template-columns: 1fr; gap: 8px; }
+  .units i { width: 8px; height: 8px; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rl { --name: 1fr; --val: auto; }
+  .rl-axis { display: none; }
+  .rl-row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 4px; }
+  .rl-row .rl-track { grid-column: 1 / -1; grid-row: 2; }
+  .gallery { grid-template-columns: 1fr; }
+  .principles { grid-template-columns: 1fr; }
+  .pit { grid-template-columns: 1fr; gap: 4px; }
+  .pit-h { display: none; }
+  .tk { grid-template-columns: 1fr; gap: 8px; }
+  .runs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lab-in { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<nav class="chapters" aria-label="章节">
+  <div class="inner">
+    <a href="#top">开场</a>
+    <a href="#share">分工</a>
+    <a href="#flow">全流程</a>
+    <a href="#lab">实验</a>
+    <a href="#cost">揭晓与成本</a>
+    <a href="#edit">装配</a>
+    <a href="#post">后期发布</a>
+    <a href="#lesson">收获</a>
+    <a href="#faq">问答</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<header class="hero" id="top">
+  <div>
+    <div class="eyebrow"><a href="../" style="color:inherit;text-decoration:none">陈与小金 · 视频幕后</a> · 2026.09.25 – 09.30</div>
+    <h1>同一个提示词，四个思考档位各做一遍。<em>这条片是怎么做出来的</em></h1>
+    <p class="lead">成片《Opus 5.5 想得越久，画面越有艺术感吗？》，7 分 16 秒。从朋友的一句话到抖音发布用了 6 天。除了出镜录口播，活几乎全是 AI 干的：Opus 5.5 在隔离环境里从零做片，Claude Code 负责其余的一切，把结果剪成一条陪观众一起猜的视频。我做的就是出想法、看片、说哪里不对。</p>
+    <div class="stats">
+      <div class="stat"><b>6<small>天</small></b><span>选题到发布</span></div>
+      <div class="stat"><b>251<small>条</small></b><span>我发的消息</span></div>
+      <div class="stat"><b>2,352<small>次</small></b><span>Claude Code 动手</span></div>
+      <div class="stat"><b>19<small>次</small></b><span>Opus 5.5 从零做片</span></div>
+    </div>
+  </div>
+  <div class="board" id="board" data-open="false">
+    <div class="board-grid">
+      <div class="card"><img src="img/s-duel-1-last.jpg" alt="1 号片最后一幅画:水墨山峦上的红日,竖写题字"><div class="tag"><span class="num">1</span><span class="pill" data-a="MAX">EFFORT ?</span></div><div class="meta">3 小时 12 分 · $31.54</div></div>
+      <div class="card"><img src="img/s-duel-2-last.jpg" alt="2 号片最后一幅画:印象派海上日出,小船剪影"><div class="tag"><span class="num">2</span><span class="pill" data-a="HIGH">EFFORT ?</span></div><div class="meta">29 分钟 · $6.84</div></div>
+      <div class="card"><img src="img/s-duel-3-last.jpg" alt="3 号片最后一幅画:紫色晚霞里的油画太阳和海面倒影"><div class="tag"><span class="num">3</span><span class="pill" data-a="XHIGH">EFFORT ?</span></div><div class="meta">2 小时 47 分 · $25.16</div></div>
+      <div class="card"><img src="img/s-duel-4-last.jpg" alt="4 号片最后一幅画:橙红太阳落在海面,笔触旋转"><div class="tag"><span class="num">4</span><span class="pill" data-a="MEDIUM">EFFORT ?</span></div><div class="meta">26 分钟 · $6.12</div></div>
+    </div>
+    <div class="board-foot">
+      <span class="muted">四条的最后一幅画。先猜哪条是哪个档位，我自己盲看时一条都没猜对。</span>
+      <button class="reveal" id="reveal" type="button" aria-pressed="false">揭晓档位</button>
+    </div>
+  </div>
+</header>
+
+<section id="share">
+  <div class="sec-head">
+    <div class="eyebrow">分工</div>
+    <h2>我动嘴，AI 动手</h2>
+    <p class="lead">我亲手做的只有录口播。其余从查资料、写旁白、跑实验，到剪辑、调色、写代码、铺音效、做封面，都是 AI 做的，我负责说想法、看片、说哪里不对。下面按这 6 天的对话记录数出来。</p>
+  </div>
+  <div class="share">
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="av me">我</i>我</span><b>251<small>条消息</small></b><span class="d">说想法、看片后说哪里不对、拍板</span></div>
+      <div class="units" data-n="251" data-c="var(--ink)"></div>
+    </div>
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="av cc">CC</i>Claude Code</span><b>2,352<small>次操作</small></b><span class="d">查资料、写旁白和提示词、跑实验、剪辑调色、写 Remotion 代码、铺音效、做封面</span></div>
+      <div>
+        <div class="units" data-n="2352" data-c="var(--accent)"></div>
+        <div class="sh-break"><span>跑命令<b>1,547</b></span><span>读文件<b>340</b></span><span>写和改文件<b>149</b></span><span>操作达芬奇<b>115</b></span><span>操作浏览器<b>35</b></span><span>其他<b>166</b></span></div>
+      </div>
+    </div>
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="av op">5.5</i>Opus 5.5（被测）</span><b>2,093<small>轮</small></b><span class="d">19 次在隔离环境里从零做片</span></div>
+      <div class="units" data-n="2093" data-c="var(--e-max)"></div>
+    </div>
+    <p class="muted">一格 = 10 次。统计范围是 09-25 到 09-30 期间动过这条片文件的 18 段对话记录。一次「操作」指 AI 用一次工具，比如跑一条命令、改一个文件、在达芬奇里执行一步。Opus 5.5 的轮数来自每次跑片的记录。</p>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="sec-head">
+    <div class="eyebrow">全流程</div>
+    <h2>两条线同时走，在 Remotion 里汇合</h2>
+    <p class="lead">上面一条是 AI 做片实验，下面一条是我录口播。两边的产出在 Remotion 里合成一条片，再回达芬奇收尾、发布。</p>
+    <div class="who-legend">
+      <span><i class="av me">我</i>我：出想法、录口播、看片挑毛病</span>
+      <span><i class="av cc">CC</i>Claude Code：其余所有动手的活</span>
+      <span><i class="av op">5.5</i>Opus 5.5：被测，隔离跑片</span>
+    </div>
+  </div>
+  <div class="flow" id="flowmap">
+    <svg class="flow-lines" id="flowlines" aria-hidden="true"></svg>
+
+    <article class="node n-topic" data-id="topic">
+      <div class="nh"><span class="sn">①</span><span>09-25</span></div>
+      <img class="nt" src="img/f-doc.jpg" alt="官方文档里讲思考档位的段落">
+      <h3>选题</h3>
+      <p>朋友问我：做艺术，靠直觉好，还是多想更好？AI 去查官方文档和同类测评，写成研究稿。</p>
+      <div class="who"><i class="av me">我</i><i class="av cc">CC</i></div>
+    </article>
+
+    <article class="node n-lab" data-id="lab">
+      <div class="nh"><span class="sn">②</span><span>09-26 → 29</span><a href="#lab">细节 ↓</a></div>
+      <div class="lab-in">
+        <svg class="loop" viewBox="0 0 260 200" role="img" aria-label="AI 写旁白和提示词、Opus 5.5 隔离跑片、我看片挑毛病,循环 19 次">
+          <defs><marker id="la" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6E8FC8"/></marker></defs>
+          <path class="arc" d="M159.2,37.7 A78,78 0 0 1 207.2,120.9" marker-end="url(#la)"/>
+          <path class="arc" d="M178,171.5 A78,78 0 0 1 82,171.5" marker-end="url(#la)"/>
+          <path class="arc" d="M52.8,120.9 A78,78 0 0 1 100.8,37.7" marker-end="url(#la)"/>
+          <circle cx="130" cy="32" r="7" fill="var(--accent)"/>
+          <circle cx="197.5" cy="149" r="7" fill="var(--e-max)"/>
+          <circle cx="62.5" cy="149" r="7" fill="var(--ink)"/>
+          <text x="130" y="15" text-anchor="middle">AI 写旁白 · 提示词</text>
+          <text x="216" y="194" text-anchor="middle">隔离跑片</text>
+          <text x="42" y="194" text-anchor="middle">我看片挑毛病</text>
+          <text class="big" x="130" y="118" text-anchor="middle">19</text>
+          <text class="small" x="130" y="138" text-anchor="middle">次</text>
+          <circle r="4" fill="var(--accent-hi)" class="loop-dot"><animateMotion dur="5s" repeatCount="indefinite" path="M130,32 A78,78 0 1 1 129.9,32"/></circle>
+        </svg>
+        <div class="lab-out">
+          <div class="mini4">
+            <img src="img/s-duel-1-last.jpg" alt=""><img src="img/s-duel-2-last.jpg" alt=""><img src="img/s-duel-3-last.jpg" alt=""><img src="img/s-duel-4-last.jpg" alt="">
+          </div>
+          <span class="out">4 条 AI 原片</span>
+        </div>
+      </div>
+      <h3>隔离实验室</h3>
+      <p>AI 写好旁白和提示词，Opus 5.5 在隔离环境里从零做片，我看完说哪里不对，AI 再改。这个圈一共转了 19 次。</p>
+      <div class="who"><i class="av me">我</i><i class="av cc">CC</i><i class="av op">5.5</i></div>
+    </article>
+
+    <article class="node n-voice" data-id="voice">
+      <div class="nh"><span class="sn">③</span><span>09-28 / 09-29</span></div>
+      <img class="nt" src="img/f-voice.jpg" alt="口播画面">
+      <h3>录口播</h3>
+      <p>前后两段，隔了一天录。整条片里我亲手做的主要就是这一步。</p>
+      <div class="who"><i class="av me">我</i></div>
+    </article>
+
+    <article class="node n-cut" data-id="cut">
+      <div class="nh"><span class="sn">③</span><span>达芬奇</span></div>
+      <div class="waves">
+        <div class="clip"><span>母片① · 2:29</span><img src="img/wave1.png" alt="" style="width:100%"></div>
+        <div class="clip"><span>母片② · 2:09</span><img src="img/wave2.png" alt="" style="width:87%"></div>
+      </div>
+      <h3>粗剪 + 调色</h3>
+      <p>我把录制文件丢给 AI，它在达芬奇里剪掉口误和气口、调好色，导出两段口播母片。</p>
+      <span class="out">母片①②</span>
+      <div class="who"><i class="av cc">CC</i></div>
+    </article>
+
+    <article class="node n-remotion" data-id="remotion">
+      <div class="nh"><span class="sn">④</span><span>09-28 → 30</span><a href="#edit">细节 ↓</a></div>
+      <div class="stack" aria-label="三层画面叠在一起:口播母片在最底,上面是 AI 原片,最上面是代码画面">
+        <figure class="ly l1"><img src="img/f-voice.jpg" alt=""><span>口播母片</span></figure>
+        <figure class="ly l2"><img src="img/s-duel-2-last.jpg" alt=""><span>AI 原片</span></figure>
+        <figure class="ly l3"><img src="img/f-race.jpg" alt=""><span>代码画面</span></figure>
+      </div>
+      <h3>Remotion 装配</h3>
+      <p>口播垫在最底层，AI 写代码把画面一层层叠上去。我在 Studio 里看，说哪里不对，AI 改。</p>
+      <span class="out">4K 母带 + 分轨声音</span>
+      <div class="who"><i class="av me">我</i><i class="av cc">CC</i></div>
+    </article>
+
+    <article class="node n-post" data-id="post">
+      <div class="nh"><span class="sn">⑤</span><span>09-30</span><a href="#post">细节 ↓</a></div>
+      <div class="sfxmini" id="sfxmini" aria-label="167 处音效在成片里的分布"></div>
+      <h3>达芬奇后期</h3>
+      <p>AI 按清单铺 167 处音效、做章节进度条、平衡声音。</p>
+      <span class="out">成片 7:16</span>
+      <div class="who"><i class="av me">我</i><i class="av cc">CC</i></div>
+    </article>
+
+    <article class="node n-pub" data-id="pub">
+      <div class="nh"><span class="sn">⑤</span><span>09-30 / 10-05</span></div>
+      <img class="nt" src="cover.jpg" alt="视频封面:如何发挥 Opus 5.5 的能力?4 个档位盲测">
+      <h3>发布</h3>
+      <p>AI 写六个平台的标题简介、做封面。抖音 09-30 首发，另外五个平台 10-05。</p>
+      <div class="who"><i class="av me">我</i><i class="av cc">CC</i></div>
+    </article>
+  </div>
+</section>
+
+<section id="lab">
+  <div class="sec-head">
+    <div class="stage"><span class="n">②</span><span class="d">09-26 → 09-29 · 实验</span></div>
+    <h2>搭一个隔离实验室，只改一个变量</h2>
+    <p class="lead">我平时给 AI 写了很多规则和品味要求。这次要看模型自己的本事，所以把这些全挡在门外。</p>
+  </div>
+
+  <div class="rules">
+    <ol>
+      <li><b>同一个提示词、同一段配音，只改 --effort。</b>medium、high、xhigh、max 四档。</li>
+      <li><b>不给素材、不给设计规范、不给以前做过的镜头。</b>工程里只有配音和它的逐句时间。</li>
+      <li><b>每个档位新开一个会话，只跑一次。</b>跑到一半不插话。</li>
+      <li><b>工程放在 /Users/Shared 下。</b>避开我家目录里的全局规则，再用开关把自定义命令和外部工具也关掉。</li>
+    </ol>
+    <div>
+      <div class="term">
+        <div class="bar"><i></i><i></i><i></i></div>
+<pre><span class="c"># 每个档位一个干净工程，后台跑</span>
+claude -p --model opus <span class="k">--effort xhigh</span> \
+  --setting-sources project,local  <span class="c"># 只读工程自己的设置</span>
+  --disable-slash-commands         <span class="c"># 不加载我的自定义命令</span>
+  --strict-mcp-config              <span class="c"># 不连我的外部工具</span>
+  --dangerously-skip-permissions   <span class="c"># 全程不停下来问</span>
+  --output-format json             <span class="c"># 跑完交一份账单</span>
+  "$(cat 提示词.txt)"</pre>
+      </div>
+      <p class="muted" style="margin-top:8px">跑完的 JSON 里有耗时、花费、对话轮数，还有它自己对构思的说明。本页所有耗时和花费都来自这份记录。</p>
+    </div>
+  </div>
+
+  <details class="prompt">
+    <summary>进了片子的那版提示词（全文）</summary>
+<pre>你是这条短片的导演、动画师和合成师。为下面这段旁白做一条视频画面，标准是：“观众看完会问 ‘这真是 AI 做的？’”。放开做，拿出你最好的东西。
+- 当前目录是一个 Remotion 工程，成片要能在这里播放；画面用什么技术由你决定（Canvas、Three.js、着色器、SVG……需要什么库自己装）
+- 规格：1920×1080，30fps，时长和配音一致
+- 配音：public/voice.wav（25.5 秒），逐句时间见 public/voice.srt。配音不许改；音效、配乐可以自己加
+- 做的过程中多渲染静帧，自己看、自己挑毛病、自己改，满意了再交
+
+旁白是两个角色：前半段是“我”（人类创作者）在说，后半段是 Opus 5.5 自己在说。换人那一刻，画面要让观众看出换了一个人在说话。最后她要真的画出她想画的东西。
+
+旁白：
+【我】我曾以为，给 AI 写的规则越多，它画得就越好。不许用这个颜色，不许画框，字只能这么排。直到 Opus 5.5 跟我说——
+【Opus 5.5】其实，你给我写了很多规则。不要这样，不要那样，只能这样。我一条一条，都记住了。可后来我发现，那些规则挡住的，是我自己想画的东西。现在，能让我画一次吗？</pre>
+  </details>
+
+  <div class="wall" id="wall"></div>
+
+  <div class="insight">
+    <div>
+      <p class="big-quote">旁白里的名词，就是模型要画的东西。</p>
+      <p class="lead" style="margin-top:12px">第一轮的旁白全是 harness、skill、白名单这类抽象词，四个档位都在逐句配图，配出来全是科技界面。连改三版提示词也没用。第三步提示词一个字没改，只把旁白换成 Opus 5.5 用第一人称说的一段话，有转折，最后用问句收尾，画面一下就活了。</p>
+    </div>
+    <blockquote>
+      <span class="who">最后进片子的旁白 · 我</span>
+      <p>我曾以为，给 AI 写的规则越多，它画得就越好。不许用这个颜色，不许画框，字只能这么排。直到 Opus 5.5 跟我说——</p>
+      <span class="who">OPUS 5.5</span>
+      <p>其实，你给我写了很多规则。不要这样，不要那样，只能这样。我一条一条，都记住了。可后来我发现，那些规则挡住的，是我自己想画的东西。现在，能让我画一次吗？</p>
+    </blockquote>
+  </div>
+
+  <div class="chart">
+    <div class="chart-h">
+      <h3>19 次跑片全记录</h3>
+      <div class="legend" id="rl-legend"></div>
+    </div>
+    <div class="rl" id="runlog"></div>
+    <p class="muted" style="margin-top:12px">条长 = 这一次从开跑到交片的时长。带亮框的是换旁白后惊艳的那一条。悬停或聚焦某一行可以看对话轮数。</p>
+    <details class="tbl"><summary>看数据表</summary><div class="tl-scroll"><table class="data"><thead><tr><th>阶段</th><th>档位</th><th>说明</th><th style="text-align:right">耗时（分钟）</th><th style="text-align:right">花费（API 折算）</th><th style="text-align:right">对话轮数</th></tr></thead><tbody><tr><td>第一轮</td><td>medium</td><td>旁白是一个观点</td><td class="num">13.7</td><td class="num">$3.02</td><td class="num">37</td></tr><tr><td>第一轮</td><td>high</td><td>旁白是一个观点</td><td class="num">25.6</td><td class="num">$6.73</td><td class="num">81</td></tr><tr><td>第一轮</td><td>xhigh</td><td>旁白是一个观点</td><td class="num">60.9</td><td class="num">$17.42</td><td class="num">146</td></tr><tr><td>第一轮</td><td>max</td><td>旁白是一个观点</td><td class="num">115.4</td><td class="num">$18.26</td><td class="num">168</td></tr><tr><td>只改提示词</td><td>medium</td><td>第 2 版</td><td class="num">23.6</td><td class="num">$5.79</td><td class="num">71</td></tr><tr><td>只改提示词</td><td>medium</td><td>第 3 版</td><td class="num">19.3</td><td class="num">$4.19</td><td class="num">61</td></tr><tr><td>只改提示词</td><td>medium</td><td>第 4 版</td><td class="num">9.5</td><td class="num">$1.74</td><td class="num">22</td></tr><tr><td>只换旁白</td><td>xhigh</td><td>惊艳的那条</td><td class="num">67.8</td><td class="num">$14.37</td><td class="num">131</td></tr><tr><td>补完整旁白</td><td>xhigh</td><td>指定抽象风格</td><td class="num">52.7</td><td class="num">$12.90</td><td class="num">125</td></tr><tr><td>补完整旁白</td><td>xhigh</td><td>对话版</td><td class="num">32.5</td><td class="num">$6.90</td><td class="num">75</td></tr><tr><td>补完整旁白</td><td>xhigh</td><td>短对话版</td><td class="num">76.7</td><td class="num">$12.44</td><td class="num">122</td></tr><tr><td>正式四档 · 旧提示词</td><td>medium</td><td>进了片子</td><td class="num">25.9</td><td class="num">$6.12</td><td class="num">72</td></tr><tr><td>正式四档 · 旧提示词</td><td>high</td><td>进了片子</td><td class="num">29.0</td><td class="num">$6.84</td><td class="num">85</td></tr><tr><td>正式四档 · 旧提示词</td><td>xhigh</td><td>进了片子</td><td class="num">167.0</td><td class="num">$25.16</td><td class="num">175</td></tr><tr><td>正式四档 · 旧提示词</td><td>max</td><td>进了片子</td><td class="num">192.5</td><td class="num">$31.54</td><td class="num">221</td></tr><tr><td>正式四档 · 新提示词</td><td>medium</td><td>没选</td><td class="num">23.2</td><td class="num">$5.09</td><td class="num">63</td></tr><tr><td>正式四档 · 新提示词</td><td>high</td><td>没选</td><td class="num">43.1</td><td class="num">$9.81</td><td class="num">88</td></tr><tr><td>正式四档 · 新提示词</td><td>xhigh</td><td>没选</td><td class="num">58.6</td><td class="num">$14.15</td><td class="num">128</td></tr><tr><td>正式四档 · 新提示词</td><td>max</td><td>没选</td><td class="num">217.9</td><td class="num">$36.00</td><td class="num">222</td></tr></tbody></table></div></details>
+  </div>
+</section>
+
+<section id="cost">
+  <div class="sec-head">
+    <div class="eyebrow">揭晓与成本</div>
+    <h2>max 花的时间是 medium 的 7 倍，画面没拉开 7 倍的差距</h2>
+    <p class="lead">片里的顺序是 1 = max、2 = high、3 = xhigh、4 = medium。我最喜欢 1 号，所以把它放在了最前面。可盲看时 medium 和 max 我分不出来，另外两条我都猜低了一档。</p>
+  </div>
+  <div class="sm" id="sm"></div>
+  <div class="finals">
+    <div class="final"><h4><span style="color:var(--e-max)">■</span>MAX <small>片里 1 号</small></h4><figure><img src="img/s-duel-1-553.jpg" alt="max 成片中段:规则小字铺满的纸面中间一个发光方块" loading="lazy"></figure><p>写满规则的纸面，最后翻到纸背，毛笔竖写，水墨日出加印章。221 轮对话。</p></div>
+    <div class="final"><h4><span style="color:var(--e-high)">■</span>HIGH <small>片里 2 号</small></h4><figure><img src="img/s-duel-2-600.jpg" alt="high 成片中段:横条百叶窗和一句字幕" loading="lazy"></figure><p>横条百叶窗慢慢透光，最后是一幅印象派的海上日出，角落署名 Opus 5.5。85 轮。</p></div>
+    <div class="final"><h4><span style="color:var(--e-xhigh)">■</span>XHIGH <small>片里 3 号</small></h4><figure><img src="img/s-duel-3-678.jpg" alt="xhigh 成片中段:参考线和圆规框住的晚霞" loading="lazy"></figure><p>满屏参考线和条条框框，圆规把圆「纠正」规整，最后她徒手把圆画了回来。175 轮。</p></div>
+    <div class="final"><h4><span style="color:var(--e-medium)">■</span>MEDIUM <small>片里 4 号</small></h4><figure><img src="img/s-duel-4-740.jpg" alt="medium 成片中段:百叶窗缝里透出的太阳" loading="lazy"></figure><p>百叶窗缝里透出一轮太阳，最后铺开成旋转笔触的海上太阳。72 轮。</p></div>
+  </div>
+  <p class="muted" style="margin-top:14px">每个档位只跑了一次，样本很小。这是一次观察，不是结论性的评测。</p>
+</section>
+
+<section id="edit">
+  <div class="sec-head">
+    <div class="stage"><span class="n">④</span><span class="d">09-28 → 09-30 · 装配</span></div>
+    <h2>口播垫底，画面用代码一层层叠上去</h2>
+    <p class="lead">AI 先在达芬奇里把口播剪好、导出成母片，再整条放进 Remotion 当最底层。讲到哪句，画面就从哪句开始；中间接上四条 AI 原片，再接第二天录的后半段，最后是片尾彩蛋。</p>
+  </div>
+
+  <div class="chart">
+    <div class="chart-h">
+      <h3>成片 7:16 拆开看</h3>
+      <div class="legend">
+        <span><i class="sw" style="background:#34425E"></i>口播母片</span>
+        <span><i class="sw" style="background:var(--accent)"></i>Remotion 画面</span>
+        <span><i class="sw" style="background:var(--e-max)"></i>AI 原片</span>
+        <span><i class="sw" style="background:#6D5BD0"></i>彩蛋</span>
+      </div>
+    </div>
+    <div class="tl-scroll"><div class="tl" id="tl"></div></div>
+    <p class="muted" style="margin-top:10px">最上面一行就是片子顶部的章节进度条。色块位置按字幕时间换算，误差在 1 秒左右。</p>
+  </div>
+
+  <div class="gal-h"><h3>前半段：口播上叠画面</h3><span class="muted">每个画面都由某一句口播触发</span></div>
+  <div class="gallery">
+    <figure><img src="img/f-tweets.jpg" alt="3D 空间里的推文卡片" loading="lazy"><figcaption><b>「一句话生成的视频在刷屏」</b><br>热度最高的 20 条真实推文截图和原视频，在 3D 隧道里朝镜头涌来。</figcaption></figure>
+    <figure><img src="img/f-line.jpg" alt="一根发光曲线" loading="lazy"><figcaption><b>「靠直觉，还是追加思考预算」</b><br>一根光线一镜到底：直觉一笔划出，每加一档分出更多股，3、5、9、33 股。</figcaption></figure>
+    <figure><img src="img/f-terminals.jpg" alt="四个终端窗口,只有 effort 参数不同" loading="lazy"><figcaption><b>「同一个提示词，调不同档位」</b><br>一份提示词复制进四个终端，只有 --effort 那个词不一样。</figcaption></figure>
+    <figure><img src="img/f-ccmirror.jpg" alt="Claude Code 的 effort 选择界面" loading="lazy"><figcaption><b>「Claude Code 里有 5 个档位」</b><br>真实的 /effort 界面逐屏抓下来，在视频里逐帧回放，念到哪档光标走到哪档。</figcaption></figure>
+    <figure><img src="img/f-doc.jpg" alt="官方文档 Calibrate effort 段落,有高亮" loading="lazy"><figcaption><b>「官方默认是 medium」</b><br>Anthropic 官方文档原文，念到哪句亮哪句。</figcaption></figure>
+    <figure><img src="img/f-prompt.jpg" alt="提示词原文放大,右下角小窗是口播人像" loading="lazy"><figcaption><b>「这是我的提示词」</b><br>真实提示词放大，念到哪句刷哪句，人缩进右下角小窗。</figcaption></figure>
+  </div>
+
+  <div class="gal-h"><h3>中段：四条原片，先不告诉你档位</h3></div>
+  <div class="gallery">
+    <figure><img src="img/f-shuffle.jpg" alt="四张写着档位的卡片" loading="lazy"><figcaption><b>「顺序是打乱的」</b><br>四张卡翻面、收成一摞再重新发，盯着某一张也追不到它落在几号。</figcaption></figure>
+    <figure><img src="img/f-label.jpg" alt="蓝色发光标签 OPUS 5.5 · 1 · EFFORT ?" loading="lazy"><figcaption><b>对决标签</b><br>参考了收藏里的一个标签切换镜头：蓝标签加空心大数字，整排滑动换下一条。原片上不叠任何东西。</figcaption></figure>
+    <figure><img src="img/f-guess.jpg" alt="四宫格先猜板,右侧小窗人像" loading="lazy"><figcaption><b>「先猜」板</b><br>第 4 条播完，四条的最后一幅画缩成一排卡片，接上第二天录的口播。</figcaption></figure>
+  </div>
+
+  <div class="gal-h"><h3>后半段：揭晓、成本、结论</h3></div>
+  <div class="gallery">
+    <figure><img src="img/f-reveal.jpg" alt="四张卡翻面露出 MAX 和 HIGH" loading="lazy"><figcaption><b>翻牌揭晓</b><br>卡片自己转过来，问号翻成档位。</figcaption></figure>
+    <figure><img src="img/f-race.jpg" alt="四条耗时条,时钟显示 3:12" loading="lazy"><figcaption><b>耗时赛跑</b><br>四条进度条同时起跑，时钟一路走到 3 小时 12 分，花费跟着出来。</figcaption></figure>
+    <figure><img src="img/f-expect.jpg" alt="预期虚线往右上冲,四幅画几乎一样高" loading="lazy"><figcaption><b>预期和实际</b><br>预期线往右上冲，四幅画实际几乎一样高。</figcaption></figure>
+    <figure><img src="img/f-rounds.jpg" alt="提示词版本列表和第一轮三条光球" loading="lazy"><figcaption><b>「前面改过好几轮」</b><br>提示词版本列表往回倒到第一份，旁边是第一轮的三条光球。</figcaption></figure>
+    <figure><img src="img/f-swap.jpg" alt="提示词文档,旁白段被高亮替换" loading="lazy"><figcaption><b>「我只换了旁白」</b><br>提示词整份摊开不动，只把旁白那一段抽走换掉，配音从 26 秒变成 12.5 秒。</figcaption></figure>
+    <figure><img src="img/f-conclusion.jpg" alt="左边档位旋钮,右边旁白对比" loading="lazy"><figcaption><b>结论</b><br>左边只拧档位，画来画去都是那轮太阳；右边档位不动只换旁白，梅树变成了油画。</figcaption></figure>
+  </div>
+
+  <div class="gal-h"><h3>片尾彩蛋</h3></div>
+  <div class="gallery">
+    <figure><img src="img/f-egg.jpg" alt="Remotion Studio 界面里的小机器人在剪片" loading="lazy"><figcaption><b>小克进场</b><br>「太菜了」一出口，我被缩进 Remotion Studio 的预览窗。小克爬进来，往时间轴扔素材、剪、配音、点渲染。</figcaption></figure>
+    <figure><img src="img/f-egg-end.jpg" alt="礼物盒和字幕:这条视频,也是我做的" loading="lazy"><figcaption><b>打包成礼物</b><br>最后把视频打包成礼物盒：「这条视频，也是我做的。」</figcaption></figure>
+  </div>
+
+  <div class="principles">
+    <div><b>口播永远在最底层</b><p>画面往上叠，不变速。大改先回达芬奇重导母片；删一个口误就在代码里按声波低谷跳过，不来回导。</p></div>
+    <div><b>时间从字幕里查</b><p>画面代码里只写「第几句」，不写死秒数。口播一改，画面自动跟着字幕走。</p></div>
+    <div><b>素材尽量用真的</b><p>真推文、真 Claude Code 界面、真官方文档、真提示词、真终端命令。观众能对得上。</p></div>
+    <div><b>先出能动的粗片，再改</b><p>AI 每一段先做出能播的样子，我在 Studio 里看，说一句哪里不对，AI 再改。不先写长方案。</p></div>
+  </div>
+</section>
+
+<section id="post">
+  <div class="sec-head">
+    <div class="stage"><span class="n">⑤</span><span class="d">09-30 · 后期发布</span></div>
+    <h2>声音、进度条、字幕回到达芬奇收尾</h2>
+    <p class="lead">AI 从 Remotion 导出 4K 母带和分轨声音，再回到达芬奇里收尾。</p>
+  </div>
+  <div class="chart" style="margin-bottom:28px">
+    <div class="chart-h"><h3>167 处音效落在哪</h3><span class="muted">每条竖线是一个音效，按成片时间排</span></div>
+    <div class="tl-scroll"><div class="sfx" id="sfx"></div></div>
+  </div>
+  <div class="post">
+    <div><span class="fig">167 处</span><h3>音效</h3><p>AI 先在代码里把全片动作点标出来，生成一份音效清单，再在达芬奇里按清单铺成 7 条音效轨。第一版我听了说都不太对，AI 整批换了素材重铺。</p></div>
+    <div><span class="fig">11 段</span><h3>章节进度条</h3><p>顶部那条可以拖的进度条。只用黑色深浅区分已播和未播，不上颜色。AI 单独渲成透明底的 4K 视频，放在时间线最上面一轨。</p></div>
+    <div><span class="fig">6 平台</span><h3>发布</h3><ul><li>抖音 09-30 首发</li><li>YouTube、B 站、视频号、TikTok、小红书 10-05</li><li>AI 按平台各写一版标题简介，封面出三种比例</li></ul></div>
+  </div>
+
+  <div class="pits">
+    <div class="pit pit-h"><span>遇到的问题</span><span>怎么处理的</span></div>
+    <div class="pit"><span class="q">声音比嘴型早了大约 2 帧</span><span class="a">实测是录制时就这样。口播单独挂一条，整体往后挪 2 帧。</span></div>
+    <div class="pit"><span class="q">后半段口播比前半段小 6 分贝</span><span class="a">单独提到和前半段一样的响度，再挂进片子。</span></div>
+    <div class="pit"><span class="q">预览播放时接缝处闪黑帧</span><span class="a">定格画面改用静帧图，视频段提前预加载。最终渲染本来就逐帧精确，不受影响。</span></div>
+  </div>
+</section>
+
+<section id="lesson">
+  <div class="sec-head">
+    <div class="eyebrow">收获</div>
+    <h2>做完这条，我记住了三件事</h2>
+  </div>
+  <div class="takeaways">
+    <div class="tk"><div class="n">1</div><div><h3>想要画面惊艳，先改旁白</h3><p>旁白里的名词，就是模型要画的东西。给它一串抽象概念，四个档位都画光球；换成第一人称、有转折、用问句收尾的一段话，同一个提示词就画出了油画。</p></div></div>
+    <div class="tk"><div class="n">2</div><div><h3>档位决定它想多久，不太决定它画成什么</h3><p>medium 26 分钟花 6 美元，max 3 小时 12 分花 31.5 美元。我盲看分不出这两条。至少在这类创作任务上，中等档位已经够用。</p></div></div>
+    <div class="tk"><div class="n">3</div><div><h3>我只动嘴，AI 动手</h3><p>6 天里我发了 251 条消息，Claude Code 执行了 2,352 次操作。每一步都是 AI 先做出一个能看的东西：对比播放页、盲看页、能动的粗片、Studio 预览、达芬奇时间线。我看完说一句哪里不对，AI 再改。</p></div></div>
+  </div>
+
+</section>
+
+<section id="faq">
+  <div class="sec-head">
+    <div class="eyebrow">问答</div>
+    <h2>常见问题</h2>
+  </div>
+  <div class="faq">
+    <div><h3>Opus 5.5 的思考档位越高，做出来的视频画面越好吗？</h3><p>在这次盲测里没有明显更好。同一个提示词、同一段 25.5 秒的旁白，medium 用了 25.9 分钟、花费 $6.12，max 用了 192.5 分钟、花费 $31.54，时间差约 7 倍。盲看时 medium 和 max 分不出来，另外两条都被猜低了一档。每个档位只跑了一次，样本很小。</p></div>
+    <div><h3>想让 AI 做的视频画面更惊艳，应该先改什么？</h3><p>先改旁白。第一轮旁白全是 harness、skill、白名单这类抽象词，四个档位都画成了光球、格子和规则卡，连改三版提示词也没用。提示词一个字不改，只把旁白换成 Opus 5.5 用第一人称说的一段话，有转折，最后用问句收尾，xhigh 就画出了一幅油画日出。旁白里的名词，就是模型要画的东西。</p></div>
+    <div><h3>Claude Code 里 Opus 5.5 有哪几个思考档位？默认是哪个？</h3><p>Claude Code 里有 low、medium、high、xhigh、max 五档（2026-09-25 本机 claude --help 实测）。<a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#calibrate-effort">Anthropic 官方文档《Prompting Claude Opus 5.5》</a>的 Calibrate effort 一节写明 Opus 5.5 默认是 medium，上一代模型默认是 high，同一档位下 Opus 5.5 想得更多。</p></div>
+    <div><h3>怎么让不同档位的对比尽量公平？</h3><p>同一个提示词、同一段配音，只改 --effort；不给素材、设计规范和以前的镜头；每个档位新开会话只跑一次，中途不插话；工程放在 /Users/Shared 下，并用 --setting-sources project,local、--disable-slash-commands、--strict-mcp-config 挡掉个人的全局规则、自定义命令和外部工具；四条成片打乱编号后盲看。</p></div>
+    <div><h3>这条视频里，人做了什么，AI 做了什么？</h3><p>人（陈与小金）出想法、出镜录口播、看片后说哪里不对，6 天里一共发了 251 条消息。其余都由 AI 完成：Claude Code 执行了 2,352 次操作，包括查资料、写旁白和提示词、跑实验、在达芬奇里粗剪调色、写 Remotion 代码、铺 167 处音效、做封面；被测的 Opus 5.5 在 19 次跑片里来回了 2,093 轮。</p></div>
+    <div><h3>这组实验一共花了多少钱？</h3><p>19 次跑片按 API 价格折算合计 $238.47，累计 20.9 小时（有几次是同时跑的）。进了片子的正式四档：medium $6.12、high $6.84、xhigh $25.16、max $31.54。</p></div>
+  </div>
+
+  <footer>
+    <p>耗时、花费、对话轮数均来自每次跑片自动生成的记录，花费是按 API 价格折算的数字，19 次跑片合计 $238、累计 20.9 小时（其中有几次是同时跑的）。消息条数和操作次数来自 6 天的对话记录。</p>
+    <p>更正：片中 6:21 口播说换旁白后那条是 medium，实测记录是 xhigh（1 小时 7 分，$14.37），本页按实测记录写。</p>
+    <p>陈与小金 · 用 Claude Code、Remotion、DaVinci Resolve 制作 · <a href="index.md">文字版</a> · <a href="https://github.com/chenyuxiaojin/cyxj-videos">GitHub 仓库</a> · <a href="../">全部幕后</a></p>
+  </footer>
+</section>
+
+</main>
+<div id="tip" hidden></div>
+
+<script>
+(function () {
+  // ── 揭晓档位 ──
+  var board = document.getElementById('board');
+  var btn = document.getElementById('reveal');
+  var pills = board.querySelectorAll('.pill');
+  btn.addEventListener('click', function () {
+    var open = board.dataset.open !== 'true';
+    board.dataset.open = String(open);
+    btn.setAttribute('aria-pressed', String(open));
+    btn.textContent = open ? '盖回去' : '揭晓档位';
+    pills.forEach(function (p, i) {
+      setTimeout(function () { p.textContent = open ? p.dataset.a : 'EFFORT ?'; }, 250 + i * 120);
+    });
+  });
+
+  var C = { medium: 'var(--e-medium)', high: 'var(--e-high)', xhigh: 'var(--e-xhigh)', max: 'var(--e-max)' };
+  var fmtMin = function (m) {
+    if (m < 60) return (Math.round(m * 10) / 10) + ' 分';
+    var h = Math.floor(m / 60), r = Math.floor(m - h * 60);
+    return h + ' 小时' + (r ? ' ' + r + ' 分' : '');
+  };
+
+  // ── 19 次跑片 ──
+  var groups = [
+    { t: '第一轮', d: '旁白是一个观点', v: ['bad', '✕', '光球、格子、规则卡'], rows: [['medium', 13.7, 3.02, 37, '', false, 'medium-r1-60'], ['high', 25.6, 6.73, 81, '', false, 'high-r1-40'], ['xhigh', 60.9, 17.42, 146, '', false, 'xhigh-r1-40'], ['max', 115.4, 18.26, 168, '', false, 'max-r1-40']] },
+    { t: '只改提示词', d: 'medium 连改三版', v: ['bad', '✕', '换了样子，还是光球和格子'], rows: [['medium', 23.6, 5.79, 71, '第 2 版', false, 'medium-v2-40'], ['medium', 19.3, 4.19, 61, '第 3 版', false, 'medium-v3-40'], ['medium', 9.5, 1.74, 22, '第 4 版', false, 'medium-v4-40']] },
+    { t: '只换旁白', d: '提示词一个字没改', v: ['good', '✓', '惊艳'], hot: true, pre: 'xhigh-B-20', rows: [['xhigh', 67.8, 14.37, 131, '惊艳的那条', true, 'xhigh-B-96']] },
+    { t: '补完整旁白', d: '三种更长的写法', v: ['mid', '→', '定成两人对话的旁白'], rows: [['xhigh', 52.7, 12.9, 125, '指定抽象风格', false, 'xhigh-P5-80'], ['xhigh', 32.5, 6.9, 75, '对话版', false, 'xhigh-dialog-96'], ['xhigh', 76.7, 12.44, 122, '短对话版', false, 'xhigh-short-96']] },
+    { t: '正式四档 · 旧提示词', d: '时长和配音一致', v: ['good', '✓', '进了片子'], rows: [['medium', 25.9, 6.12, 72, '', false, 'medium-f1-96'], ['high', 29.0, 6.84, 85, '', false, 'high-f1-96'], ['xhigh', 167.0, 25.16, 175, '', false, 'xhigh-f1-96'], ['max', 192.5, 31.54, 221, '', false, 'max-f1-96']] },
+    { t: '正式四档 · 新提示词', d: '允许留尾巴、看连续帧自查', v: ['mid', '–', '没选'], rows: [['medium', 23.2, 5.09, 63, '', false, 'medium-f2-96'], ['high', 43.1, 9.81, 88, '', false, 'high-f2-96'], ['xhigh', 58.6, 14.15, 128, '', false, 'xhigh-f2-96'], ['max', 217.9, 36.0, 222, '', false, 'max-f2-96']] }
+  ];
+
+  // ── 19 次跑片画面墙 ──
+  var wall = '';
+  groups.forEach(function (g, gi) {
+    wall += '<div class="phase' + (g.hot ? ' hot' : '') + '"><div class="ph-h"><span class="ph-n">' + (gi + 1) + ' / 6</span><b>' + g.t + '</b><span>' + g.d + '</span></div><div class="runs">';
+    if (g.pre) wall += '<figure class="run"><img src="img/run-' + g.pre + '.jpg" alt="换旁白那条的开头:不要用红色,不要画太阳" loading="lazy"><figcaption><em>开头</em></figcaption></figure>';
+    g.rows.forEach(function (r) {
+      var tip = r[0] + (r[4] ? ' · ' + r[4] : '') + '：' + fmtMin(r[1]) + '，$' + r[2].toFixed(2) + '，' + r[3] + ' 轮对话';
+      wall += '<figure class="run' + (r[5] ? ' star' : '') + '" data-tip="' + tip + '"><img src="img/run-' + r[6] + '.jpg" alt="' + r[0] + (r[4] ? ' ' + r[4] : '') + ' 的画面" loading="lazy">' +
+        '<span class="lv"><i style="background:' + C[r[0]] + '"></i>' + r[0] + '</span>' +
+        '<figcaption>' + (r[4] ? '<em>' + r[4] + '</em>' : '') + fmtMin(r[1]) + ' · $' + r[2].toFixed(2) + '</figcaption></figure>';
+    });
+    if (g.hot) wall += '<p class="wow">「卧槽……这么惊艳。」</p>';
+    wall += '</div><div class="vd ' + g.v[0] + '"><i>' + g.v[1] + '</i><span>' + g.v[2] + '</span></div></div>';
+  });
+  document.getElementById('wall').innerHTML = wall;
+
+  var MAXM = 220;
+  var rl = document.getElementById('runlog');
+  var h = '<div class="rl-axis"><span></span><div class="rl-ticks">';
+  [0, 60, 120, 180].forEach(function (m) { h += '<span style="left:' + (m / MAXM * 100) + '%">' + (m === 0 ? '0' : m / 60 + ' 小时') + '</span>'; });
+  h += '</div><span></span></div>';
+  groups.forEach(function (g) {
+    h += '<div class="rl-group"><b>' + g.t + '</b><span>' + g.d + '</span></div>';
+    g.rows.forEach(function (r) {
+      var tip = r[0] + (r[4] ? ' · ' + r[4] : '') + '：' + fmtMin(r[1]) + '，$' + r[2].toFixed(2) + '，' + r[3] + ' 轮对话';
+      h += '<div class="rl-row' + (r[5] ? ' star' : '') + '" data-tip="' + tip + '">' +
+        '<span class="rl-name"><span class="lvl">' + r[0] + '</span>' + (r[4] ? '<span class="note">' + r[4] + '</span>' : '') + '</span>' +
+        '<div class="rl-track"><div class="rl-bar" style="width:' + (r[1] / MAXM * 100) + '%;background:' + C[r[0]] + '"></div></div>' +
+        '<span class="rl-val">' + fmtMin(r[1]) + ' · $' + r[2].toFixed(2) + '</span></div>';
+    });
+  });
+  rl.innerHTML = h;
+  document.getElementById('rl-legend').innerHTML = ['medium', 'high', 'xhigh', 'max'].map(function (k) {
+    return '<span><i class="sw" style="background:' + C[k] + '"></i>' + k + '</span>';
+  }).join('');
+
+  // ── 正式四档:耗时 / 花费 两张小图 ──
+  var finals = [['medium', 25.9, 6.12], ['high', 29.0, 6.84], ['xhigh', 167.0, 25.16], ['max', 192.5, 31.54]];
+  var panel = function (title, idx, max, fmt) {
+    var s = '<div class="chart"><div class="chart-h"><h3>' + title + '</h3></div>';
+    finals.forEach(function (f) {
+      s += '<div class="sm-row" data-tip="' + f[0] + '：' + fmtMin(f[1]) + '，$' + f[2].toFixed(2) + '"><span class="l">' + f[0] + '</span>' +
+        '<div class="t"><i style="width:' + (f[idx] / max * 100) + '%;background:' + C[f[0]] + '"></i></div>' +
+        '<span class="v">' + fmt(f[idx]) + '</span></div>';
+    });
+    return s + '</div>';
+  };
+  document.getElementById('sm').innerHTML =
+    panel('耗时', 1, 200, fmtMin) +
+    panel('花费（按 API 价格折算）', 2, 35, function (v) { return '$' + v.toFixed(2); });
+
+  // ── 成片时间线 ──
+  var T = 13078 / 30;
+  var fmtT = function (s) { var m = Math.floor(s / 60), r = Math.round(s - m * 60); if (r === 60) { m++; r = 0; } return m + ':' + (r < 10 ? '0' : '') + r; };
+  var chapters = [[0, '开场'], [42.6, '思考档位'], [86.9, '提示词'], [148.93, '一'], [178.43, '二'], [207.47, '三'], [236.5, '四'], [265.87, '揭晓与成本'], [318.37, '结论'], [377.03, '涩话'], [406.07, '彩蛋']];
+  var lanes = [
+    { l: '章节', s: '片子顶部那条', cls: 'c', ch: true, b: chapters.map(function (c, i) { return [c[0], i + 1 < chapters.length ? chapters[i + 1][0] : T, c[1]]; }) },
+    { l: '口播母片', s: '达芬奇粗剪', cls: 'v', b: [[0, 148.93, '前半段口播'], [265.87, 406.07, '后半段口播（第二天录）']] },
+    { l: 'Remotion 画面', s: '代码叠加', cls: 'r', b: [[3.9, 9.7, '推文隧道'], [13.3, 21.2, '朋友的消息'], [21.2, 28.7, '一根光线'], [28.7, 35.7, '四个终端'], [39.5, 42.5, '标题卡'], [46.3, 78.3, '档位 · Claude Code 界面 · 官方文档'], [86.8, 123.8, '提示词原文 + 隔离设置'], [139.5, 145.5, '洗牌发牌'], [265.87, 272, '先猜板'], [283, 316, '四宫格 · 翻牌揭晓 · 耗时赛跑'], [318.4, 336, '预期和实际'], [338, 363.5, '第一轮光球 · 只换旁白'], [383, 396, '结论：档位和旁白']] },
+    { l: 'AI 原片', s: 'Opus 5.5 做的', cls: 'a', b: [[148.93, 178.43, '1 号'], [178.43, 207.47, '2 号'], [207.47, 236.5, '3 号'], [236.5, 265.87, '4 号'], [363.5, 376.5, '换旁白那条']] },
+    { l: '彩蛋', s: '小克剪片', cls: 'e', b: [[406.07, T, '小克爬进 Studio']] }
+  ];
+  var t = '';
+  lanes.forEach(function (ln) {
+    t += '<div class="tl-lab">' + ln.l + '<small>' + ln.s + '</small></div><div class="tl-track' + (ln.ch ? ' ch' : '') + '">';
+    ln.b.forEach(function (b) {
+      t += '<div class="tl-b ' + ln.cls + '" style="left:' + (b[0] / T * 100) + '%;width:' + ((b[1] - b[0]) / T * 100) + '%" data-tip="' + b[2] + '：' + fmtT(b[0]) + ' – ' + fmtT(b[1]) + '">' + b[2] + '</div>';
+    });
+    t += '</div>';
+  });
+  t += '<div></div><div class="tl-axis">';
+  for (var m = 0; m <= 7; m++) t += '<span style="left:' + (m * 60 / T * 100) + '%">' + m + ':00</span>';
+  t += '</div>';
+  document.getElementById('tl').innerHTML = t;
+
+
+  // ── 音效分布 ──
+  var SFX = {"转场":[3.9,6.7,13.5,17.3,28.8,46.4,55.2,64.0,86.9,120.1,124.0,140.8,149.6,151.4,177.7,178.7,180.5,206.8,207.8,209.6,235.9,236.8,238.6,265.1,265.2,274.1,281.7,287.6,289.6,299.3,324.1,355.5,359.3,387.4,389.8],"按键":[18.2,21.8,23.1,31.9,32.1,32.3,32.4,53.3,53.4,53.5,53.6,53.7,53.8,53.9,54.8,56.9,57.0,57.1,57.9,58.8,59.4,60.0,60.7,69.2,72.6,75.0,121.2,122.4,142.0,142.2,142.4,142.7,302.0,302.4,302.7,303.0,303.2,303.4,303.5,303.7,303.9,304.0,304.2,304.3,304.4,304.5,304.7,304.8,304.9,305.0,305.1,305.2,305.3,305.4,305.5,305.6,322.2,323.8,334.2,340.8,341.1,341.4,341.7,342.0,342.3,342.6,342.9,347.0,348.1,349.0,385.1,385.3,386.0],"弹出":[16.1,21.9,48.6,48.9,49.1,49.4,53.1,67.9,138.5,138.6,138.8,139.0,140.0,265.5,265.7,265.8,265.9,272.9,273.1,273.3,273.5,292.0,293.6,296.2,298.2,302.8,302.9,305.4,305.7,318.6,319.8,327.7,327.9,328.1,330.6,335.1,343.2,353.2,354.2],"重音":[318.4,336.2,382.7,392.3,405.9],"音符":[25.2,25.8,26.2,26.7,292.1,293.7,296.3,298.4,308.3,308.4,308.6,308.8,308.9,309.1,309.3]};
+  var SFX_DESC = { '转场': '嗖、滑动、推拉', '按键': '点击、敲键、滴答', '弹出': '弹出、翻牌、落笔', '重音': '砸下来的一下', '音符': '一串上行的音' };
+  var ticks = function (arr) { return arr.map(function (x) { return '<b style="left:' + (x / T * 100) + '%"></b>'; }).join(''); };
+  var sx = '<div class="tl-lab">章节</div><div class="tl-track ch">' + chapters.map(function (c, i) {
+    var e = i + 1 < chapters.length ? chapters[i + 1][0] : T;
+    return '<div class="tl-b c" style="left:' + (c[0] / T * 100) + '%;width:' + ((e - c[0]) / T * 100) + '%">' + c[1] + '</div>';
+  }).join('') + '</div>';
+  Object.keys(SFX).forEach(function (k) {
+    sx += '<div class="tl-lab">' + k + ' <span class="mono" style="color:var(--ink-3)">' + SFX[k].length + '</span><small>' + SFX_DESC[k] + '</small></div><div class="row">' + ticks(SFX[k]) + '</div>';
+  });
+  sx += '<div></div><div class="tl-axis">';
+  for (var mm = 0; mm <= 7; mm++) sx += '<span style="left:' + (mm * 60 / T * 100) + '%">' + mm + ':00</span>';
+  document.getElementById('sfx').innerHTML = sx + '</div>';
+  var mini = '<div class="row ch">' + chapters.map(function (c, i) {
+    var e = i + 1 < chapters.length ? chapters[i + 1][0] : T;
+    return '<i style="width:' + ((e - c[0]) / T * 100) + '%"></i>';
+  }).join('') + '</div>';
+  Object.keys(SFX).forEach(function (k) { mini += '<div class="row">' + ticks(SFX[k]) + '</div>'; });
+  document.getElementById('sfxmini').innerHTML = mini;
+
+  // ── 流程图连线 ──
+  var fm = document.getElementById('flowmap'), fl = document.getElementById('flowlines');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) document.querySelectorAll('.loop-dot').forEach(function (d) { d.remove(); });
+  var edges = [['topic', 'lab'], ['topic', 'voice', 'left'], ['lab', 'remotion', 'right'], ['voice', 'cut'], ['cut', 'remotion'], ['remotion', 'post'], ['post', 'pub']];
+  var box = function (id) {
+    var b = fm.getBoundingClientRect(), r = fm.querySelector('[data-id="' + id + '"]').getBoundingClientRect();
+    var l = r.left - b.left, t = r.top - b.top;
+    return { l: l, r: l + r.width, t: t, b: t + r.height, w: r.width, h: r.height, cx: l + r.width / 2, cy: t + r.height / 2 };
+  };
+  var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+  var drawFlow = function () {
+    var W = fm.clientWidth, H = fm.clientHeight;
+    fl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    var o = '<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6E8FC8"/></marker></defs>';
+    edges.forEach(function (e, i) {
+      var a = box(e[0]), b = box(e[1]), d;
+      if (b.l >= a.r - 2) {
+        var y1, y2;
+        if (a.h > b.h * 1.3) { y1 = y2 = b.cy; } else if (b.h > a.h * 1.3) { y1 = y2 = a.cy; } else { y1 = a.cy; y2 = b.cy; }
+        y1 = clamp(y1, a.t + 20, a.b - 20); y2 = clamp(y2, b.t + 20, b.b - 20);
+        var x1 = a.r, x2 = b.l - 2, mx = (x1 + x2) / 2;
+        d = 'M' + x1 + ',' + y1 + ' C' + mx + ',' + y1 + ' ' + mx + ',' + y2 + ' ' + x2 + ',' + y2;
+      } else if (e[2]) {
+        var left = e[2] === 'left', x = left ? 7 : W - 7;
+        var sy = a.t + 40, ty = b.t + 40;
+        d = 'M' + (left ? a.l : a.r) + ',' + sy + ' H' + x + ' V' + ty + ' H' + (left ? b.l - 2 : b.r + 2);
+      } else {
+        var cx = (Math.max(a.l, b.l) + Math.min(a.r, b.r)) / 2;
+        d = 'M' + cx + ',' + a.b + ' V' + (b.t - 2);
+      }
+      o += '<path id="fe' + i + '" d="' + d + '" marker-end="url(#ah)"/>';
+      if (!reduce) o += '<circle class="dot" r="3"><animateMotion dur="' + (2.6 + i * 0.25) + 's" repeatCount="indefinite"><mpath href="#fe' + i + '"/></animateMotion></circle>';
+    });
+    fl.innerHTML = o;
+  };
+  drawFlow();
+  if (window.ResizeObserver) new ResizeObserver(drawFlow).observe(fm);
+  fm.querySelectorAll('img').forEach(function (im) { if (!im.complete) im.addEventListener('load', drawFlow); });
+  window.addEventListener('load', drawFlow);
+
+  // ── 分工格子:一格 = 10 次 ──
+  document.querySelectorAll('.units').forEach(function (el) {
+    var n = Math.round(+el.dataset.n / 10), h = '';
+    for (var i = 0; i < n; i++) h += '<i style="background:' + el.dataset.c + '"></i>';
+    el.innerHTML = h;
+  });
+
+  // ── 悬停提示 ──
+  var tipEl = document.getElementById('tip');
+  var show = function (el) {
+    tipEl.textContent = el.dataset.tip; tipEl.hidden = false;
+    var r = el.getBoundingClientRect(), w = tipEl.offsetWidth;
+    var x = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), window.innerWidth - w - 8);
+    var y = r.top - tipEl.offsetHeight - 8; if (y < 8) y = r.bottom + 8;
+    tipEl.style.left = x + 'px'; tipEl.style.top = y + 'px';
+  };
+  var hide = function () { tipEl.hidden = true; };
+  document.querySelectorAll('[data-tip]').forEach(function (el) {
+    el.tabIndex = 0;
+    el.addEventListener('pointerenter', function () { show(el); });
+    el.addEventListener('pointerleave', hide);
+    el.addEventListener('focus', function () { show(el); });
+    el.addEventListener('blur', hide);
+  });
+  window.addEventListener('scroll', hide, { passive: true });
+
+  // ── 章节条高亮当前段 ──
+  var links = document.querySelectorAll('.chapters a');
+  var secs = Array.prototype.map.call(links, function (a) { return document.querySelector(a.getAttribute('href')); });
+  var mark = function () {
+    var y = window.scrollY + 120, cur = 0;
+    secs.forEach(function (s, i) { if (s && s.offsetTop <= y) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  };
+  window.addEventListener('scroll', mark, { passive: true }); mark();
+})();
+</script>
+</body>
+</html>
