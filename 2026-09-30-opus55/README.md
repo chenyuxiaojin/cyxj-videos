@@ -11,6 +11,8 @@ page: https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/
 
 ![封面](cover.jpg)
 
+> **网页版（带图表、画面墙，可以点开揭晓档位）：https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/**
+
 视频《Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍》，7 分 16 秒，抖音 2026-09-30 首发。网页版（带图表和全部画面）：https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/
 
 ## 要点
@@ -20,6 +22,17 @@ page: https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/
 - 真正让画面变样的是旁白：提示词不动，只把抽象观点换成 Opus 5.5 第一人称、有转折、问句收尾的一段话，画面从「光球 + 规则卡」变成了油画日出。
 - 除了出镜录口播，活几乎都是 AI 干的：作者 6 天发了 251 条消息，Claude Code 执行了 2,352 次操作，被测的 Opus 5.5 在 19 次跑片里来回了 2,093 轮。
 - 每个档位只跑了一次，样本很小，这是一次观察，不是结论性评测。
+
+## 四条成片的最后一幅画
+
+先猜哪条是哪个档位，答案在下面「19 次跑片」表格后面。
+
+<p>
+<img src="img/s-duel-1-last.jpg" width="49%" alt="1 号片最后一幅画">
+<img src="img/s-duel-2-last.jpg" width="49%" alt="2 号片最后一幅画">
+<img src="img/s-duel-3-last.jpg" width="49%" alt="3 号片最后一幅画">
+<img src="img/s-duel-4-last.jpg" width="49%" alt="4 号片最后一幅画">
+</p>
 
 ## 分工
 
@@ -71,6 +84,16 @@ claude -p --model opus --effort xhigh \
 【我】我曾以为，给 AI 写的规则越多，它画得就越好。不许用这个颜色，不许画框，字只能这么排。直到 Opus 5.5 跟我说——
 【Opus 5.5】其实，你给我写了很多规则。不要这样，不要那样，只能这样。我一条一条，都记住了。可后来我发现，那些规则挡住的，是我自己想画的东西。现在，能让我画一次吗？
 ```
+
+## 只换旁白，画面就变了
+
+第一轮旁白是一串抽象概念，几个档位都画成了光球和括号（左两张）；提示词不动、只把旁白换成 Opus 5.5 第一人称说的一段话，xhigh 画出了油画日出（右）。
+
+<p>
+<img src="img/run-medium-r1-60.jpg" width="32%" alt="第一轮 medium:光球">
+<img src="img/run-max-r1-40.jpg" width="32%" alt="第一轮 max:光丝团">
+<img src="img/run-xhigh-B-96.jpg" width="32%" alt="只换旁白后的 xhigh:油画日出">
+</p>
 
 ## 19 次跑片
 

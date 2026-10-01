@@ -11,7 +11,7 @@
 
 | 日期 | 视频 | 幕后 |
 |---|---|---|
-| 2026-09-30 | Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍 | [网页](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/) · [文字版](2026-09-30-opus55/index.md) |
+| 2026-09-30 | Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍 | [网页](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/) · [文字版](2026-09-30-opus55/) |
 
 <a href="https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/"><img src="2026-09-30-opus55/cover.jpg" width="560" alt="Opus 5.5 思考档位盲测封面"></a>
 
@@ -31,7 +31,7 @@
 每期一个文件夹 `YYYY-MM-DD-英文短名/`：
 
 - `index.html`：幕后页（网页版）
-- `index.md`：同内容的文字版，方便 AI 和搜索读取
+- `README.md`：同内容的文字版，在 GitHub 上点进文件夹就能直接读
 - `cover.jpg`：视频封面
 - `img/`：页面用到的画面截图
 
