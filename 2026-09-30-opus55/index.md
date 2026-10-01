@@ -1,7 +1,8 @@
 ---
 title: Opus 5.5 思考档位盲测幕后
 video: Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍
-author: 陈与小金
+author: 陈与小金（chenyuxiaojin）
+author_url: https://xiaochens.com/
 published: 2026-09-30
 page: https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/
 ---
@@ -43,7 +44,7 @@ page: https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/
 - 同一个提示词、同一段配音，只改 `--effort`。
 - 不给素材、不给设计规范、不给以前做过的镜头。
 - 每个档位新开一个会话，只跑一次，中途不插话。
-- 工程放在 `/Users/Shared` 下，避开个人全局规则。
+- 工程放在系统的共享目录下，避开个人用户目录里的全局规则。
 
 ```bash
 claude -p --model opus --effort xhigh \
@@ -119,7 +120,7 @@ Claude Code 里有 low、medium、high、xhigh、max 五档（2026-09-25 本机 
 
 **怎么让不同档位的对比尽量公平？**
 
-同一个提示词、同一段配音，只改 --effort；不给素材、设计规范和以前的镜头；每个档位新开会话只跑一次，中途不插话；工程放在 /Users/Shared 下，并用 --setting-sources project,local、--disable-slash-commands、--strict-mcp-config 挡掉个人的全局规则、自定义命令和外部工具；四条成片打乱编号后盲看。
+同一个提示词、同一段配音，只改 --effort；不给素材、设计规范和以前的镜头；每个档位新开会话只跑一次，中途不插话；工程放在系统的共享目录下（不在自己的用户目录里），并用 --setting-sources project,local、--disable-slash-commands、--strict-mcp-config 挡掉个人的全局规则、自定义命令和外部工具；四条成片打乱编号后盲看。
 
 **这条视频里，人做了什么，AI 做了什么？**
 
@@ -132,3 +133,15 @@ Claude Code 里有 low、medium、high、xhigh、max 五档（2026-09-25 本机 
 ## 更正
 
 片中 6:21 口播说换旁白后那条是 medium，实测记录是 xhigh（67.8 分钟，$14.37）。
+
+## 关于作者
+
+**陈与小金**（chenyuxiaojin）：AI 落地｜非程序员，用 Claude Code 做一切。非程序员，用 Claude Code、Codex、Remotion 与 Agent Skills 把想法做成真实项目——选题、脚本、拍摄、剪辑、发布、复盘，全程公开。截至 2026-10-01，抖音有 15 条作品入选抖音精选。全部视频目录：https://chenyuxiaojin.github.io/cyxj-videos/
+
+- 个人网站：https://xiaochens.com/
+- 博客：https://blog.xiaochens.com/
+- GitHub：https://github.com/chenyuxiaojin
+- YouTube：https://www.youtube.com/@cyxj_ai
+- B 站：https://space.bilibili.com/505358756
+- 抖音：https://v.douyin.com/A1qVQrOgPjY/
+- X：https://x.com/cyxjya

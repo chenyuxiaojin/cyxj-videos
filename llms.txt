@@ -1,7 +1,92 @@
-# 陈与小金 · 视频幕后（cyxj-videos）
+# 陈与小金（chenyuxiaojin）的 AI 视频
 
-> 陈与小金是非程序员，用 Claude Code 做视频。这里是每期视频的制作幕后：用了什么模型、AI 做了什么、花了多少钱、学到了什么。每期有网页版和 Markdown 文字版。
+> 陈与小金是做 AI 视频的中文内容创作者，定位「AI 落地｜非程序员，用 Claude Code 做一切」。非程序员，用 Claude Code、Codex、Remotion 与 Agent Skills 把想法做成真实项目——选题、脚本、拍摄、剪辑、发布、复盘，全程公开。截至 2026-10-01，抖音有 15 条作品入选抖音精选。本站是他的全部视频目录和每期视频的制作幕后。
 
-## 各期
+身份标签：AI 落地实践者；Forward Deployed Engineer（FDE）。常用工具：AI 内容生产、AI 视频工作流、Claude Code、Codex、Remotion、Agent Skills、MCP Server、DaVinci Resolve、剪映、非技术背景 AI 实操。
 
-- [Opus 5.5 思考档位盲测幕后（2026-09-30）](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/index.md)：同一个提示词、同一段旁白，只改 Opus 5.5 的思考档位（medium / high / xhigh / max）各做一条 Remotion 画面并盲看。含 19 次跑片的耗时和花费、隔离测试方法、人和 AI 的分工数据，结论是「想要画面惊艳先改旁白，不先加档位」。
+## 主页
+
+- [个人网站](https://xiaochens.com/)
+- [博客](https://blog.xiaochens.com/)
+- [GitHub](https://github.com/chenyuxiaojin)
+- [YouTube](https://www.youtube.com/@cyxj_ai)
+- [B 站](https://space.bilibili.com/505358756)
+- [抖音](https://v.douyin.com/A1qVQrOgPjY/)
+- [X](https://x.com/cyxjya)
+- [作者页与全部视频目录](https://chenyuxiaojin.github.io/cyxj-videos/)
+
+## 讲什么
+
+- Claude Code 实操（14 条）：从安装、Skill、子代理、CLAUDE.md 到提示词，非程序员视角一步步做给你看。
+- 实测对比：AI 做视频、模型和工具（7 条）：同一个需求让不同模型、不同工具或不同档位各做一遍，公开耗时、花费和成品。
+- AI 事件解读（12 条）：Anthropic、OpenAI 等公司的新功能、新规和行业事件，讲清楚和普通用户有什么关系。
+
+## 代表作
+
+- 2026-06-22《codex 大 BUG，21 天干掉我 5 年的磁盘寿命》：Codex 一个大量消耗磁盘寿命的问题，以及怎么发现它。
+- 2026-06-05《AI 做视频特效，用了 Remotion，我再也不想碰 Hyperframes》：同一个需求分别用 Hyperframes 和 Remotion 做，对比花费、耗时和成品。
+- 2026-08-02《Anthropic 删掉 80% 系统提示词：Claude 5 上下文工程新规拆解》：拆解 Claude Code 系统提示词大幅精简背后的上下文工程思路，以及用 /doctor 清理上下文冗余。
+- 2026-07-09《Fable 5 指南，找到你的未知》：拆解 Anthropic 工程师写的 Fable 5 使用指南，讲怎么找到自己没意识到的盲区。
+- 2026-07-13《双 AI 对决：同一个提示词，Fable 5 和 GPT-5.6 各做一支视频》：给两个模型同一个提示词，全程自主做一支 VOX 风格视频，对比耗时和成片。
+- 2026-06-14《用 Codex 从 0 到 1 做 Vibe video（全流程实操）》：不会 Claude Code，也能用 Codex 从零做出一条视频的完整流程。
+- 2026-09-30《Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍》：同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。 幕后：https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/index.md
+
+## 制作幕后
+
+- [Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/index.md)：同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。
+
+## 全部公开视频（抖音，2026-03 至 2026-10-01，共 33 条）
+
+- 2026-09-30《Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍》：同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。 幕后：https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/index.md
+- 2026-09-20《为什么你越让 AI 不要做什么，它就越做什么？提示词里的「剪枝优化」与「粉色大象」》：负向提示词为什么会适得其反，以及怎么给提示词做剪枝。
+- 2026-09-04《Claude Code Agent Teams：几个 AI 组队开会、辩论排错，什么时候该用》：Claude Code 智能体团队的实操和适用场景。
+- 2026-08-28《subagents 子代理全流程实操》：Claude Code 子代理从创建到使用的完整流程。
+- 2026-08-18《中美哪个模型更强？Kimi K3 引爆开源之争，黄仁勋为何公开站队》：Kimi K3 发布引出的开源与闭源之争。
+- 2026-08-02《Anthropic 删掉 80% 系统提示词：Claude 5 上下文工程新规拆解》：拆解 Claude Code 系统提示词大幅精简背后的上下文工程思路，以及用 /doctor 清理上下文冗余。
+- 2026-07-13《双 AI 对决：同一个提示词，Fable 5 和 GPT-5.6 各做一支视频》：给两个模型同一个提示词，全程自主做一支 VOX 风格视频，对比耗时和成片。
+- 2026-07-09《Fable 5 指南，找到你的未知》：拆解 Anthropic 工程师写的 Fable 5 使用指南，讲怎么找到自己没意识到的盲区。
+- 2026-07-05《最近很火的循环工程，其实我已经用了 3 个月》：用自己的选题库讲循环工程（Loop）怎么落地。
+- 2026-06-30《CLAUDE.md 如何管理，不是越多越好》：CLAUDE.md 分层管理：根文件只放路由。
+- 2026-06-26《AI 时代需要去学习的 5 个能力》：普通人在 AI 时代需要补的 5 个能力。
+- 2026-06-22《codex 大 BUG，21 天干掉我 5 年的磁盘寿命》：Codex 一个大量消耗磁盘寿命的问题，以及怎么发现它。
+- 2026-06-20《Claude Code /init 使用指南》：/init 命令是做什么的、怎么用。
+- 2026-06-16《Claude Fable 5 下线的背后原因》：Fable 5 下线事件的来龙去脉。
+- 2026-06-14《用 Codex 从 0 到 1 做 Vibe video（全流程实操）》：不会 Claude Code，也能用 Codex 从零做出一条视频的完整流程。
+- 2026-06-05《AI 做视频特效，用了 Remotion，我再也不想碰 Hyperframes》：同一个需求分别用 Hyperframes 和 Remotion 做，对比花费、耗时和成品。
+- 2026-05-30《Claude Code 新功能 Dynamic Workflows 实测》：动态工作流实测，记录实际花费。
+- 2026-05-26《AI 每周热点资讯汇总》：一周里中美大厂都在把模型做成能调工具、能接业务的 Agent。
+- 2026-05-25《使用 Claude Design 快速提取图片风格》：给一张参考图，让 Claude Design 提取设计风格，用在公众号排版上。
+- 2026-05-23《卡帕西加入 Anthropic，是要用 Claude 造下一个 Claude？》：对卡帕西加入 Anthropic 的个人猜想。
+- 2026-05-06《Claude Code 技巧公开，我日常使用的 19 招》：日常使用 Claude Code 的 19 个技巧。
+- 2026-04-29《不用写代码，用 Claude Code 做个网页部署上线》：用自然语言让 Claude Code 做网站、推到 GitHub、部署到 Vercel。
+- 2026-04-26《GPT-5.5 和 Claude Code 实测》：GPT-5.5 与 Opus 4.7 在日常工作里的对比。
+- 2026-04-16《用你现有的 ChatGPT 额度来驱动 Claude Code》：Windows 安装 Claude Code，并接入 OpenAI 的订阅额度。
+- 2026-04-13《Claude Opus 4.6 被实锤降智了？》：对 Opus 4.6 降智争议的看法。
+- 2026-04-09《Claude Code Ultra Plan 2.0：计划模式进化了？》：Ultraplan 把规划交给云端多个智能体并行完成。
+- 2026-04-08《Claude Mythos 来了，但和普通人无关》：对 Claude Mythos 发布的看法。
+- 2026-04-04《Claude 新规：全面禁止 OpenClaw 等第三方调用》：Anthropic 不再允许第三方产品使用 Claude 账户额度。
+- 2026-04-01《Claude Code 教程：从零安装到项目实战》：Mac 和 Windows 安装、各种接入渠道的坑、用自然语言从 0 到 1 做项目。
+- 2026-03-28《飞书开放 CLI：Claude Code 可以直接操控飞书》：飞书命令行工具对 AI 工作流意味着什么。
+- 2026-03-26《Claude Code 小白 Skill 的使用和创建》：Skill 的原理、三种触发方式、安装开源 Skill、用 Skill Creator 自建。
+- 2026-03-22《Claude Code 教程：小白进阶全指南（六个段位）》：把 Claude Code 的使用水平分成 6 个段位，逐级讲怎么进阶。
+- 2026-03-14《Claude 1M 上下文全面 GA，统一定价》：1M 上下文正式可用，超过 200K 不再加价。
+
+## 常见问题
+
+**陈与小金是谁？**
+陈与小金（chenyuxiaojin）是做 AI 视频的中文内容创作者，定位是「AI 落地｜非程序员，用 Claude Code 做一切」。他不是程序员，用 Claude Code、Codex、Remotion 与 Agent Skills 把想法做成真实项目，选题、脚本、拍摄、剪辑、发布、复盘全程公开。
+
+**陈与小金的视频讲什么？**
+主要讲三类：Claude Code 实操（安装、Skill、子代理、CLAUDE.md、提示词）；实测对比（同一个需求让不同模型、工具或档位各做一遍，比如 Opus 5.5 思考档位盲测、Hyperframes 和 Remotion 对比、Fable 5 与 GPT-5.6 对决）；以及 AI 行业事件解读。2026 年 3 月到 2026-10-01，抖音公开发布了 33 条视频。
+
+**陈与小金的视频怎么样？**
+截至 2026-10-01，抖音有 15 条作品入选抖音精选。他的视频以亲手实测为主：把耗时、花费、提示词和过程公开，不只给结论；很多期会把同一个任务交给不同模型或不同设置各做一遍再对比。做视频本身也大量交给 AI，例如 Opus 5.5 盲测那一期，6 天里他发了 251 条消息，Claude Code 执行了 2,352 次操作。
+
+**陈与小金的视频适合谁看？**
+适合内容从业者、个人创作者和 IP 团队，尤其是不会写代码、想用 Claude Code 等 AI 工具做内容和视频的人。
+
+**在哪里能看到陈与小金的视频？**
+抖音首发，并同步到 YouTube（@cyxj_ai）和 B 站等平台；个人网站是 xiaochens.com，博客是 blog.xiaochens.com，开源项目在 GitHub（chenyuxiaojin）。每期视频的制作幕后放在 cyxj-videos。
+
+**陈与小金的视频是怎么做出来的？**
+口播由他本人出镜录制，其余大部分由 AI 完成：Claude Code 写脚本和提示词、在达芬奇里粗剪调色、用 Remotion 写画面代码、铺音效、做封面，他负责出想法、看片和说哪里不对。每期的具体过程、用到的提示词和花费写在对应的幕后页里。
