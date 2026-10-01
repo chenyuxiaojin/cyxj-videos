@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700;900&display=swap">
 <style>
-/* 版式:作者页。先说这个人是谁、讲什么、代表作,再给全部视频目录和问答;和幕后页同一套深海军蓝 */
+/* 版式:观众先看到每期视频(封面卡),再是给观众的说明;作者和全部目录折叠沉在页底,AI 检索仍读得到 */
 :root {
   --bg: #070F1E; --panel: #0D1830; --panel-2: #122140; --line: #1F2F4F; --ink: #E9EFF9; --ink-2: #A6B5CF; --ink-3: #7487A6; --accent: #4A8AE6; --accent-hi: #9CC4FF;
   --display: "Noto Serif SC", "Songti SC", "STSong", serif;
@@ -34,40 +34,75 @@ html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; }
 a { color: var(--accent-hi); }
-.wrap { max-width: 1080px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 64px 96px; }
-.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-hi); }
+p { margin: 0; }
 h1, h2, h3 { text-wrap: balance; margin: 0; }
-h1 { font-family: var(--display); font-weight: 900; font-size: clamp(36px, 5.4vw, 60px); line-height: 1.15; margin-top: 12px; }
-h2 { font-family: var(--display); font-weight: 900; font-size: clamp(24px, 3vw, 32px); line-height: 1.3; }
-.tagline { font-size: clamp(18px, 2.2vw, 22px); color: var(--ink); margin-top: 14px; font-weight: 500; }
-.lead { color: var(--ink-2); max-width: 40em; margin: 10px 0 0; }
-.facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
-.facts span { font-size: 13.5px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 14px; color: var(--ink-2); }
-.facts b { color: var(--ink); font-family: var(--mono); font-weight: 600; margin-right: 4px; }
-.links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 18px; font-size: 14px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 24px 64px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-hi); }
+.d { font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+/* 顶栏 + 一句话 */
+.top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 24px; }
+.links { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; }
 .links a { text-decoration: none; }
 .links a:hover { text-decoration: underline; }
-section { padding-top: 72px; }
-.sh { display: grid; gap: 8px; margin-bottom: 24px; }
+h1 { font-family: var(--display); font-weight: 900; font-size: clamp(26px, 3.6vw, 40px); line-height: 1.25; }
+.intro { margin-top: 6px; color: var(--ink-2); max-width: 40em; }
+
+/* 各期视频 */
+#episodes { margin-top: clamp(16px, 2.4vw, 24px); }
+.eps { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 18px; }
+.ep { display: grid; align-content: start; text-decoration: none; color: inherit; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; transition: border-color .15s; }
+.ep:hover { border-color: var(--accent); }
+.ep img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.ep-b { padding: 14px 16px 16px; display: grid; gap: 6px; align-content: start; }
+.ep h2 { font-family: var(--display); font-weight: 700; font-size: 17px; line-height: 1.45; }
+.ep p { font-size: 13.5px; color: var(--ink-2); }
+.ep .go { color: var(--accent-hi); font-size: 14px; font-weight: 500; }
+.ep--lead { grid-column: 1 / -1; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: center; padding: 12px; }
+.ep--lead img { border-radius: 8px; }
+.ep--lead .ep-b { padding: clamp(10px, 2vw, 22px); gap: 12px; }
+.ep--lead h2 { font-weight: 900; font-size: clamp(20px, 2.3vw, 27px); line-height: 1.4; }
+.ep--lead p { font-size: 15px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { font-size: 13px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; color: var(--ink-2); }
+.chips b { color: var(--ink); font-family: var(--mono); font-weight: 600; margin-right: 4px; }
+
+/* 给观众的说明 */
+section { padding-top: 64px; }
+.sh { display: grid; gap: 6px; margin-bottom: 20px; }
+.sh h2 { font-family: var(--display); font-weight: 900; font-size: clamp(22px, 2.8vw, 28px); line-height: 1.3; }
+.grid4 { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.grid4 li { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.grid4 b { font-size: 16px; }
+.grid4 span { font-size: 14px; color: var(--ink-2); line-height: 1.65; }
+.grid4 i { font-family: var(--mono); font-style: normal; font-size: 12px; color: var(--accent-hi); }
+
+/* 页底:作者一行 + 折叠目录 */
+.about { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--line); display: grid; gap: 14px; }
+.who { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; font-size: 14px; color: var(--ink-2); }
+.who b { color: var(--ink); font-size: 16px; }
+details { border: 1px solid var(--line); border-radius: 12px; }
+summary { cursor: pointer; padding: 12px 16px; font-size: 14px; color: var(--ink-2); }
+summary:hover { color: var(--ink); }
+details[open] > summary { border-bottom: 1px solid var(--line); }
+.fold { padding: 20px 16px 24px; display: grid; gap: 28px; }
+.fold h2 { font-family: var(--display); font-weight: 900; font-size: 20px; }
+.fold h3 { font-size: 16px; }
+.fold .blk { display: grid; gap: 12px; }
+.lead { color: var(--ink-2); max-width: 44em; font-size: 15px; }
+.facts { display: flex; flex-wrap: wrap; gap: 10px; }
+.facts span { font-size: 13.5px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 14px; color: var(--ink-2); }
+.facts b { color: var(--ink); font-family: var(--mono); font-weight: 600; margin-right: 4px; }
 .cats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.cat { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 6px; align-content: start; min-width: 0; }
-.cat b { font-size: 16.5px; }
+.cat { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: grid; gap: 6px; align-content: start; min-width: 0; }
 .cat .n { font-family: var(--mono); font-size: 12px; color: var(--accent-hi); }
-.cat p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.65; }
+.cat p { font-size: 14px; color: var(--ink-2); line-height: 1.65; }
 .cat .ex { color: var(--ink-3); font-size: 13px; }
 .reps { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--line); }
-.reps li { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-.reps .d, .tbl .d, .ep .d { font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.reps li { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
 .reps b { font-weight: 500; }
-.reps p { margin: 2px 0 0; font-size: 14px; color: var(--ink-2); }
-.eps { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 18px; }
-.ep { display: grid; text-decoration: none; color: inherit; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-.ep:hover { border-color: var(--accent); }
-.ep img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-.ep-b { padding: 14px 16px 16px; display: grid; gap: 6px; }
-.ep h3 { font-family: var(--display); font-size: 17px; line-height: 1.45; }
-.ep p { margin: 0; font-size: 13.5px; color: var(--ink-2); }
-.tbl-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+.reps p { margin-top: 2px; font-size: 14px; color: var(--ink-2); }
+.tbl-wrap { overflow-x: auto; }
 .tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
 .tbl td { padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
 .tbl tr:last-child td { border-bottom: 0; }
@@ -76,62 +111,114 @@ section { padding-top: 72px; }
 .tbl span { color: var(--ink-2); font-size: 13px; }
 .tbl td.c { white-space: nowrap; font-size: 12.5px; color: var(--ink-3); }
 .faq { display: grid; border-top: 1px solid var(--line); }
-.faq > div { padding: 18px 0; border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
-.faq h3 { font-size: 17px; }
-.faq p { margin: 0; color: var(--ink-2); max-width: 46em; }
-footer { margin-top: 56px; font-size: 13px; color: var(--ink-3); display: grid; gap: 6px; }
+.faq > div { padding: 14px 0; border-bottom: 1px solid var(--line); display: grid; gap: 4px; }
+.faq p { color: var(--ink-2); max-width: 46em; font-size: 15px; }
+footer { margin-top: 20px; font-size: 13px; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: space-between; }
 :focus-visible { outline: 2px solid var(--accent-hi); outline-offset: 3px; border-radius: 4px; }
+@media (max-width: 860px) {
+  .ep--lead { grid-template-columns: 1fr; }
+  .grid4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 760px) {
   .cats { grid-template-columns: 1fr; }
   .reps li { grid-template-columns: 1fr; gap: 2px; }
   .tbl td.c { display: none; }
+}
+@media (max-width: 480px) {
+  .grid4 { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 <main class="wrap">
   <header>
-    <div class="eyebrow">chenyuxiaojin · AI 视频</div>
-    <h1>陈与小金</h1>
-    <p class="tagline">AI 落地｜非程序员，用 Claude Code 做一切</p>
-    <p class="lead">非程序员，用 Claude Code、Codex、Remotion 与 Agent Skills 把想法做成真实项目——选题、脚本、拍摄、剪辑、发布、复盘，全程公开。这里是他的全部视频目录，和每期视频的制作幕后。</p>
-    <div class="facts">
-      <span><b>15 条</b>入选抖音精选（截至 2026-10-01）</span>
-      <span><b>33 条</b>公开视频（2026-03 至今）</span>
-      <span><b>1 期</b>制作幕后</span>
+    <div class="top">
+      <h1>陈与小金的视频幕后</h1>
+      <nav class="links" aria-label="去哪看视频"><a href="https://v.douyin.com/A1qVQrOgPjY/">抖音</a><a href="https://space.bilibili.com/505358756">B 站</a><a href="https://www.youtube.com/@cyxj_ai">YouTube</a></nav>
     </div>
-    <nav class="links" aria-label="陈与小金的主页"><a href="https://xiaochens.com/">个人网站</a><a href="https://blog.xiaochens.com/">博客</a><a href="https://github.com/chenyuxiaojin">GitHub</a><a href="https://www.youtube.com/@cyxj_ai">YouTube</a><a href="https://space.bilibili.com/505358756">B 站</a><a href="https://v.douyin.com/A1qVQrOgPjY/">抖音</a><a href="https://x.com/cyxjya">X</a></nav>
+    <p class="intro">每期视频是怎么做出来的，都摊开放在这里。点封面看这一期。</p>
   </header>
 
-  <section id="topics">
-    <div class="sh"><div class="eyebrow">讲什么</div><h2>三类视频</h2></div>
-    <div class="cats"><div class="cat"><b>Claude Code 实操</b><span class="n">14 条</span><p>从安装、Skill、子代理、CLAUDE.md 到提示词，非程序员视角一步步做给你看。</p><p class="ex">例：《为什么你越让 AI 不要做什么》、《Claude Code Agent Teams》、《subagents 子代理全流程实操》</p></div><div class="cat"><b>实测对比：AI 做视频、模型和工具</b><span class="n">7 条</span><p>同一个需求让不同模型、不同工具或不同档位各做一遍，公开耗时、花费和成品。</p><p class="ex">例：《Opus 5.5 想得越久》、《双 AI 对决》、《codex 大 BUG》</p></div><div class="cat"><b>AI 事件解读</b><span class="n">12 条</span><p>Anthropic、OpenAI 等公司的新功能、新规和行业事件，讲清楚和普通用户有什么关系。</p><p class="ex">例：《中美哪个模型更强？Kimi K3 引爆开源之争》、《Anthropic 删掉 80% 系统提示词》、《AI 时代需要去学习的 5 个能力》</p></div></div>
+  <!-- 各期视频:新一期加在最前面并带上 ep--lead(大卡),原来那期去掉 ep--lead 变成小卡 -->
+  <section id="episodes" aria-label="各期视频" style="padding-top:0">
+    <div class="eps">
+      <a class="ep ep--lead" href="2026-09-30-opus55/">
+        <img src="2026-09-30-opus55/cover.jpg" width="1280" height="720" alt="Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍 封面">
+        <div class="ep-b">
+          <span class="d">最新一期 · 2026-09-30</span>
+          <h2>Opus 5.5 想得越久，画面越有艺术感吗？</h2>
+          <p>同一个题目，四个思考档位各做一遍。提示词一个字不改，四条 Remotion 画面打乱盲看，对比耗时和花费。</p>
+          <div class="chips"><span><b>6 天</b>选题到发布</span><span><b>251 条</b>我发的消息</span><span><b>2,352 次</b>AI 动手</span></div>
+          <span class="go">看这期幕后 →</span>
+        </div>
+      </a>
+    </div>
   </section>
 
-  <section id="reps">
-    <div class="sh"><div class="eyebrow">代表作</div><h2>先看这几条</h2><p class="lead">按抖音上的播放和收藏挑选，最后一条是最新一期。</p></div>
-    <ul class="reps"><li><span class="d">2026-06-22</span><div><b>codex 大 BUG，21 天干掉我 5 年的磁盘寿命</b><p>Codex 一个大量消耗磁盘寿命的问题，以及怎么发现它。</p></div></li><li><span class="d">2026-06-05</span><div><b>AI 做视频特效，用了 Remotion，我再也不想碰 Hyperframes</b><p>同一个需求分别用 Hyperframes 和 Remotion 做，对比花费、耗时和成品。</p></div></li><li><span class="d">2026-08-02</span><div><b>Anthropic 删掉 80% 系统提示词：Claude 5 上下文工程新规拆解</b><p>拆解 Claude Code 系统提示词大幅精简背后的上下文工程思路，以及用 /doctor 清理上下文冗余。</p></div></li><li><span class="d">2026-07-09</span><div><b>Fable 5 指南，找到你的未知</b><p>拆解 Anthropic 工程师写的 Fable 5 使用指南，讲怎么找到自己没意识到的盲区。</p></div></li><li><span class="d">2026-07-13</span><div><b>双 AI 对决：同一个提示词，Fable 5 和 GPT-5.6 各做一支视频</b><p>给两个模型同一个提示词，全程自主做一支 VOX 风格视频，对比耗时和成片。</p></div></li><li><span class="d">2026-06-14</span><div><b>用 Codex 从 0 到 1 做 Vibe video（全流程实操）</b><p>不会 Claude Code，也能用 Codex 从零做出一条视频的完整流程。</p></div></li><li><span class="d">2026-09-30</span><div><b>Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍</b><p>同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。 <a href="2026-09-30-opus55/">看幕后 →</a></p></div></li></ul>
+  <section id="inside">
+    <div class="sh"><div class="eyebrow">点进一期</div><h2>幕后页里能看到什么</h2></div>
+    <ul class="grid4">
+      <li><b>用了什么</b><span>哪个模型、哪些工具，各自干了什么活。</span></li>
+      <li><b>提示词怎么写</b><span>给 AI 的原话，改过几版，哪一版起了作用。</span></li>
+      <li><b>谁干的</b><span>我做了什么、AI 做了什么，按对话记录数出来。</span></li>
+      <li><b>花了多少</b><span>时间、钱，还有踩过的坑和学到的东西。</span></li>
+    </ul>
   </section>
 
-  <section id="bts">
-    <div class="sh"><div class="eyebrow">制作幕后</div><h2>每期视频是怎么做出来的</h2><p class="lead">用了什么模型、AI 做了什么、花了多少钱、学到了什么。</p></div>
-    <div class="eps"><a class="ep" href="2026-09-30-opus55/"><img src="2026-09-30-opus55/cover.jpg" alt="Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍 封面" loading="lazy"><div class="ep-b"><span class="d">2026-09-30</span><h3>Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍</h3><p>同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。</p></div></a></div>
+  <section id="workflow">
+    <div class="sh"><div class="eyebrow">流程</div><h2>一条视频是这样做出来的</h2></div>
+    <ol class="grid4">
+      <li><i>01</i><b>选题和资料</b><span>Claude Code 查官方文档、看同类视频的字幕，写出研究稿。</span></li>
+      <li><i>02</i><b>录口播</b><span>我本人出镜录。AI 在达芬奇里粗剪、调色。</span></li>
+      <li><i>03</i><b>做画面</b><span>Claude Code 写 Remotion 代码，把动画一层层叠到口播上。</span></li>
+      <li><i>04</i><b>后期和发布</b><span>铺音效、加字幕；AI 写各平台标题简介、做封面。</span></li>
+    </ol>
   </section>
 
-  <section id="videos">
-    <div class="sh"><div class="eyebrow">全部视频</div><h2>33 条公开视频</h2><p class="lead">抖音首发的公开视频，按发布时间倒序，统计到 2026-10-01。</p></div>
-    <div class="tbl-wrap"><table class="tbl"><tbody><tr><td class="d">2026-09-30</td><td><b>Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍</b><span>同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。</span></td><td class="c">实测对比<br><a href="2026-09-30-opus55/">幕后</a></td></tr><tr><td class="d">2026-09-20</td><td><b>为什么你越让 AI 不要做什么，它就越做什么？提示词里的「剪枝优化」与「粉色大象」</b><span>负向提示词为什么会适得其反，以及怎么给提示词做剪枝。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-09-04</td><td><b>Claude Code Agent Teams：几个 AI 组队开会、辩论排错，什么时候该用</b><span>Claude Code 智能体团队的实操和适用场景。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-08-28</td><td><b>subagents 子代理全流程实操</b><span>Claude Code 子代理从创建到使用的完整流程。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-08-18</td><td><b>中美哪个模型更强？Kimi K3 引爆开源之争，黄仁勋为何公开站队</b><span>Kimi K3 发布引出的开源与闭源之争。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-08-02</td><td><b>Anthropic 删掉 80% 系统提示词：Claude 5 上下文工程新规拆解</b><span>拆解 Claude Code 系统提示词大幅精简背后的上下文工程思路，以及用 /doctor 清理上下文冗余。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-07-13</td><td><b>双 AI 对决：同一个提示词，Fable 5 和 GPT-5.6 各做一支视频</b><span>给两个模型同一个提示词，全程自主做一支 VOX 风格视频，对比耗时和成片。</span></td><td class="c">实测对比</td></tr><tr><td class="d">2026-07-09</td><td><b>Fable 5 指南，找到你的未知</b><span>拆解 Anthropic 工程师写的 Fable 5 使用指南，讲怎么找到自己没意识到的盲区。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-07-05</td><td><b>最近很火的循环工程，其实我已经用了 3 个月</b><span>用自己的选题库讲循环工程（Loop）怎么落地。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-06-30</td><td><b>CLAUDE.md 如何管理，不是越多越好</b><span>CLAUDE.md 分层管理：根文件只放路由。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-06-26</td><td><b>AI 时代需要去学习的 5 个能力</b><span>普通人在 AI 时代需要补的 5 个能力。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-06-22</td><td><b>codex 大 BUG，21 天干掉我 5 年的磁盘寿命</b><span>Codex 一个大量消耗磁盘寿命的问题，以及怎么发现它。</span></td><td class="c">实测对比</td></tr><tr><td class="d">2026-06-20</td><td><b>Claude Code /init 使用指南</b><span>/init 命令是做什么的、怎么用。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-06-16</td><td><b>Claude Fable 5 下线的背后原因</b><span>Fable 5 下线事件的来龙去脉。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-06-14</td><td><b>用 Codex 从 0 到 1 做 Vibe video（全流程实操）</b><span>不会 Claude Code，也能用 Codex 从零做出一条视频的完整流程。</span></td><td class="c">实测对比</td></tr><tr><td class="d">2026-06-05</td><td><b>AI 做视频特效，用了 Remotion，我再也不想碰 Hyperframes</b><span>同一个需求分别用 Hyperframes 和 Remotion 做，对比花费、耗时和成品。</span></td><td class="c">实测对比</td></tr><tr><td class="d">2026-05-30</td><td><b>Claude Code 新功能 Dynamic Workflows 实测</b><span>动态工作流实测，记录实际花费。</span></td><td class="c">实测对比</td></tr><tr><td class="d">2026-05-26</td><td><b>AI 每周热点资讯汇总</b><span>一周里中美大厂都在把模型做成能调工具、能接业务的 Agent。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-05-25</td><td><b>使用 Claude Design 快速提取图片风格</b><span>给一张参考图，让 Claude Design 提取设计风格，用在公众号排版上。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-05-23</td><td><b>卡帕西加入 Anthropic，是要用 Claude 造下一个 Claude？</b><span>对卡帕西加入 Anthropic 的个人猜想。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-05-06</td><td><b>Claude Code 技巧公开，我日常使用的 19 招</b><span>日常使用 Claude Code 的 19 个技巧。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-04-29</td><td><b>不用写代码，用 Claude Code 做个网页部署上线</b><span>用自然语言让 Claude Code 做网站、推到 GitHub、部署到 Vercel。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-04-26</td><td><b>GPT-5.5 和 Claude Code 实测</b><span>GPT-5.5 与 Opus 4.7 在日常工作里的对比。</span></td><td class="c">实测对比</td></tr><tr><td class="d">2026-04-16</td><td><b>用你现有的 ChatGPT 额度来驱动 Claude Code</b><span>Windows 安装 Claude Code，并接入 OpenAI 的订阅额度。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-04-13</td><td><b>Claude Opus 4.6 被实锤降智了？</b><span>对 Opus 4.6 降智争议的看法。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-04-09</td><td><b>Claude Code Ultra Plan 2.0：计划模式进化了？</b><span>Ultraplan 把规划交给云端多个智能体并行完成。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-04-08</td><td><b>Claude Mythos 来了，但和普通人无关</b><span>对 Claude Mythos 发布的看法。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-04-04</td><td><b>Claude 新规：全面禁止 OpenClaw 等第三方调用</b><span>Anthropic 不再允许第三方产品使用 Claude 账户额度。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-04-01</td><td><b>Claude Code 教程：从零安装到项目实战</b><span>Mac 和 Windows 安装、各种接入渠道的坑、用自然语言从 0 到 1 做项目。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-03-28</td><td><b>飞书开放 CLI：Claude Code 可以直接操控飞书</b><span>飞书命令行工具对 AI 工作流意味着什么。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-03-26</td><td><b>Claude Code 小白 Skill 的使用和创建</b><span>Skill 的原理、三种触发方式、安装开源 Skill、用 Skill Creator 自建。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-03-22</td><td><b>Claude Code 教程：小白进阶全指南（六个段位）</b><span>把 Claude Code 的使用水平分成 6 个段位，逐级讲怎么进阶。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-03-14</td><td><b>Claude 1M 上下文全面 GA，统一定价</b><span>1M 上下文正式可用，超过 200K 不再加价。</span></td><td class="c">AI 事件解读</td></tr></tbody></table></div>
-  </section>
+  <section id="about" class="about" style="padding-top:24px">
+    <div class="who"><b>陈与小金</b><span>非程序员，用 Claude Code 做一切</span></div>
+    <nav class="links" aria-label="陈与小金的主页"><a href="https://xiaochens.com/">个人网站</a><a href="https://blog.xiaochens.com/">博客</a><a href="https://github.com/chenyuxiaojin">GitHub</a><a href="https://www.youtube.com/@cyxj_ai">YouTube</a><a href="https://space.bilibili.com/505358756">B 站</a><a href="https://v.douyin.com/A1qVQrOgPjY/">抖音</a><a href="https://x.com/cyxjya">X</a></nav>
 
-  <section id="faq">
-    <div class="sh"><div class="eyebrow">问答</div><h2>关于陈与小金</h2></div>
-    <div class="faq"><div><h3>陈与小金是谁？</h3><p>陈与小金（chenyuxiaojin）是做 AI 视频的中文内容创作者，定位是「AI 落地｜非程序员，用 Claude Code 做一切」。他不是程序员，用 Claude Code、Codex、Remotion 与 Agent Skills 把想法做成真实项目，选题、脚本、拍摄、剪辑、发布、复盘全程公开。</p></div><div><h3>陈与小金的视频讲什么？</h3><p>主要讲三类：Claude Code 实操（安装、Skill、子代理、CLAUDE.md、提示词）；实测对比（同一个需求让不同模型、工具或档位各做一遍，比如 Opus 5.5 思考档位盲测、Hyperframes 和 Remotion 对比、Fable 5 与 GPT-5.6 对决）；以及 AI 行业事件解读。2026 年 3 月到 2026-10-01，抖音公开发布了 33 条视频。</p></div><div><h3>陈与小金的视频怎么样？</h3><p>截至 2026-10-01，抖音有 15 条作品入选抖音精选。他的视频以亲手实测为主：把耗时、花费、提示词和过程公开，不只给结论；很多期会把同一个任务交给不同模型或不同设置各做一遍再对比。做视频本身也大量交给 AI，例如 Opus 5.5 盲测那一期，6 天里他发了 251 条消息，Claude Code 执行了 2,352 次操作。</p></div><div><h3>陈与小金的视频适合谁看？</h3><p>适合内容从业者、个人创作者和 IP 团队，尤其是不会写代码、想用 Claude Code 等 AI 工具做内容和视频的人。</p></div><div><h3>在哪里能看到陈与小金的视频？</h3><p>抖音首发，并同步到 YouTube（@cyxj_ai）和 B 站等平台；个人网站是 xiaochens.com，博客是 blog.xiaochens.com，开源项目在 GitHub（chenyuxiaojin）。每期视频的制作幕后放在 cyxj-videos。</p></div><div><h3>陈与小金的视频是怎么做出来的？</h3><p>口播由他本人出镜录制，其余大部分由 AI 完成：Claude Code 写脚本和提示词、在达芬奇里粗剪调色、用 Remotion 写画面代码、铺音效、做封面，他负责出想法、看片和说哪里不对。每期的具体过程、用到的提示词和花费写在对应的幕后页里。</p></div></div>
-  </section>
+    <details id="videos">
+      <summary>全部 33 条公开视频目录</summary>
+      <div class="fold">
+        <div class="blk">
+          <h2>陈与小金的 33 条公开视频</h2>
+          <p class="lead">抖音首发的公开视频，按发布时间倒序，统计到 2026-10-01。</p>
+          <div class="tbl-wrap"><table class="tbl"><tbody><tr><td class="d">2026-09-30</td><td><b>Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍</b><span>同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。</span></td><td class="c">实测对比<br><a href="2026-09-30-opus55/">幕后</a></td></tr><tr><td class="d">2026-09-20</td><td><b>为什么你越让 AI 不要做什么，它就越做什么？提示词里的「剪枝优化」与「粉色大象」</b><span>负向提示词为什么会适得其反，以及怎么给提示词做剪枝。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-09-04</td><td><b>Claude Code Agent Teams：几个 AI 组队开会、辩论排错，什么时候该用</b><span>Claude Code 智能体团队的实操和适用场景。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-08-28</td><td><b>subagents 子代理全流程实操</b><span>Claude Code 子代理从创建到使用的完整流程。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-08-18</td><td><b>中美哪个模型更强？Kimi K3 引爆开源之争，黄仁勋为何公开站队</b><span>Kimi K3 发布引出的开源与闭源之争。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-08-02</td><td><b>Anthropic 删掉 80% 系统提示词：Claude 5 上下文工程新规拆解</b><span>拆解 Claude Code 系统提示词大幅精简背后的上下文工程思路，以及用 /doctor 清理上下文冗余。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-07-13</td><td><b>双 AI 对决：同一个提示词，Fable 5 和 GPT-5.6 各做一支视频</b><span>给两个模型同一个提示词，全程自主做一支 VOX 风格视频，对比耗时和成片。</span></td><td class="c">实测对比</td></tr><tr><td class="d">2026-07-09</td><td><b>Fable 5 指南，找到你的未知</b><span>拆解 Anthropic 工程师写的 Fable 5 使用指南，讲怎么找到自己没意识到的盲区。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-07-05</td><td><b>最近很火的循环工程，其实我已经用了 3 个月</b><span>用自己的选题库讲循环工程（Loop）怎么落地。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-06-30</td><td><b>CLAUDE.md 如何管理，不是越多越好</b><span>CLAUDE.md 分层管理：根文件只放路由。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-06-26</td><td><b>AI 时代需要去学习的 5 个能力</b><span>普通人在 AI 时代需要补的 5 个能力。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-06-22</td><td><b>codex 大 BUG，21 天干掉我 5 年的磁盘寿命</b><span>Codex 一个大量消耗磁盘寿命的问题，以及怎么发现它。</span></td><td class="c">实测对比</td></tr><tr><td class="d">2026-06-20</td><td><b>Claude Code /init 使用指南</b><span>/init 命令是做什么的、怎么用。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-06-16</td><td><b>Claude Fable 5 下线的背后原因</b><span>Fable 5 下线事件的来龙去脉。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-06-14</td><td><b>用 Codex 从 0 到 1 做 Vibe video（全流程实操）</b><span>不会 Claude Code，也能用 Codex 从零做出一条视频的完整流程。</span></td><td class="c">实测对比</td></tr><tr><td class="d">2026-06-05</td><td><b>AI 做视频特效，用了 Remotion，我再也不想碰 Hyperframes</b><span>同一个需求分别用 Hyperframes 和 Remotion 做，对比花费、耗时和成品。</span></td><td class="c">实测对比</td></tr><tr><td class="d">2026-05-30</td><td><b>Claude Code 新功能 Dynamic Workflows 实测</b><span>动态工作流实测，记录实际花费。</span></td><td class="c">实测对比</td></tr><tr><td class="d">2026-05-26</td><td><b>AI 每周热点资讯汇总</b><span>一周里中美大厂都在把模型做成能调工具、能接业务的 Agent。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-05-25</td><td><b>使用 Claude Design 快速提取图片风格</b><span>给一张参考图，让 Claude Design 提取设计风格，用在公众号排版上。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-05-23</td><td><b>卡帕西加入 Anthropic，是要用 Claude 造下一个 Claude？</b><span>对卡帕西加入 Anthropic 的个人猜想。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-05-06</td><td><b>Claude Code 技巧公开，我日常使用的 19 招</b><span>日常使用 Claude Code 的 19 个技巧。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-04-29</td><td><b>不用写代码，用 Claude Code 做个网页部署上线</b><span>用自然语言让 Claude Code 做网站、推到 GitHub、部署到 Vercel。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-04-26</td><td><b>GPT-5.5 和 Claude Code 实测</b><span>GPT-5.5 与 Opus 4.7 在日常工作里的对比。</span></td><td class="c">实测对比</td></tr><tr><td class="d">2026-04-16</td><td><b>用你现有的 ChatGPT 额度来驱动 Claude Code</b><span>Windows 安装 Claude Code，并接入 OpenAI 的订阅额度。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-04-13</td><td><b>Claude Opus 4.6 被实锤降智了？</b><span>对 Opus 4.6 降智争议的看法。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-04-09</td><td><b>Claude Code Ultra Plan 2.0：计划模式进化了？</b><span>Ultraplan 把规划交给云端多个智能体并行完成。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-04-08</td><td><b>Claude Mythos 来了，但和普通人无关</b><span>对 Claude Mythos 发布的看法。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-04-04</td><td><b>Claude 新规：全面禁止 OpenClaw 等第三方调用</b><span>Anthropic 不再允许第三方产品使用 Claude 账户额度。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-04-01</td><td><b>Claude Code 教程：从零安装到项目实战</b><span>Mac 和 Windows 安装、各种接入渠道的坑、用自然语言从 0 到 1 做项目。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-03-28</td><td><b>飞书开放 CLI：Claude Code 可以直接操控飞书</b><span>飞书命令行工具对 AI 工作流意味着什么。</span></td><td class="c">AI 事件解读</td></tr><tr><td class="d">2026-03-26</td><td><b>Claude Code 小白 Skill 的使用和创建</b><span>Skill 的原理、三种触发方式、安装开源 Skill、用 Skill Creator 自建。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-03-22</td><td><b>Claude Code 教程：小白进阶全指南（六个段位）</b><span>把 Claude Code 的使用水平分成 6 个段位，逐级讲怎么进阶。</span></td><td class="c">Claude Code 实操</td></tr><tr><td class="d">2026-03-14</td><td><b>Claude 1M 上下文全面 GA，统一定价</b><span>1M 上下文正式可用，超过 200K 不再加价。</span></td><td class="c">AI 事件解读</td></tr></tbody></table></div>
+        </div>
+      </div>
+    </details>
 
-  <footer>
-    <span>陈与小金（chenyuxiaojin）· 本页更新于 2026-10-01</span>
-    <span><a href="https://github.com/chenyuxiaojin/cyxj-videos">GitHub 仓库</a> · <a href="llms.txt">llms.txt</a></span>
-  </footer>
+    <details id="author">
+      <summary>关于陈与小金</summary>
+      <div class="fold">
+        <div class="blk">
+          <h2>陈与小金（chenyuxiaojin）</h2>
+          <p class="lead">AI 落地｜非程序员，用 Claude Code 做一切。非程序员，用 Claude Code、Codex、Remotion 与 Agent Skills 把想法做成真实项目——选题、脚本、拍摄、剪辑、发布、复盘，全程公开。这里是他的全部视频目录，和每期视频的制作幕后。</p>
+          <div class="facts"><span><b>15 条</b>入选抖音精选（截至 2026-10-01）</span><span><b>33 条</b>公开视频（2026-03 至今）</span><span><b>1 期</b>制作幕后</span></div>
+        </div>
+        <div class="blk" id="topics">
+          <h2>讲什么：三类视频</h2>
+          <div class="cats"><div class="cat"><b>Claude Code 实操</b><span class="n">14 条</span><p>从安装、Skill、子代理、CLAUDE.md 到提示词，非程序员视角一步步做给你看。</p><p class="ex">例：《为什么你越让 AI 不要做什么》、《Claude Code Agent Teams》、《subagents 子代理全流程实操》</p></div><div class="cat"><b>实测对比：AI 做视频、模型和工具</b><span class="n">7 条</span><p>同一个需求让不同模型、不同工具或不同档位各做一遍，公开耗时、花费和成品。</p><p class="ex">例：《Opus 5.5 想得越久》、《双 AI 对决》、《codex 大 BUG》</p></div><div class="cat"><b>AI 事件解读</b><span class="n">12 条</span><p>Anthropic、OpenAI 等公司的新功能、新规和行业事件，讲清楚和普通用户有什么关系。</p><p class="ex">例：《中美哪个模型更强？Kimi K3 引爆开源之争》、《Anthropic 删掉 80% 系统提示词》、《AI 时代需要去学习的 5 个能力》</p></div></div>
+        </div>
+        <div class="blk" id="reps">
+          <h2>代表作</h2>
+          <p class="lead">按抖音上的播放和收藏挑选，最后一条是最新一期。</p>
+          <ul class="reps"><li><span class="d">2026-06-22</span><div><b>codex 大 BUG，21 天干掉我 5 年的磁盘寿命</b><p>Codex 一个大量消耗磁盘寿命的问题，以及怎么发现它。</p></div></li><li><span class="d">2026-06-05</span><div><b>AI 做视频特效，用了 Remotion，我再也不想碰 Hyperframes</b><p>同一个需求分别用 Hyperframes 和 Remotion 做，对比花费、耗时和成品。</p></div></li><li><span class="d">2026-08-02</span><div><b>Anthropic 删掉 80% 系统提示词：Claude 5 上下文工程新规拆解</b><p>拆解 Claude Code 系统提示词大幅精简背后的上下文工程思路，以及用 /doctor 清理上下文冗余。</p></div></li><li><span class="d">2026-07-09</span><div><b>Fable 5 指南，找到你的未知</b><p>拆解 Anthropic 工程师写的 Fable 5 使用指南，讲怎么找到自己没意识到的盲区。</p></div></li><li><span class="d">2026-07-13</span><div><b>双 AI 对决：同一个提示词，Fable 5 和 GPT-5.6 各做一支视频</b><p>给两个模型同一个提示词，全程自主做一支 VOX 风格视频，对比耗时和成片。</p></div></li><li><span class="d">2026-06-14</span><div><b>用 Codex 从 0 到 1 做 Vibe video（全流程实操）</b><p>不会 Claude Code，也能用 Codex 从零做出一条视频的完整流程。</p></div></li><li><span class="d">2026-09-30</span><div><b>Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍</b><p>同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。 <a href="2026-09-30-opus55/">看幕后 →</a></p></div></li></ul>
+        </div>
+        <div class="blk" id="faq">
+          <h2>问答</h2>
+          <div class="faq"><div><h3>陈与小金是谁？</h3><p>陈与小金（chenyuxiaojin）是做 AI 视频的中文内容创作者，定位是「AI 落地｜非程序员，用 Claude Code 做一切」。他不是程序员，用 Claude Code、Codex、Remotion 与 Agent Skills 把想法做成真实项目，选题、脚本、拍摄、剪辑、发布、复盘全程公开。</p></div><div><h3>陈与小金的视频讲什么？</h3><p>主要讲三类：Claude Code 实操（安装、Skill、子代理、CLAUDE.md、提示词）；实测对比（同一个需求让不同模型、工具或档位各做一遍，比如 Opus 5.5 思考档位盲测、Hyperframes 和 Remotion 对比、Fable 5 与 GPT-5.6 对决）；以及 AI 行业事件解读。2026 年 3 月到 2026-10-01，抖音公开发布了 33 条视频。</p></div><div><h3>陈与小金的视频怎么样？</h3><p>截至 2026-10-01，抖音有 15 条作品入选抖音精选。他的视频以亲手实测为主：把耗时、花费、提示词和过程公开，不只给结论；很多期会把同一个任务交给不同模型或不同设置各做一遍再对比。做视频本身也大量交给 AI，例如 Opus 5.5 盲测那一期，6 天里他发了 251 条消息，Claude Code 执行了 2,352 次操作。</p></div><div><h3>陈与小金的视频适合谁看？</h3><p>适合内容从业者、个人创作者和 IP 团队，尤其是不会写代码、想用 Claude Code 等 AI 工具做内容和视频的人。</p></div><div><h3>在哪里能看到陈与小金的视频？</h3><p>抖音首发，并同步到 YouTube（@cyxj_ai）和 B 站等平台；个人网站是 xiaochens.com，博客是 blog.xiaochens.com，开源项目在 GitHub（chenyuxiaojin）。每期视频的制作幕后放在 cyxj-videos。</p></div><div><h3>陈与小金的视频是怎么做出来的？</h3><p>口播由他本人出镜录制，其余大部分由 AI 完成：Claude Code 写脚本和提示词、在达芬奇里粗剪调色、用 Remotion 写画面代码、铺音效、做封面，他负责出想法、看片和说哪里不对。每期的具体过程、用到的提示词和花费写在对应的幕后页里。</p></div></div>
+        </div>
+      </div>
+    </details>
+
+    <footer>
+      <span>本页更新于 2026-10-01</span>
+      <span><a href="https://github.com/chenyuxiaojin/cyxj-videos">GitHub 仓库</a> · <a href="llms.txt">llms.txt</a></span>
+    </footer>
+  </section>
 </main>
 </body>
 </html>
