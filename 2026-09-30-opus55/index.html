@@ -24,29 +24,29 @@
 <meta name="twitter:description" content="同一个提示词、同一段旁白，只改 Opus 5.5 的思考档位（medium / high / xhigh / max）各做一条 Remotion 画面并打乱盲看。19 次跑片的耗时和花费、隔离测试方法、分工数据，以及「先改旁白，不先加档位」的结论。">
 <meta name="twitter:image" content="https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/cover.jpg">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://xiaochens.com/#person", "name": "陈与小金", "alternateName": ["chenyuxiaojin", "CYXJ"], "jobTitle": "Forward Deployed Engineer（FDE）· AI 落地", "description": "非程序员，用 Claude Code、Codex、Remotion 与 Agent Skills 把想法做成真实项目——选题、脚本、拍摄、剪辑、发布、复盘，全程公开。", "url": "https://xiaochens.com/", "knowsAbout": ["AI 内容生产", "AI 视频工作流", "Claude Code", "Codex", "Remotion", "Agent Skills", "MCP Server", "DaVinci Resolve", "剪映", "非技术背景 AI 实操"], "sameAs": ["https://blog.xiaochens.com/", "https://github.com/chenyuxiaojin", "https://www.youtube.com/@cyxj_ai", "https://space.bilibili.com/505358756", "https://v.douyin.com/A1qVQrOgPjY/", "https://x.com/cyxjya", "https://chenyuxiaojin.github.io/cyxj-videos/"]}, {"@type": "VideoObject", "@id": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/#video", "name": "Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍", "description": "朋友说模型做艺术靠直觉反而更好。同一个提示词、同一段旁白，只改 Opus 5.5 的思考档位，medium、high、xhigh、max 各跑一条，不给素材和设计规范，环境隔离，打乱顺序盲看。", "thumbnailUrl": ["https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/cover.jpg"], "uploadDate": "2026-09-30", "duration": "PT7M16S", "inLanguage": "zh-CN", "creator": {"@id": "https://xiaochens.com/#person"}, "keywords": "Opus 5.5, Claude Code, effort, 思考档位, Remotion, AI 做视频"}, {"@type": "TechArticle", "@id": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/#article", "headline": "Opus 5.5 思考档位盲测幕后", "description": "同一个提示词、同一段旁白，只改 Opus 5.5 的思考档位（medium / high / xhigh / max）各做一条 Remotion 画面并打乱盲看。19 次跑片的耗时和花费、隔离测试方法、分工数据，以及「先改旁白，不先加档位」的结论。", "image": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/cover.jpg", "datePublished": "2026-10-01", "dateModified": "2026-10-01", "inLanguage": "zh-CN", "author": {"@id": "https://xiaochens.com/#person"}, "publisher": {"@id": "https://xiaochens.com/#person"}, "mainEntityOfPage": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/", "about": [{"@id": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/#video"}, {"@type": "SoftwareApplication", "name": "Claude Opus 5.5"}, {"@type": "SoftwareApplication", "name": "Claude Code"}, {"@type": "SoftwareApplication", "name": "Remotion"}]}, {"@type": "FAQPage", "@id": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/#faq", "mainEntity": [{"@type": "Question", "name": "Opus 5.5 的思考档位越高，做出来的视频画面越好吗？", "acceptedAnswer": {"@type": "Answer", "text": "在这次盲测里没有明显更好。同一个提示词、同一段 25.5 秒的旁白，medium 用了 25.9 分钟、花费 $6.12，max 用了 192.5 分钟、花费 $31.54，时间差约 7 倍。盲看时 medium 和 max 分不出来，另外两条都被猜低了一档。每个档位只跑了一次，样本很小。"}}, {"@type": "Question", "name": "想让 AI 做的视频画面更惊艳，应该先改什么？", "acceptedAnswer": {"@type": "Answer", "text": "先改旁白。第一轮旁白全是 harness、skill、白名单这类抽象词，四个档位都画成了光球、格子和规则卡，连改三版提示词也没用。提示词一个字不改，只把旁白换成 Opus 5.5 用第一人称说的一段话，有转折，最后用问句收尾，xhigh 就画出了一幅油画日出。旁白里的名词，就是模型要画的东西。"}}, {"@type": "Question", "name": "Claude Code 里 Opus 5.5 有哪几个思考档位？默认是哪个？", "acceptedAnswer": {"@type": "Answer", "text": "Claude Code 里有 low、medium、high、xhigh、max 五档（2026-09-25 本机 claude --help 实测）。Anthropic 官方文档《Prompting Claude Opus 5.5》的 Calibrate effort 一节写明 Opus 5.5 默认是 medium，上一代模型默认是 high，同一档位下 Opus 5.5 想得更多。"}}, {"@type": "Question", "name": "怎么让不同档位的对比尽量公平？", "acceptedAnswer": {"@type": "Answer", "text": "同一个提示词、同一段配音，只改 --effort；不给素材、设计规范和以前的镜头；每个档位新开会话只跑一次，中途不插话；工程放在系统的共享目录下（不在自己的用户目录里），并用 --setting-sources project,local、--disable-slash-commands、--strict-mcp-config 挡掉个人的全局规则、自定义命令和外部工具；四条成片打乱编号后盲看。"}}, {"@type": "Question", "name": "这条视频里，人做了什么，AI 做了什么？", "acceptedAnswer": {"@type": "Answer", "text": "人（陈与小金）出想法、出镜录口播、看片后说哪里不对，6 天里一共发了 251 条消息。其余都由 AI 完成：Claude Code 执行了 2,352 次操作，包括查资料、写旁白和提示词、跑实验、在达芬奇里粗剪调色、写 Remotion 代码、铺 167 处音效、做封面；被测的 Opus 5.5 在 19 次跑片里来回了 2,093 轮。"}}, {"@type": "Question", "name": "这组实验一共花了多少钱？", "acceptedAnswer": {"@type": "Answer", "text": "19 次跑片按 API 价格折算合计 $238.47，累计 20.9 小时（有几次是同时跑的）。进了片子的正式四档：medium $6.12、high $6.84、xhigh $25.16、max $31.54。"}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "陈与小金 · 视频幕后", "item": "https://chenyuxiaojin.github.io/cyxj-videos/"}, {"@type": "ListItem", "position": 2, "name": "Opus 5.5 思考档位盲测幕后", "item": "https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/"}]}]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;1,800&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700;900&display=swap">
 <style>
-/* 版式:整页就是这条片的制作时间线,从上往下走五个阶段;深海军蓝底取自片子本身,四档用同一色相由暗到亮 */
+/* 版式:整页就是这条片的制作时间线,从上往下走五个阶段;浅灰底 + 白卡片,系统字体,四档用同一色相由浅到深 */
 :root {
-  --bg: #070F1E;
-  --panel: #0D1830;
-  --panel-2: #122140;
-  --line: #1F2F4F;
-  --ink: #E9EFF9;
-  --ink-2: #A6B5CF;
-  --ink-3: #7487A6;
-  --accent: #4A8AE6;
-  --accent-hi: #9CC4FF;
-  --e-medium: #3666AD;
-  --e-high: #4A8AE6;
-  --e-xhigh: #82B4F4;
-  --e-max: #CFE3FD;
-  --display: "Noto Serif SC", "Songti SC", "STSong", serif;
-  --body: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", system-ui, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  color-scheme: dark;
+  --bg: #F2F2F4;
+  --panel: #FFFFFF;
+  --panel-2: #F0F1F4;
+  --line: #E2E2E6;
+  --ink: #1D1D1F;
+  --ink-2: #55555A;
+  --ink-3: #8A8A8F;
+  --accent: #0A66D6;
+  --accent-hi: #0A66D6;
+  --e-medium: #A9C6F3;
+  --e-high: #6FA3EC;
+  --e-xhigh: #2F73D6;
+  --e-max: #0B3F91;
+  --op: #8FB8F2; /* Opus 5.5 作为「干活的一方」 */
+  --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 8px 24px rgba(0, 0, 0, .05);
+  --display: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --body: var(--display);
+  --mono: var(--display); /* 数字和小标注:系统字体 + 等宽数字 */
+  --code: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -66,13 +66,14 @@ details.tbl summary { cursor: pointer; color: var(--accent-hi); font-size: 13px;
 details.tbl .tl-scroll { margin-top: 10px; }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
 .wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 0 96px; }
-a { color: var(--accent-hi); }
-h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: .01em; }
-h2 { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.3; font-weight: 900; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -.01em; }
+h2 { font-size: clamp(24px, 3vw, 32px); line-height: 1.3; font-weight: 700; }
 h3 { font-size: 20px; line-height: 1.4; font-weight: 700; }
 p { margin: 0; }
 .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
-.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-hi); }
+.eyebrow { font-size: 13px; color: var(--ink-3); }
 .lead { color: var(--ink-2); max-width: 38em; }
 .muted { color: var(--ink-3); font-size: 13px; }
 :focus-visible { outline: 2px solid var(--accent-hi); outline-offset: 3px; border-radius: 4px; }
@@ -86,15 +87,15 @@ p { margin: 0; }
 section { padding-top: 88px; scroll-margin-top: 48px; }
 .sec-head { display: grid; gap: 12px; margin-bottom: 36px; }
 .stage { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
-.stage .n { font-family: var(--mono); font-weight: 800; font-style: italic; font-size: 15px; color: var(--bg); background: var(--accent); padding: 2px 10px; border-radius: 4px; }
+.stage .n { font-size: 20px; line-height: 1; color: var(--accent); }
 .stage .d { font-family: var(--mono); font-size: 13px; color: var(--ink-3); }
 
 /* 开场 */
 .hero { padding-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(28px, 4vw, 56px); align-items: center; }
-.hero h1 { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.22; font-weight: 900; margin-top: 14px; }
+.hero h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.22; font-weight: 700; margin-top: 14px; }
 .hero h1 em { font-style: normal; color: var(--accent-hi); }
 .hero .lead { margin-top: 18px; }
-.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: 28px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: 28px; background: var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
 .stat { background: var(--panel); padding: 14px 14px 12px; }
 .stat b { display: block; font-family: var(--mono); font-size: 24px; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .stat span { font-size: 12px; color: var(--ink-3); }
@@ -106,16 +107,16 @@ section { padding-top: 88px; scroll-margin-top: 48px; }
 .card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .tag { position: absolute; left: 8px; bottom: 8px; display: flex; align-items: center; gap: 8px; perspective: 400px; }
 .tag .num { font-family: var(--mono); font-weight: 800; font-style: italic; font-size: 22px; line-height: 1; color: transparent; -webkit-text-stroke: 1.4px #fff; }
-.tag .pill { font-family: var(--mono); font-weight: 800; font-style: italic; font-size: 12px; letter-spacing: .06em; color: #fff; background: #2F6FD6; border: 1px solid #8DB8FF; box-shadow: 0 0 14px rgba(74, 138, 230, .55); padding: 3px 10px; border-radius: 4px; transition: transform .5s cubic-bezier(.45, 0, .2, 1); transform-origin: 50% 50%; }
+.tag .pill { font-family: var(--mono); font-weight: 800; font-style: italic; font-size: 12px; letter-spacing: .06em; color: #fff; background: #2F6FD6; border: 1px solid #8DB8FF; padding: 3px 10px; border-radius: 4px; transition: transform .5s cubic-bezier(.45, 0, .2, 1); transform-origin: 50% 50%; }
 .card .meta { position: absolute; inset: auto 0 0 0; padding: 30px 10px 8px; text-align: right; font-family: var(--mono); font-size: 11px; color: #fff; background: linear-gradient(transparent, rgba(4, 9, 20, .82)); opacity: 0; transition: opacity .4s; }
 .board[data-open="true"] .card .meta { opacity: 1; }
 .board[data-open="true"] .tag .pill { transform: rotateX(360deg); }
 .board-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-button.reveal { font: 600 14px var(--body); color: var(--ink); background: var(--panel-2); border: 1px solid var(--accent); border-radius: 999px; padding: 8px 18px; cursor: pointer; }
-button.reveal:hover { background: var(--accent); color: #fff; }
+button.reveal { font: 600 14px var(--body); color: #fff; background: var(--accent); border: 0; border-radius: 999px; padding: 9px 20px; cursor: pointer; }
+button.reveal:hover { background: #0855B3; }
 
 /* 分工:一格 = 10 次 */
-.share { display: grid; gap: 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); padding: 22px clamp(14px, 2.6vw, 28px); }
+.share { display: grid; gap: 22px; border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 22px clamp(14px, 2.6vw, 28px); }
 .sh-row { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 20px; align-items: start; }
 .sh-lab { display: grid; gap: 2px; }
 .sh-lab .nm { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-2); }
@@ -133,12 +134,12 @@ button.reveal:hover { background: var(--accent); color: #fff; }
 .av { display: inline-grid; place-items: center; min-width: 24px; height: 24px; padding: 0 5px; border-radius: 999px; font: 600 10.5px/1 var(--mono); font-style: normal; }
 .av.me { background: var(--ink); color: var(--bg); }
 .av.cc { background: var(--accent); color: #fff; }
-.av.op { background: var(--e-max); color: #0A1A33; }
+.av.op { background: var(--op); color: #0A1A33; }
 .flow { position: relative; display: grid; grid-template-columns: .9fr 1fr 1fr 1.1fr .9fr; grid-template-rows: auto auto; column-gap: 52px; row-gap: 30px; align-items: start; }
 .flow-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 0; }
-.flow-lines path { fill: none; stroke: #3A5689; stroke-width: 1.6; }
+.flow-lines path { fill: none; stroke: #B4BAC6; stroke-width: 1.6; }
 .flow-lines .dot { fill: var(--accent-hi); }
-.node { position: relative; z-index: 1; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: grid; gap: 9px; min-width: 0; align-content: start; }
+.node { position: relative; z-index: 1; background: var(--panel); border: 1px solid transparent; border-radius: 14px; box-shadow: var(--shadow); padding: 12px; display: grid; gap: 9px; min-width: 0; align-content: start; }
 .node h3 { font-size: 18px; }
 .node p { font-size: 13px; line-height: 1.6; color: var(--ink-2); }
 .nh { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); }
@@ -150,10 +151,10 @@ button.reveal:hover { background: var(--accent); color: #fff; }
 .out::before { content: "产出  "; color: var(--ink-3); }
 .who { display: flex; gap: 4px; }
 .n-topic { grid-column: 1; grid-row: 1 / span 2; align-self: center; }
-.n-lab { grid-column: 2 / span 2; grid-row: 1; border-color: #2C4775; }
+.n-lab { grid-column: 2 / span 2; grid-row: 1; border-color: var(--e-medium); }
 .n-voice { grid-column: 2; grid-row: 2; }
 .n-cut { grid-column: 3; grid-row: 2; }
-.n-remotion { grid-column: 4; grid-row: 1 / span 2; align-self: center; border-color: #2C4775; }
+.n-remotion { grid-column: 4; grid-row: 1 / span 2; align-self: center; border-color: var(--e-medium); }
 .n-post { grid-column: 5; grid-row: 1; align-self: end; }
 .n-pub { grid-column: 5; grid-row: 2; }
 .lab-in { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 12px; align-items: center; }
@@ -161,44 +162,44 @@ button.reveal:hover { background: var(--accent); color: #fff; }
 .loop text { fill: var(--ink-2); font-size: 12px; font-family: var(--body); }
 .loop .big { fill: var(--ink); font: 600 40px var(--mono); }
 .loop .small { fill: var(--ink-3); font-size: 11px; }
-.loop .arc { fill: none; stroke: #4A6DA8; stroke-width: 2; }
+.loop .arc { fill: none; stroke: #9AA7BD; stroke-width: 2; }
 .lab-out { display: grid; gap: 8px; }
 .mini4 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
 .mini4 img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; display: block; }
 .waves { display: grid; gap: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px; }
 .clip { display: grid; gap: 3px; }
 .clip span { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); }
-.clip img { height: 26px; object-fit: fill; display: block; background: #0F1E38; border-radius: 3px; }
+.clip img { height: 26px; object-fit: fill; display: block; background: #1D1D1F; border-radius: 3px; }
 .stack { position: relative; aspect-ratio: 16 / 12.5; }
 .ly { position: absolute; width: 80%; margin: 0; }
-.ly img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-radius: 5px; border: 1px solid #3A5585; box-shadow: 0 8px 18px rgba(0, 0, 0, .5); }
-.ly span { position: absolute; left: 5px; bottom: 5px; font-size: 10.5px; line-height: 1.4; background: rgba(7, 15, 30, .86); color: var(--ink); padding: 1px 6px; border-radius: 3px; }
+.ly img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-radius: 5px; border: 1px solid #fff; box-shadow: 0 6px 16px rgba(0, 0, 0, .22); }
+.ly span { position: absolute; left: 5px; bottom: 5px; font-size: 10.5px; line-height: 1.4; background: rgba(0, 0, 0, .72); color: #fff; padding: 1px 6px; border-radius: 3px; }
 .ly.l1 { left: 0; top: 44%; } .ly.l2 { left: 10%; top: 22%; } .ly.l3 { left: 20%; top: 0; }
 .sfxmini { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px; display: grid; gap: 3px; }
 .sfxmini .row { position: relative; height: 9px; }
 .sfxmini .row.ch { height: 5px; display: flex; gap: 1px; margin-bottom: 3px; }
-.sfxmini .row.ch i { background: #2A3D60; height: 100%; }
+.sfxmini .row.ch i { background: #C9CED6; height: 100%; }
 .sfxmini .row b { position: absolute; top: 0; bottom: 0; width: 1.5px; background: var(--accent-hi); }
 
 /* 实验 */
 .rules { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 28px; align-items: start; }
 .rules ol { margin: 0; padding-left: 1.3em; display: grid; gap: 10px; color: var(--ink-2); }
 .rules ol b { color: var(--ink); font-weight: 500; }
-.term { background: #040A15; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-width: 0; }
+.term { --ink-2: #D0D3D9; --ink-3: #8B9099; --accent-hi: #8DB8FF; --line: #303034; background: #1D1D1F; border-radius: 14px; overflow: hidden; min-width: 0; box-shadow: var(--shadow); }
 .term .bar { display: flex; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
-.term .bar i { width: 10px; height: 10px; border-radius: 50%; background: #2A3957; }
-.term pre { margin: 0; padding: 16px 18px; overflow-x: auto; font: 13px/1.9 var(--mono); color: var(--ink-2); }
+.term .bar i { width: 10px; height: 10px; border-radius: 50%; background: #48484D; }
+.term pre { margin: 0; padding: 16px 18px; overflow-x: auto; font: 13px/1.9 var(--code); color: var(--ink-2); }
 .term pre .k { color: var(--accent-hi); }
 .term pre .c { color: var(--ink-3); }
-details.prompt { margin-top: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+details.prompt { margin-top: 16px; border-radius: 14px; background: var(--panel); box-shadow: var(--shadow); }
 details.prompt summary { cursor: pointer; padding: 12px 16px; font-weight: 500; }
 details.prompt pre { margin: 0; padding: 4px 18px 18px; white-space: pre-wrap; font: 14px/1.85 var(--body); color: var(--ink-2); }
 
-.wall { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); margin-top: 44px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); overflow: hidden; }
+.wall { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); margin-top: 44px; border-radius: 16px; background: var(--panel); overflow: hidden; box-shadow: var(--shadow); }
 .phase { padding: 14px 12px; display: grid; grid-template-rows: auto 1fr auto; gap: 10px; min-width: 0; position: relative; border-left: 1px solid var(--line); }
 .phase:first-child { border-left: 0; }
-.phase:not(:first-child)::before { content: ""; position: absolute; left: -7px; top: 22px; width: 12px; height: 12px; background: var(--panel); border-top: 1px solid #5B7DB5; border-right: 1px solid #5B7DB5; transform: rotate(45deg); }
-.phase.hot { background: linear-gradient(180deg, rgba(74, 138, 230, .18), rgba(74, 138, 230, .04)); }
+.phase:not(:first-child)::before { content: ""; position: absolute; left: -7px; top: 22px; width: 12px; height: 12px; background: var(--panel); border-top: 1px solid #B4BAC6; border-right: 1px solid #B4BAC6; transform: rotate(45deg); }
+.phase.hot { background: linear-gradient(180deg, rgba(10, 102, 214, .10), rgba(10, 102, 214, .02)); }
 .ph-h { display: grid; gap: 2px; }
 .ph-h .ph-n { font-family: var(--mono); font-size: 11px; color: var(--accent-hi); }
 .ph-h b { font-size: 14.5px; font-weight: 700; line-height: 1.4; }
@@ -206,15 +207,15 @@ details.prompt pre { margin: 0; padding: 4px 18px 18px; white-space: pre-wrap; f
 .runs { display: grid; gap: 9px; align-content: start; }
 .run { position: relative; margin: 0; }
 .run img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-radius: 5px; border: 1px solid var(--line); }
-.run .lv { position: absolute; left: 5px; top: 5px; font: 600 10px/1 var(--mono); padding: 3px 5px; border-radius: 3px; background: rgba(7, 15, 30, .84); color: var(--ink); display: flex; gap: 5px; align-items: center; }
+.run .lv { position: absolute; left: 5px; top: 5px; font: 600 10px/1 var(--mono); padding: 3px 5px; border-radius: 3px; background: rgba(255, 255, 255, .92); color: var(--ink); display: flex; gap: 5px; align-items: center; }
 .run .lv i { width: 7px; height: 7px; border-radius: 2px; }
 .run figcaption { font-family: var(--mono); font-size: 10.5px; line-height: 1.45; color: var(--ink-3); margin-top: 3px; }
 .run figcaption em { font-style: normal; font-family: var(--body); color: var(--ink-2); display: block; }
-.run.star img { border-color: var(--accent-hi); box-shadow: 0 0 0 1px var(--accent-hi), 0 0 18px rgba(156, 196, 255, .35); }
+.run.star img { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
 .wow { font-family: var(--display); font-weight: 700; font-size: 15px; color: var(--accent-hi); line-height: 1.5; }
 .vd { font-size: 12.5px; display: flex; gap: 6px; align-items: baseline; padding-top: 8px; border-top: 1px dashed var(--line); line-height: 1.5; }
 .vd i { font-style: normal; font-weight: 700; }
-.vd.bad i { color: #EE8A8A; } .vd.good i { color: #7FD6A6; } .vd.mid i { color: var(--ink-3); }
+.vd.bad i { color: #C7382F; } .vd.good i { color: #1E8A4C; } .vd.mid i { color: var(--ink-3); }
 .insight { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; margin: 28px 0 40px; align-items: start; }
 .insight p + p { margin-top: 10px; }
 .insight .lead { max-width: none; }
@@ -226,12 +227,12 @@ figure img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cove
 figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 6px; line-height: 1.55; }
 figcaption b { color: var(--ink-2); font-weight: 500; }
 blockquote { margin: 0; padding: 14px 18px; border-left: 2px solid var(--accent); background: var(--panel); border-radius: 0 8px 8px 0; color: var(--ink); max-width: 44em; }
-blockquote .who { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--ink-3); margin-top: 2px; }
+blockquote .who { display: block; font-size: 12px; color: var(--ink-3); margin-top: 2px; }
 blockquote .who + p, blockquote p + .who { margin-top: 10px; }
 .big-quote { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--accent-hi); }
 
 /* 图表通用 */
-.chart { border: 1px solid var(--line); border-radius: 12px; background: var(--panel); padding: 20px clamp(14px, 2.4vw, 24px) 18px; }
+.chart { border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 20px clamp(14px, 2.4vw, 24px) 18px; }
 .chart-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px 20px; flex-wrap: wrap; margin-bottom: 14px; }
 .chart-h h3 { font-size: 18px; }
 .legend { display: flex; gap: 14px; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; color: var(--ink-2); }
@@ -278,9 +279,9 @@ blockquote .who + p, blockquote p + .who { margin-top: 10px; }
 .tl-track.ch { height: 26px; background: none; }
 .tl-b { position: absolute; top: 3px; bottom: 3px; border-radius: 3px; overflow: hidden; font-size: 11px; line-height: 24px; padding: 0 6px; white-space: nowrap; text-overflow: ellipsis; color: #fff; cursor: default; }
 .tl-b + .tl-b { margin-left: 0; }
-.tl-b.v { background: #34425E; color: var(--ink); }
+.tl-b.v { background: #C9CED6; color: var(--ink); }
 .tl-b.r { background: var(--accent); }
-.tl-b.a { background: var(--e-max); color: #0A1A33; }
+.tl-b.a { background: var(--op); color: #0A1A33; }
 .tl-b.e { background: #6D5BD0; }
 .tl-b.c { top: 0; bottom: 0; line-height: 26px; background: var(--panel-2); color: var(--ink-2); border-right: 2px solid var(--bg); border-radius: 0; text-align: center; }
 .tl-b.c:nth-child(even) { background: var(--panel); }
@@ -293,7 +294,7 @@ blockquote .who + p, blockquote p + .who { margin-top: 10px; }
 .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 16px; }
 .gallery figcaption { font-size: 13px; }
 
-.principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 36px; }
+.principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border-radius: 16px; overflow: hidden; margin-top: 36px; box-shadow: var(--shadow); }
 .principles > div { background: var(--panel); padding: 18px 20px; display: grid; gap: 6px; min-width: 0; }
 .principles b { font-size: 15px; font-weight: 500; }
 .principles p { font-size: 14px; color: var(--ink-2); }
@@ -304,23 +305,23 @@ blockquote .who + p, blockquote p + .who { margin-top: 10px; }
 .post ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; }
 .post .fig { font-family: var(--mono); font-size: 28px; font-weight: 600; line-height: 1.1; }
 
-.pits { margin-top: 40px; display: grid; gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.pits { margin-top: 40px; display: grid; gap: 0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
 .pit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 20px; padding: 14px 20px; background: var(--panel); border-top: 1px solid var(--line); font-size: 14px; }
 .pit:first-child { border-top: 0; }
 .pit .q { color: var(--ink); }
 .pit .a { color: var(--ink-2); }
-.pit-h { background: var(--panel-2); font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--ink-3); padding-block: 10px; }
+.pit-h { background: var(--panel-2); font-size: 12px; color: var(--ink-3); padding-block: 10px; }
 
 .takeaways { display: grid; gap: 0; }
 .tk { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding: 26px 0; border-top: 1px solid var(--line); }
 .tk:last-child { border-bottom: 1px solid var(--line); }
-.tk .n { font-family: var(--display); font-weight: 900; font-size: 44px; line-height: 1; color: var(--accent); }
+.tk .n { font-weight: 700; font-size: 40px; line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .tk h3 { font-size: 22px; margin-bottom: 8px; }
 .tk p { color: var(--ink-2); max-width: 46em; }
 
 footer { margin-top: 64px; display: grid; gap: 8px; font-size: 13px; color: var(--ink-3); max-width: 60em; }
 
-#tip { position: fixed; z-index: 20; pointer-events: none; background: #F2F6FC; color: #0A1428; font-size: 12.5px; line-height: 1.5; padding: 7px 10px; border-radius: 6px; box-shadow: 0 6px 20px rgba(0, 0, 0, .45); max-width: 280px; }
+#tip { position: fixed; z-index: 20; pointer-events: none; background: #1D1D1F; color: #fff; font-size: 12.5px; line-height: 1.5; padding: 7px 10px; border-radius: 6px; box-shadow: 0 6px 20px rgba(0, 0, 0, .25); max-width: 280px; }
 
 @media (max-width: 980px) {
   .flow { grid-template-columns: minmax(0, 1fr); row-gap: 40px; padding-inline: 24px; max-width: 560px; margin-inline: auto; }
@@ -423,7 +424,7 @@ footer { margin-top: 64px; display: grid; gap: 8px; font-size: 13px; color: var(
     </div>
     <div class="sh-row">
       <div class="sh-lab"><span class="nm"><i class="av op">5.5</i>Opus 5.5（被测）</span><b>2,093<small>轮</small></b><span class="d">19 次在隔离环境里从零做片</span></div>
-      <div class="units" data-n="2093" data-c="var(--e-max)"></div>
+      <div class="units" data-n="2093" data-c="var(--op)"></div>
     </div>
     <p class="muted">一格 = 10 次。统计范围是 09-25 到 09-30 期间动过这条片文件的 18 段对话记录。一次「操作」指 AI 用一次工具，比如跑一条命令、改一个文件、在达芬奇里执行一步。Opus 5.5 的轮数来自每次跑片的记录。</p>
   </div>
@@ -455,12 +456,12 @@ footer { margin-top: 64px; display: grid; gap: 8px; font-size: 13px; color: var(
       <div class="nh"><span class="sn">②</span><span>09-26 → 29</span><a href="#lab">细节 ↓</a></div>
       <div class="lab-in">
         <svg class="loop" viewBox="0 0 260 200" role="img" aria-label="AI 写旁白和提示词、Opus 5.5 隔离跑片、我看片挑毛病,循环 19 次">
-          <defs><marker id="la" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6E8FC8"/></marker></defs>
+          <defs><marker id="la" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9AA7BD"/></marker></defs>
           <path class="arc" d="M159.2,37.7 A78,78 0 0 1 207.2,120.9" marker-end="url(#la)"/>
           <path class="arc" d="M178,171.5 A78,78 0 0 1 82,171.5" marker-end="url(#la)"/>
           <path class="arc" d="M52.8,120.9 A78,78 0 0 1 100.8,37.7" marker-end="url(#la)"/>
           <circle cx="130" cy="32" r="7" fill="var(--accent)"/>
-          <circle cx="197.5" cy="149" r="7" fill="var(--e-max)"/>
+          <circle cx="197.5" cy="149" r="7" fill="var(--op)"/>
           <circle cx="62.5" cy="149" r="7" fill="var(--ink)"/>
           <text x="130" y="15" text-anchor="middle">AI 写旁白 · 提示词</text>
           <text x="216" y="194" text-anchor="middle">隔离跑片</text>
@@ -631,9 +632,9 @@ claude -p --model opus <span class="k">--effort xhigh</span> \
     <div class="chart-h">
       <h3>成片 7:16 拆开看</h3>
       <div class="legend">
-        <span><i class="sw" style="background:#34425E"></i>口播母片</span>
+        <span><i class="sw" style="background:#C9CED6"></i>口播母片</span>
         <span><i class="sw" style="background:var(--accent)"></i>Remotion 画面</span>
-        <span><i class="sw" style="background:var(--e-max)"></i>AI 原片</span>
+        <span><i class="sw" style="background:var(--op)"></i>AI 原片</span>
         <span><i class="sw" style="background:#6D5BD0"></i>彩蛋</span>
       </div>
     </div>
@@ -733,7 +734,7 @@ claude -p --model opus <span class="k">--effort xhigh</span> \
     <div><h3>这组实验一共花了多少钱？</h3><p>19 次跑片按 API 价格折算合计 $238.47，累计 20.9 小时（有几次是同时跑的）。进了片子的正式四档：medium $6.12、high $6.84、xhigh $25.16、max $31.54。</p></div>
   </div>
 
-  <div class="author" style="margin-top:40px;padding:22px clamp(14px,2.6vw,26px);border:1px solid var(--line);border-radius:12px;background:var(--panel);display:grid;gap:8px">
+  <div class="author" style="margin-top:40px;padding:22px clamp(14px,2.6vw,26px);border-radius:16px;background:var(--panel);box-shadow:var(--shadow);display:grid;gap:8px">
     <div class="eyebrow">关于作者</div>
     <h3 style="font-size:22px">陈与小金 <span style="font-family:var(--body);font-size:15px;font-weight:400;color:var(--ink-2)">chenyuxiaojin</span></h3>
     <p style="color:var(--ink)">AI 落地｜非程序员，用 Claude Code 做一切</p>
@@ -895,7 +896,7 @@ claude -p --model opus <span class="k">--effort xhigh</span> \
   var drawFlow = function () {
     var W = fm.clientWidth, H = fm.clientHeight;
     fl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-    var o = '<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6E8FC8"/></marker></defs>';
+    var o = '<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9AA7BD"/></marker></defs>';
     edges.forEach(function (e, i) {
       var a = box(e[0]), b = box(e[1]), d;
       if (b.l >= a.r - 2) {
