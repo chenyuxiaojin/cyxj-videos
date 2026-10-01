@@ -1,19 +1,19 @@
----
+<!--
 title: Opus 5.5 思考档位盲测幕后
 video: Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍
 author: 陈与小金（chenyuxiaojin）
 author_url: https://xiaochens.com/
 published: 2026-09-30
 page: https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/
----
+-->
 
 # Opus 5.5 思考档位盲测幕后
 
-![封面](cover.jpg)
+<a href="https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/"><img src="cover.jpg" width="640" alt="Opus 5.5 思考档位盲测封面"></a>
 
-> **网页版（带图表、画面墙，可以点开揭晓档位）：https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/**
+视频《Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍》，7 分 16 秒，抖音 2026-09-30 首发。
 
-视频《Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍》，7 分 16 秒，抖音 2026-09-30 首发。网页版（带图表和全部画面）：https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/
+**[看网页版 →](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/)** 带图表和全部画面，可以点开揭晓档位。
 
 ## 要点
 
@@ -127,7 +127,16 @@ claude -p --model opus --effort xhigh \
 2. 档位决定它想多久，不太决定它画成什么。
 3. 作者只动嘴，AI 动手。每一步都是 AI 先做出能看的东西，作者看完说哪里不对，AI 再改。
 
-## 常见问题
+## 更正
+
+片中 6:21 口播说换旁白后那条是 medium，实测记录是 xhigh（67.8 分钟，$14.37）。
+
+---
+
+[← 全部幕后](https://chenyuxiaojin.github.io/cyxj-videos/) · **陈与小金**（chenyuxiaojin）· 非程序员，用 Claude Code 做一切 · [个人网站](https://xiaochens.com/) · [博客](https://blog.xiaochens.com/) · [GitHub](https://github.com/chenyuxiaojin) · [YouTube](https://www.youtube.com/@cyxj_ai) · [B 站](https://space.bilibili.com/505358756) · [抖音](https://v.douyin.com/A1qVQrOgPjY/) · [X](https://x.com/cyxjya)
+
+<details>
+<summary>常见问题</summary>
 
 **Opus 5.5 的思考档位越高，做出来的视频画面越好吗？**
 
@@ -153,18 +162,11 @@ Claude Code 里有 low、medium、high、xhigh、max 五档（2026-09-25 本机 
 
 19 次跑片按 API 价格折算合计 $238.47，累计 20.9 小时（有几次是同时跑的）。进了片子的正式四档：medium $6.12、high $6.84、xhigh $25.16、max $31.54。
 
-## 更正
+</details>
 
-片中 6:21 口播说换旁白后那条是 medium，实测记录是 xhigh（67.8 分钟，$14.37）。
-
-## 关于作者
+<details>
+<summary>关于作者</summary>
 
 **陈与小金**（chenyuxiaojin）：AI 落地｜非程序员，用 Claude Code 做一切。非程序员，用 Claude Code、Codex、Remotion 与 Agent Skills 把想法做成真实项目——选题、脚本、拍摄、剪辑、发布、复盘，全程公开。截至 2026-10-01，抖音有 15 条作品入选抖音精选。全部视频目录：https://chenyuxiaojin.github.io/cyxj-videos/
 
-- 个人网站：https://xiaochens.com/
-- 博客：https://blog.xiaochens.com/
-- GitHub：https://github.com/chenyuxiaojin
-- YouTube：https://www.youtube.com/@cyxj_ai
-- B 站：https://space.bilibili.com/505358756
-- 抖音：https://v.douyin.com/A1qVQrOgPjY/
-- X：https://x.com/cyxjya
+</details>
