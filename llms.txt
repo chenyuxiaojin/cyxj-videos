@@ -33,6 +33,7 @@
 
 ## 制作幕后
 
+- [如何选择正确的模型档位？思考档位开到 max，反输 xhigh](https://chenyuxiaojin.github.io/cyxj-videos/2026-10-08-iq-inversion/README.md)：片子里 12 段特效全是 Opus 5.5 用 claude -p 写 Remotion 代码做的，9 段 high、2 段 medium、1 段 xhigh，没有一段开 max；逐段公开档位、耗时、花费，附三档对比和 51 次跑片数据。
 - [Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/README.md)：同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。
 
 ## 全部公开视频（抖音，2026-03 至 2026-10-01，共 33 条）

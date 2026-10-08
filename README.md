@@ -7,10 +7,24 @@
 <!-- 新一期:在最上面加一个 <tr>,把「最新一期」挪给它 -->
 <table>
 <tr>
+<td width="46%"><a href="https://chenyuxiaojin.github.io/cyxj-videos/2026-10-08-iq-inversion/"><img src="2026-10-08-iq-inversion/cover.jpg" alt="思考档位智商倒挂封面"></a></td>
+<td>
+
+**最新一期** · 2026-10-08
+
+### [如何选择正确的模型档位？](https://chenyuxiaojin.github.io/cyxj-videos/2026-10-08-iq-inversion/)
+
+片子里的特效开的哪一档？12 段全是 Opus 5.5 用 claude -p 写代码做的：9 段 high、2 段 medium、1 段 xhigh，没有一段开 max。逐段公开档位、耗时、花费。
+
+[看这期是怎么做出来的 →](https://chenyuxiaojin.github.io/cyxj-videos/2026-10-08-iq-inversion/) · [文字版](2026-10-08-iq-inversion/)
+
+</td>
+</tr>
+<tr>
 <td width="46%"><a href="https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/"><img src="2026-09-30-opus55/cover.jpg" alt="Opus 5.5 思考档位盲测封面"></a></td>
 <td>
 
-**最新一期** · 2026-09-30
+2026-09-30
 
 ### [Opus 5.5 想得越久，画面越有艺术感吗？](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/)
 
