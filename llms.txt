@@ -29,16 +29,16 @@
 - 2026-07-09《Fable 5 指南，找到你的未知》：拆解 Anthropic 工程师写的 Fable 5 使用指南，讲怎么找到自己没意识到的盲区。
 - 2026-07-13《双 AI 对决：同一个提示词，Fable 5 和 GPT-5.6 各做一支视频》：给两个模型同一个提示词，全程自主做一支 VOX 风格视频，对比耗时和成片。
 - 2026-06-14《用 Codex 从 0 到 1 做 Vibe video（全流程实操）》：不会 Claude Code，也能用 Codex 从零做出一条视频的完整流程。
-- 2026-09-30《Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍》：同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。 幕后：https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/README.md
+- 2026-09-30《Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍》：同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。 幕后：https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/README.md 博客长文：https://blog.xiaochens.com/blog/opus55-effort-blind-test/
 
 ## 制作幕后
 
 - [如何选择正确的模型档位？思考档位开到 max，反输 xhigh](https://chenyuxiaojin.github.io/cyxj-videos/2026-10-08-iq-inversion/README.md)：片子里 12 段特效全是 Opus 5.5 用 claude -p 写 Remotion 代码做的，9 段 high、2 段 medium、1 段 xhigh，没有一段开 max；逐段公开档位、耗时、花费，附三档对比和 51 次跑片数据。
-- [Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/README.md)：同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。
+- [Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/README.md)：同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。博客长文：https://blog.xiaochens.com/blog/opus55-effort-blind-test/
 
 ## 全部公开视频（抖音，2026-03 至 2026-10-01，共 33 条）
 
-- 2026-09-30《Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍》：同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。 幕后：https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/README.md
+- 2026-09-30《Opus 5.5 想得越久，画面越有艺术感吗？同一个题目，四个档位各做一遍》：同一个提示词只改 Opus 5.5 的思考档位，四档各做一条 Remotion 画面后盲看，对比耗时和花费。 幕后：https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/README.md 博客长文：https://blog.xiaochens.com/blog/opus55-effort-blind-test/
 - 2026-09-20《为什么你越让 AI 不要做什么，它就越做什么？提示词里的「剪枝优化」与「粉色大象」》：负向提示词为什么会适得其反，以及怎么给提示词做剪枝。
 - 2026-09-04《Claude Code Agent Teams：几个 AI 组队开会、辩论排错，什么时候该用》：Claude Code 智能体团队的实操和适用场景。
 - 2026-08-28《subagents 子代理全流程实操》：Claude Code 子代理从创建到使用的完整流程。

@@ -15,6 +15,8 @@ page: https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/
 
 **[看网页版 →](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/)** 带图表和全部画面，可以点开揭晓档位。
 
+**[读博客长文 →](https://blog.xiaochens.com/blog/opus55-effort-blind-test/)** 结论、完整提示词和事实来源。
+
 ## 要点
 
 - 同一个提示词、同一段 25.5 秒旁白，只改 Opus 5.5 的思考档位（medium / high / xhigh / max）各做一条 Remotion 画面，打乱编号盲看。

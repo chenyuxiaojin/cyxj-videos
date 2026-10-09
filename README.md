@@ -32,7 +32,7 @@
 
 这条片 6 天做完：我发了 251 条消息，Claude Code 动手 2,352 次。
 
-[看这期是怎么做的 →](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/) · [文字版](2026-09-30-opus55/)
+[看这期是怎么做的 →](https://chenyuxiaojin.github.io/cyxj-videos/2026-09-30-opus55/) · [文字版](2026-09-30-opus55/) · [博客长文](https://blog.xiaochens.com/blog/opus55-effort-blind-test/)
 
 </td>
 </tr>
