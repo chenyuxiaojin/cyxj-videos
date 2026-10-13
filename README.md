@@ -40,6 +40,10 @@
 
 全部期数的网页版：<https://chenyuxiaojin.github.io/cyxj-videos/>
 
+## 配套 Skill 下载
+
+- 2026-07-09《Fable 5 指南，找到你的未知》：视频里提到的两个 Claude Code Skill（盲区扫描、测验验收），见 [`2026-07-09-find-your-unknowns/`](2026-07-09-find-your-unknowns/)。制作幕后整理中。
+
 ## 一条视频怎么做出来
 
 1. **选题和资料**：Claude Code 查官方文档、看同类视频字幕，写研究稿。
