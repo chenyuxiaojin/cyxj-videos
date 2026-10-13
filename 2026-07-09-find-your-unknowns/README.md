@@ -50,3 +50,7 @@ cp -R cyxj-videos/2026-07-09-find-your-unknowns/盲区扫描 \
 ## 制作幕后
 
 整理中。这期的制作过程（用的模型、提示词、花费与分工）会蒸馏成一篇幕后，并另出一条视频来讲。
+
+## 许可
+
+本文件夹里的两个 Skill 指令及使用说明沿用原仓库的 [MIT License](LICENSE)，范围说明见 [NOTICE.md](NOTICE.md)；本仓库其余内容按根目录 LICENSE（CC BY 4.0）。
