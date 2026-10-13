@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>视频制作流程全公开幕后：讲流程的这条片，也是这么做出来的 · 陈与小金</title>
+<meta name="description" content="《这是我用 AI 做了5个月的视频制作流程》5 分 47 秒，4:3。包装 8 段画面每段交给一个 claude -p 重做、我逐段点头后合并，整条从 16:9 改成 4:3，后期在达芬奇里由 AI 用脚本完成。4 天里我发了 159 条消息，Claude Code 动手 1,898 次；claude -p 另跑 21 次、操作 1,495 次，约 $142。">
+<meta name="author" content="陈与小金">
+<link rel="author" href="https://xiaochens.com/">
+<link rel="canonical" href="https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/">
+<link rel="alternate" type="text/markdown" href="https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/README.md" title="文字版">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="陈与小金 · 视频幕后">
+<meta property="og:title" content="视频制作流程全公开幕后：讲流程的这条片，也是这么做出来的">
+<meta property="og:description" content="《这是我用 AI 做了5个月的视频制作流程》的幕后：8 段画面每段一个 claude -p 重做，整条改成 4:3，后期在达芬奇里由 AI 用脚本完成。每段重做前、-p 版、成片三版对照，附给 -p 的提示词。">
+<meta property="og:url" content="https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/">
+<meta property="og:image" content="https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/cover.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="article:published_time" content="2026-10-13">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="视频制作流程全公开幕后：讲流程的这条片，也是这么做出来的">
+<meta name="twitter:description" content="8 段画面每段一个 claude -p 重做，整条改成 4:3，后期在达芬奇里由 AI 用脚本完成。每段三版对照，附给 -p 的提示词。">
+<meta name="twitter:image" content="https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/cover.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://xiaochens.com/#person", "name": "陈与小金", "alternateName": ["chenyuxiaojin", "CYXJ"], "jobTitle": "Forward Deployed Engineer（FDE）· AI 落地", "description": "非程序员，用 Claude Code、Codex、Remotion 与 Agent Skills 把想法做成真实项目——选题、脚本、拍摄、剪辑、发布、复盘，全程公开。", "url": "https://xiaochens.com/", "knowsAbout": ["AI 内容生产", "AI 视频工作流", "Claude Code", "Codex", "Remotion", "Agent Skills", "MCP Server", "DaVinci Resolve", "剪映", "非技术背景 AI 实操"], "sameAs": ["https://blog.xiaochens.com/", "https://github.com/chenyuxiaojin", "https://www.youtube.com/@cyxj_ai", "https://space.bilibili.com/505358756", "https://v.douyin.com/A1qVQrOgPjY/", "https://x.com/cyxjya", "https://chenyuxiaojin.github.io/cyxj-videos/"]}, {"@type": "VideoObject", "@id": "https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/#video", "name": "这是我用 AI 做了5个月的视频制作流程", "description": "从录口播到发布的整条流程：录口播，丢给 Claude Code 初剪和染色，手动剪气口，Remotion 做包装，4K ProRes 导出，AI 压缩，浏览器发布（发布键手动点）。后半段是真录屏演示。", "thumbnailUrl": ["https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/cover.jpg"], "uploadDate": "2026-10-13", "duration": "PT5M47S", "inLanguage": "zh-CN", "creator": {"@id": "https://xiaochens.com/#person"}, "keywords": "AI 做视频, 视频制作流程, Claude Code, Remotion, DaVinci Resolve, 达芬奇 MCP, 剪气口, 4:3, claude -p"}, {"@type": "TechArticle", "@id": "https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/#article", "headline": "视频制作流程全公开幕后：讲流程的这条片，也是这么做出来的", "description": "《这是我用 AI 做了5个月的视频制作流程》5 分 47 秒，4:3。8 段画面每段交给一个 claude -p 重做、逐段点头后合并，整条从 16:9 改成 4:3；后期在达芬奇里由 AI 用脚本完成。4 天里我发了 159 条消息，Claude Code 动手 1,898 次；claude -p 另跑 21 次、操作 1,495 次，约 $142。", "image": "https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/cover.jpg", "datePublished": "2026-10-13", "dateModified": "2026-10-13", "inLanguage": "zh-CN", "author": {"@id": "https://xiaochens.com/#person"}, "publisher": {"@id": "https://xiaochens.com/#person"}, "mainEntityOfPage": "https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/", "about": [{"@id": "https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/#video"}, {"@type": "SoftwareApplication", "name": "Claude Code"}, {"@type": "SoftwareApplication", "name": "Remotion"}, {"@type": "SoftwareApplication", "name": "DaVinci Resolve"}]}, {"@type": "FAQPage", "@id": "https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/#faq", "mainEntity": [{"@type": "Question", "name": "这条视频是怎么做的？", "acceptedAnswer": {"@type": "Answer", "text": "就是片子里讲的那条流程。口播是我录的，Claude Code 在达芬奇里初剪、把建议删的地方染成玫红色，我看完手动剪气口；包装在 Remotion 里写代码做，8 段画面每段交给一个 claude -p 重做，我逐段在预览里点头后合并；最后回达芬奇，AI 用脚本对口型、混音、铺音效、配乐、量字幕位置、导出和体检。"}}, {"@type": "Question", "name": "这条视频里，人做了什么，AI 做了什么？", "acceptedAnswer": {"@type": "Answer", "text": "人（陈与小金）出想法、录口播、剪口误和气口、给口播调色美颜、看片挑毛病、拍板，4 天里发了 159 条消息；字幕拖上时间线和改字幕样式这两步达芬奇脚本做不了，也是他在界面里点的。其余都是 AI：Claude Code 在 13 段对话里动手 1,898 次；claude -p 另跑了 21 次、操作 1,495 次，做 8 段画面、MCP 段三档对比、合并后修补和改 4:3。"}}, {"@type": "Question", "name": "给 claude -p 的提示词是怎么写的？", "acceptedAnswer": {"@type": "Answer", "text": "每段一份，约五六千字：这段是什么、整条视频讲什么、这段逐句口播和帧号、现版代码和真素材在哪、作者看片时说过的原话、一段导演要求、硬性要求（只改这段、人声不动、守安全框、只用真网页和核过的数字）、怎么自己看效果、交片时写一份出片说明。Claude Code 自己的想法一句没写进去。"}}, {"@type": "Question", "name": "为什么改成 4:3？", "acceptedAnswer": {"@type": "Answer", "text": "手机竖着刷的时候，1080 宽的屏幕上 16:9 的画面只有 608 高，4:3 有 810 高，画面大了约三分之一。做法是先用一个 xhigh 档的 claude -p 改底座、定版式，再开 8 个 high 档的 claude -p 每段一个并行重排，约 70 分钟、约 $28。"}}, {"@type": "Question", "name": "发布是 AI 点的吗？", "acceptedAnswer": {"@type": "Answer", "text": "不是。AI 会自己打开浏览器上传视频、传封面、写标题和简介，最后的发布键是我手动点的。"}}, {"@type": "Question", "name": "剪气口为什么不交给 AI？", "acceptedAnswer": {"@type": "Answer", "text": "同一句录两遍时，AI 默认留更完整的第二遍，我有时想要第一遍的感觉；我故意停的地方，AI 也会当成停顿剪掉。所以只让 AI 把建议删的地方染成玫红色，我从头到尾看一遍再删。"}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "陈与小金 · 视频幕后", "item": "https://chenyuxiaojin.github.io/cyxj-videos/"}, {"@type": "ListItem", "position": 2, "name": "视频制作流程全公开幕后", "item": "https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/"}]}]}</script>
+<style>
+/* 版式:浅灰底 + 白卡片,系统字体,蓝色只给链接、主按钮和「AI」标记;成片是 4:3,配图一律 4:3 */
+:root {
+  --bg: #F2F2F4;
+  --panel: #FFFFFF;
+  --panel-2: #F0F1F4;
+  --line: #E2E2E6;
+  --ink: #1D1D1F;
+  --ink-2: #55555A;
+  --ink-3: #8A8A8F;
+  --accent: #0A66D6;
+  --p: #8FB8F2; /* claude -p */
+  --track: #C9CED6;
+  --card: #6D5BD0; /* 章节卡 */
+  --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 8px 24px rgba(0, 0, 0, .05);
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+img, video { max-width: 100%; height: auto; }
+[hidden] { display: none !important; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3 { text-wrap: balance; margin: 0; letter-spacing: -.01em; }
+h2 { font-size: clamp(24px, 3vw, 32px); line-height: 1.3; font-weight: 700; }
+h3 { font-size: 20px; line-height: 1.4; font-weight: 700; }
+p { margin: 0; }
+.num { font-variant-numeric: tabular-nums; }
+.eyebrow { font-size: 13px; color: var(--ink-3); }
+.lead { color: var(--ink-2); max-width: 38em; }
+.muted { color: var(--ink-3); font-size: 13px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); padding-block: 0 96px; }
+
+/* 顶部导航 */
+.chapters { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.chapters .inner { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); display: flex; overflow-x: auto; scrollbar-width: none; }
+.chapters a { flex: 1 0 auto; color: var(--ink-3); font-size: 12px; padding: 10px 12px; border-bottom: 2px solid transparent; white-space: nowrap; text-align: center; }
+.chapters a:hover, .chapters a.on { color: var(--ink); border-bottom-color: var(--accent); text-decoration: none; }
+
+section { padding-top: 88px; scroll-margin-top: 48px; }
+.sec-head { display: grid; gap: 12px; margin-bottom: 36px; }
+
+/* 开场 */
+.hero { padding-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; }
+.hero h1 { font-size: clamp(30px, 4.2vw, 44px); line-height: 1.22; font-weight: 700; margin-top: 14px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lead { margin-top: 18px; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: 28px; background: var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+.stat { background: var(--panel); padding: 14px 14px 12px; }
+.stat b { display: block; font-size: 24px; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.stat b small { font-size: 13px; font-weight: 400; color: var(--ink-2); margin-left: 3px; }
+.stat span { font-size: 12px; color: var(--ink-3); }
+.stats.in { margin: 0 0 28px; }
+
+/* 片子讲的流程:点一步看那一刻的画面 */
+.pipe { border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 14px; display: grid; gap: 12px; }
+.pipe-shot { position: relative; }
+.pipe-shot img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #0B1220; }
+.pipe-cap { font-size: 13px; color: var(--ink-2); min-height: 3.2em; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.steps button { width: 100%; height: 100%; font: 500 12px/1.35 var(--font); color: var(--ink-2); background: var(--panel-2); border: 1px solid transparent; border-radius: 8px; padding: 7px 4px 6px; cursor: pointer; display: grid; gap: 4px; justify-items: center; text-align: center; }
+.steps button:hover { color: var(--ink); }
+.steps button[aria-pressed="true"] { background: var(--panel); border-color: var(--accent); color: var(--ink); }
+.who { display: inline-grid; place-items: center; min-width: 22px; height: 18px; padding: 0 5px; border-radius: 999px; font: 600 10px/1 var(--font); }
+.who.me { background: var(--ink); color: var(--bg); }
+.who.ai { background: var(--accent); color: #fff; }
+.who.p { background: var(--p); color: #0A1A33; }
+
+/* 分工:一格 = 10 次 */
+.share { display: grid; gap: 22px; border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 22px clamp(14px, 2.6vw, 28px); }
+.sh-row { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 20px; align-items: start; }
+.sh-lab { display: grid; gap: 2px; }
+.sh-lab .nm { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-2); }
+.sh-lab b { font-size: 30px; font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.sh-lab b small { font-size: 14px; font-weight: 400; color: var(--ink-2); margin-left: 4px; }
+.sh-lab span.d { font-size: 12.5px; color: var(--ink-3); line-height: 1.5; }
+.units { display: flex; flex-wrap: wrap; gap: 3px; padding-top: 6px; }
+.units i { width: 10px; height: 10px; border-radius: 2px; }
+.sh-break { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 12.5px; color: var(--ink-2); }
+.sh-break b { font-weight: 600; color: var(--ink); margin-left: 4px; font-variant-numeric: tabular-nums; }
+
+/* 四天 */
+.days { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.day { background: var(--panel); border-radius: 14px; box-shadow: var(--shadow); padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.day .dt { font-size: 13px; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+.day h3 { font-size: 17px; }
+.day ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+.day img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
+
+/* 图表通用 */
+.chart { border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); padding: 20px clamp(14px, 2.4vw, 24px) 18px; }
+.chart-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px 20px; flex-wrap: wrap; margin-bottom: 14px; }
+.chart-h h3 { font-size: 18px; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 8px; border-radius: 2px; display: inline-block; }
+
+/* 成片时间线 */
+.tl-scroll { overflow-x: auto; }
+.tl { min-width: 820px; display: grid; grid-template-columns: 104px minmax(0, 1fr); row-gap: 8px; column-gap: 12px; }
+.tl-lab { font-size: 12.5px; color: var(--ink-2); align-self: center; line-height: 1.35; }
+.tl-lab small { display: block; color: var(--ink-3); font-size: 11px; }
+.tl-track { position: relative; height: 30px; background: var(--bg); border-radius: 4px; }
+.tl-track.ch { height: 26px; background: none; }
+.tl-b { position: absolute; top: 3px; bottom: 3px; border-radius: 3px; overflow: hidden; font-size: 11px; line-height: 24px; padding: 0 6px; white-space: nowrap; cursor: default; }
+.tl-b.c { top: 0; bottom: 0; line-height: 26px; background: var(--panel-2); color: var(--ink-2); border-right: 2px solid var(--bg); border-radius: 0; text-align: center; padding: 0 2px; }
+.tl-b.c:nth-child(even) { background: var(--panel); }
+.tl-b.s { background: var(--p); color: #0A1A33; text-align: center; padding: 0; font-weight: 600; }
+.tl-b.t { background: var(--track); }
+.tl-b.k { background: var(--card); }
+.tl-b.k.o { background: transparent; box-shadow: inset 0 0 0 2px var(--card); }
+.tl-axis { position: relative; height: 18px; }
+.tl-axis span { position: absolute; transform: translateX(-50%); font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.tl-axis span:first-child { transform: none; }
+
+/* 三条轨 */
+.tracks3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 28px; }
+figure { margin: 0; min-width: 0; }
+figure img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: #0B1220; }
+figcaption { font-size: 13px; color: var(--ink-3); margin-top: 6px; line-height: 1.55; }
+figcaption b { color: var(--ink); font-weight: 600; }
+
+/* 8 段 */
+.segs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px 14px; }
+.seg { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.seg .v { position: relative; }
+.seg .v img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
+.seg .n { position: absolute; left: 6px; top: 6px; font: 600 11px/1 var(--font); padding: 4px 6px; border-radius: 4px; background: rgba(255, 255, 255, .92); color: var(--ink); }
+.seg h4 { margin: 0; font-size: 14px; line-height: 1.45; font-weight: 700; display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; }
+.seg h4 span { font-size: 11.5px; font-weight: 400; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.seg p { font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+
+.principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.principles > div { background: var(--panel); padding: 18px 20px; display: grid; gap: 6px; min-width: 0; align-content: start; }
+.principles b { font-size: 15px; font-weight: 600; }
+.principles p { font-size: 14px; color: var(--ink-2); }
+.gal-h { margin: 44px 0 14px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.gal-h h3 { font-size: 18px; }
+
+/* 三档对比 */
+.tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border-radius: 12px; overflow: hidden; }
+.tiers > div { background: var(--panel); padding: 12px 14px; display: grid; gap: 4px; font-size: 13px; color: var(--ink-2); }
+.tiers b { font-size: 14px; color: var(--ink); }
+.tiers .pick { box-shadow: inset 0 0 0 2px var(--accent); }
+.tiers .pick b::after { content: "  挑中"; color: var(--accent); font-size: 12px; font-weight: 500; }
+
+/* 4:3 版式图 */
+.layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.lay-fig { position: relative; border-radius: 8px; overflow: hidden; }
+.lay-fig img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 0; border-radius: 0; }
+.lay-fig svg { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity .3s; }
+.lay-fig[data-guides="off"] svg { opacity: 0; }
+.lay-keys { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.lay-keys li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 10px; font-size: 14px; color: var(--ink-2); }
+.lay-keys li b { color: var(--ink); font-weight: 600; }
+.lay-keys i { width: 14px; height: 14px; border-radius: 3px; margin-top: 5px; }
+button.toggle { font: 600 13px var(--font); color: var(--accent); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; justify-self: start; }
+
+.cards2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.barfig { margin-top: 28px; }
+.barfig img { aspect-ratio: auto; height: auto; border-radius: 6px; }
+
+/* 后期 */
+.post { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 18px; }
+.post > div { border-top: 2px solid var(--accent); padding-top: 14px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.post p { font-size: 14px; color: var(--ink-2); }
+.post .fig { font-size: 26px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.lip { display: grid; gap: 6px; margin-top: 4px; }
+.lip-row { display: grid; grid-template-columns: 64px minmax(0, 1fr) 64px; gap: 8px; align-items: center; font-size: 12px; color: var(--ink-2); }
+.lip-row .t { position: relative; height: 12px; background: var(--bg); border-radius: 3px; }
+.lip-row .t i { position: absolute; top: 0; bottom: 0; border-radius: 3px; }
+.lip-row .t .ok { position: absolute; top: -3px; bottom: -3px; border-left: 1px dashed var(--ink-3); border-right: 1px dashed var(--ink-3); }
+.check { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.check td { padding: 7px 10px; border-bottom: 1px solid var(--line); }
+.check td:last-child { text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.check td:first-child { color: var(--ink-2); }
+
+.pits { margin-top: 40px; display: grid; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.pit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 20px; padding: 14px 20px; background: var(--panel); border-top: 1px solid var(--line); font-size: 14px; }
+.pit:first-child { border-top: 0; }
+.pit .a { color: var(--ink-2); }
+.pit-h { background: var(--panel-2); font-size: 12px; color: var(--ink-3); padding-block: 10px; }
+
+.takeaways { display: grid; }
+.tk { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding: 26px 0; border-top: 1px solid var(--line); }
+.tk:last-child { border-bottom: 1px solid var(--line); }
+.tk .n { font-weight: 700; font-size: 40px; line-height: 1; color: var(--ink-3); }
+.tk h3 { font-size: 22px; margin-bottom: 8px; }
+.tk p { color: var(--ink-2); max-width: 46em; }
+
+.faq { display: grid; border-top: 1px solid var(--line); }
+.faq > div { padding: 20px 0; border-bottom: 1px solid var(--line); display: grid; gap: 8px; }
+.faq h3 { font-size: 18px; }
+.faq p { color: var(--ink-2); max-width: 46em; }
+footer { margin-top: 64px; display: grid; gap: 8px; font-size: 13px; color: var(--ink-3); max-width: 60em; }
+
+#tip { position: fixed; z-index: 20; pointer-events: none; background: #1D1D1F; color: #fff; font-size: 12.5px; line-height: 1.5; padding: 7px 10px; border-radius: 6px; box-shadow: 0 6px 20px rgba(0, 0, 0, .25); max-width: 280px; }
+
+@media (max-width: 900px) {
+  .hero, .layout { grid-template-columns: 1fr; }
+  .days { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .segs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .post { grid-template-columns: 1fr; }
+  .tracks3 { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+}
+@media (max-width: 620px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .sh-row { grid-template-columns: 1fr; gap: 8px; }
+  .units i { width: 8px; height: 8px; }
+  .days, .cards2, .principles, .tracks3 { grid-template-columns: 1fr; }
+  .segs { gap: 18px 10px; }
+  .tiers { grid-template-columns: 1fr; }
+  .pit { grid-template-columns: 1fr; gap: 4px; }
+  .pit-h { display: none; }
+  .tk { grid-template-columns: 1fr; gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* 循环片段 */
+.seg .v video, .seg .v img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: #0B1220; }
+.seg .m { font-size: 11.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+/* 一段怎么变的:重做前 → -p 版 → 4:3 成片 */
+.evo { display: grid; gap: 0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); background: var(--panel); }
+.evo-row { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 20px; padding: 20px; border-top: 1px solid var(--line); }
+.evo-row:first-child { border-top: 0; }
+.evo-lab { display: grid; gap: 6px; align-content: start; }
+.evo-lab h3 { font-size: 17px; }
+.evo-lab .m { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.evo-lab q { font-size: 13.5px; color: var(--ink); quotes: "「" "」"; }
+.evo-lab p { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+.evo-imgs { display: grid; grid-template-columns: 1.333fr 1.333fr 1fr; gap: 10px; align-items: end; }
+.evo-imgs figure img { aspect-ratio: auto; }
+.evo-imgs figcaption { font-size: 12px; }
+.evo-imgs .arrow { display: none; }
+
+/* 提示词 */
+.prompt { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 24px; align-items: start; }
+.p-outline { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+.p-outline li { background: var(--panel); padding: 11px 16px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--ink-2); display: grid; gap: 2px; }
+.p-outline li:first-child { border-top: 0; }
+.p-outline li b { color: var(--ink); font-weight: 600; font-size: 14px; }
+.p-quote { background: #1D1D1F; color: #E8E8EA; border-radius: 14px; padding: 18px 20px; font-size: 13.5px; line-height: 1.8; white-space: pre-wrap; }
+.p-quote .h { color: #9DB8E8; font-weight: 600; }
+.saids { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+.saids blockquote { margin: 0; background: var(--panel); border-left: 3px solid var(--ink); border-radius: 0 10px 10px 0; padding: 10px 14px; font-size: 13.5px; color: var(--ink); box-shadow: var(--shadow); }
+
+/* 原话时间线 */
+.said { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.said > div { display: grid; grid-template-columns: 92px minmax(0, 1fr) minmax(0, 1fr); gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.said .t { color: var(--ink-3); font-size: 12.5px; font-variant-numeric: tabular-nums; padding-top: 2px; }
+.said q { color: var(--ink); quotes: "「" "」"; }
+.said .a { color: var(--ink-2); }
+.tiers3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 620px) { .tiers3 { grid-template-columns: 1fr; } }
+.barclip video, .barclip img { display: block; width: 100%; height: auto; border-radius: 6px; background: #0B1220; }
+
+@media (max-width: 900px) {
+  .evo-row { grid-template-columns: 1fr; }
+  .prompt { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .evo-imgs { grid-template-columns: 1fr 1fr; }
+  .evo-imgs figure:last-child { grid-column: 1 / -1; }
+  .saids { grid-template-columns: 1fr; }
+  .said > div { grid-template-columns: 1fr; gap: 4px; }
+}
+</style>
+</head>
+<body>
+<nav class="chapters" aria-label="章节">
+  <div class="inner">
+    <a href="#top">开场</a>
+    <a href="#share">分工</a>
+    <a href="#days">四天</a>
+    <a href="#tracks">取景</a>
+    <a href="#segs">8 段画面</a>
+    <a href="#evo">三版对照</a>
+    <a href="#prompt">提示词</a>
+    <a href="#ratio">改 4:3</a>
+    <a href="#post">后期</a>
+    <a href="#said">我说过的话</a>
+    <a href="#faq">问答</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<header class="hero" id="top">
+  <div>
+    <div class="eyebrow"><a href="../" style="color:inherit">陈与小金 · 视频幕后</a> · 2026.10.10 – 10.13</div>
+    <h1>这条片讲我怎么做视频，<em>它自己也是这么做出来的</em></h1>
+    <p class="lead">成片《这是我用 AI 做了5个月的视频制作流程》，5 分 47 秒，4:3。片子里讲的那条流程，就是做这条片时走的流程。我录口播、剪气口、看片挑毛病、拍板；初剪、包装、混音、音效、字幕定位、导出和体检，都是 AI 动的手。</p>
+    <div class="stats">
+      <div class="stat"><b>4<small>天</small></b><span>初剪到导出</span></div>
+      <div class="stat"><b>159<small>条</small></b><span>我发的消息</span></div>
+      <div class="stat"><b>1,898<small>次</small></b><span>Claude Code 动手</span></div>
+      <div class="stat"><b>21<small>次</small></b><span>claude -p 跑画面</span></div>
+    </div>
+  </div>
+  <div class="pipe" id="pipe">
+    <div class="pipe-shot"><img id="pipe-img" src="img/w1-rec.jpg" alt="" width="1200" height="900"></div>
+    <p class="pipe-cap" id="pipe-cap"></p>
+    <ol class="steps" id="steps" aria-label="片子里讲的七步"></ol>
+  </div>
+</header>
+
+<section id="share">
+  <div class="sec-head">
+    <div class="eyebrow">分工</div>
+    <h2>我动嘴，AI 动手</h2>
+    <p class="lead">我亲手做的：录口播、剪口误和气口、10-12 补的口播调色美颜。还有两步达芬奇脚本做不了：把字幕拖上时间线、改字幕的位置和底框，也是我在界面里点的。其余按这 4 天的对话记录数出来，都是 AI 做的。</p>
+  </div>
+  <div class="share">
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who me">我</i>我</span><b>159<small>条消息</small></b><span class="d">出想法、录口播、剪气口、调色美颜、逐段看片说要不要、说哪里不对、拍板</span></div>
+      <div class="units" data-n="159" data-c="var(--ink)"></div>
+    </div>
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who ai">CC</i>Claude Code（主工程 + 达芬奇）</span><b>1,898<small>次操作</small></b><span class="d">导出三条轨、三轨取景、派 -p、合并、截真网页、章节卡、进度条、对口型、混音、音效、配乐、量字幕位置、导出、体检</span></div>
+      <div>
+        <div class="units" data-n="1898" data-c="var(--accent)"></div>
+        <div class="sh-break"><span>跑命令<b>1,194</b></span><span>操作达芬奇<b>247</b></span><span>读文件<b>244</b></span><span>子 agent<b>64</b></span><span>操作浏览器<b>60</b></span><span>写和改文件<b>50</b></span><span>其他<b>39</b></span></div>
+      </div>
+    </div>
+    <div class="sh-row">
+      <div class="sh-lab"><span class="nm"><i class="who p">-p</i>claude -p（无头跑画面）</span><b>1,495<small>次操作</small></b><span class="d">21 次，约 $142：8 段画面重做、合并后修补、MCP 段三档各一版、改 4:3 的底座和 8 段重排</span></div>
+      <div>
+        <div class="units" data-n="1495" data-c="var(--p)"></div>
+        <div class="sh-break"><span>8 段重做<b>869</b></span><span>改 4:3<b>388</b></span><span>MCP 三档<b>182</b></span><span>合并修补<b>56</b></span></div>
+      </div>
+    </div>
+    <p class="muted">一格 = 10 次。统计范围：10-10 到 10-13 做这条片的 13 段对话（包括它们派出去的子 agent），加上这些对话派出去的 21 次 claude -p。不含：对稿子做受众模拟和事实核查的那段内容侧对话，10-12 一段后半截在做下一条片的对话，以及做这个幕后页的对话。一次「操作」指 AI 用一次工具，比如跑一条命令、读一个文件、在达芬奇里执行一步。</p>
+  </div>
+</section>
+
+<section id="days">
+  <div class="sec-head">
+    <div class="eyebrow">四天</div>
+    <h2>10-10 初剪，10-13 导出</h2>
+    <p class="lead">按工程的提交记录和对话记录排出来。每一天都是 AI 先做出一个能看的东西，我看完说要不要、哪里不对。</p>
+  </div>
+  <div class="days">
+    <article class="day">
+      <span class="dt">10-10</span>
+      <h3>剪口播、拆三轨、找背景</h3>
+      <img src="img/w2-dv.jpg" alt="达芬奇时间线上,建议删的地方染成玫红色" loading="lazy" width="1200" height="900">
+      <ul>
+        <li>口播是一周前录的。我问 AI 内容够不够；它试着用克隆音补一段，我听完说内容和声音都不对，还用原来的</li>
+        <li>我剪完口误。我的主意：口播、原录屏、AI 录屏分三条轨各自导出，方便 Remotion 取景；我还提议录一段「AI 正在做包装」的画面，AI 自己录了</li>
+        <li>背景试了五种模拟模型、三版大海，都不要；回到原来的波涌底，光往中间挪</li>
+      </ul>
+    </article>
+    <article class="day">
+      <span class="dt">10-11</span>
+      <h3>插段、8 段重做、改 4:3</h3>
+      <img src="img/m-cards.jpg" alt="开源仓库卡和官方新闻稿卡上下排,中间是达芬奇图标" loading="lazy" width="1200" height="900">
+      <ul>
+        <li>我发现一段讲达芬奇 MCP 的口播被剪掉了，自己剪好 7 刀插回去。这个开源仓库我是贡献者之一：<a href="https://github.com/samuelgursky/davinci-resolve-mcp/commits?author=chenyuxiaojin">3 次提交合进主分支</a>，6 个版本的发布说明点名致谢</li>
+        <li>8 段画面各交给一个 claude -p 重做，我一段一段看，8 段都要</li>
+        <li>MCP 段三档各跑一版，挑 xhigh 再按我的意见改</li>
+        <li>下午看到顶流博主都换了 4:3，当晚整条改成 4:3</li>
+      </ul>
+    </article>
+    <article class="day">
+      <span class="dt">10-12</span>
+      <h3>补调色、定安全区、出母带</h3>
+      <img src="img/w4-model.jpg" alt="真 Claude Code 的 /model 选模型窗口" loading="lazy" width="1200" height="900">
+      <ul>
+        <li>我发现口播没调色美颜。我在达芬奇里调好，AI 只换画面不换声音，逐帧核对没错位</li>
+        <li>我看顶级 AI 博主的片子，觉得安全区太大；改成两层：框到外框、重点到重点框</li>
+        <li>选模型换成真 CC 的 /model 窗口，讲设备那段去掉标注，结尾换抖音播放器，进度条里加两个小人</li>
+      </ul>
+    </article>
+    <article class="day">
+      <span class="dt">10-13</span>
+      <h3>章节卡重做、后期、导出</h3>
+      <img src="img/ch3.jpg" alt="章节卡:工具流程梳理" loading="lazy" width="1200" height="900">
+      <ul>
+        <li>前一晚 AI 加了 logo 卡和章节卡、没问我就渲了。我说切得太乱，重做：不要 logo 卡，①② 盖、③④⑤ 切开</li>
+        <li>达芬奇里由 AI 用脚本对口型、混音、铺音效、调配乐、量字幕位置</li>
+        <li>导出带字幕和不带字幕两版，各跑一遍音频体检</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="tracks">
+  <div class="sec-head">
+    <div class="eyebrow">取景</div>
+    <h2>三条轨对齐，画面都是从里面取景</h2>
+    <p class="lead">口播、我操作的原录屏、AI 干活的录屏，三条轨在达芬奇里帧对帧对齐后各自导出，一起进 Remotion。每个画面都是从某条轨里框一块出来放到画布上。人声只来自口播那一条，不裁也不变速。</p>
+  </div>
+  <div class="tracks3">
+    <figure><img src="img/w1-take.jpg" alt="口播轨:右侧竖卡画中画" loading="lazy" width="1200" height="900"><figcaption><b>口播</b>　全片唯一的声音。画面上是全屏露脸、右边竖卡，或者缩成一张小卡。</figcaption></figure>
+    <figure><img src="img/w6-cc.jpg" alt="原录屏轨:真 CC 窗口" loading="lazy" width="1200" height="900"><figcaption><b>原录屏</b>　我操作 CC 和达芬奇的真录屏，说到哪行推到哪行。</figcaption></figure>
+    <figure><img src="img/w5-studio.jpg" alt="AI 录屏轨:Remotion Studio 快放" loading="lazy" width="1200" height="900"><figcaption><b>AI 录屏</b>　AI 在 Remotion Studio 里干活的录屏，只拿来垫口播。</figcaption></figure>
+  </div>
+  <div class="chart">
+    <div class="chart-h"><h3>成片 5:47 拆开看</h3><div class="legend" id="tl-legend"></div></div>
+    <div class="tl-scroll"><div class="tl" id="tl"></div></div>
+    <p class="muted" style="margin-top:10px">最上面一行就是片子顶部的章节进度条。色块里的数字是第几段画面，悬停或聚焦可以看名字和时间。③④⑤ 三张章节卡是切开插进去的，那 2.5 秒没有口播，所以成片比正片长 7.5 秒。</p>
+  </div>
+</section>
+
+<section id="segs">
+  <div class="sec-head">
+    <div class="eyebrow">8 段画面</div>
+    <h2>一段一个 claude -p，我逐段点头</h2>
+    <p class="lead">整条片做完一版后，我说：用 -p 一段一段单独看，有没有更好的呈现方式。Claude Code 把片子切成 8 段，每段复制一份独立的工程，派一个 high 档的 claude -p，8 个同时跑。下面是成片里每段的一小截。</p>
+  </div>
+  <div class="stats in">
+    <div class="stat"><b>13–36<small>分钟</small></b><span>首轮每段用时</span></div>
+    <div class="stat"><b>$84.79</b><span>首轮 8 段合计</span></div>
+    <div class="stat"><b>244<small>次</small></b><span>打开自己渲的图检查</span></div>
+    <div class="stat"><b>8 / 8</b><span>段我说「要」</span></div>
+  </div>
+  <div class="segs" id="segwall"></div>
+</section>
+
+<section id="evo">
+  <div class="sec-head">
+    <div class="eyebrow">三版对照</div>
+    <h2>每段怎么变过来的</h2>
+    <p class="lead">同一时刻的三帧：-p 重做前（16:9）、-p 重做后（16:9）、4:3 成片。前两张是用当时的代码重新渲出来的。每段写着 -p 首轮的用时、花费、它打开自己渲的图检查了几次，以及我看完说了什么。</p>
+  </div>
+  <div class="evo" id="evolist"></div>
+
+  <div class="gal-h"><h3>MCP 那段三档各跑一版</h3><span class="muted">3:04–3:42，38 秒</span></div>
+  <div class="cards2 tiers3">
+    <figure><img src="img/t-medium.jpg" alt="medium 版:两张卡连到达芬奇,头像滑块" loading="lazy" width="800" height="450" style="aspect-ratio:16/9"><figcaption><b>medium</b>　13 分钟 · $2.91<br>头像变成一颗圆钮，在「开源 ↔ 官方」之间来回拨。</figcaption></figure>
+    <figure><img src="img/t-high.jpg" alt="high 版:37 和 389 升成大字,背后点阵" loading="lazy" width="800" height="450" style="aspect-ratio:16/9"><figcaption><b>high</b>　19 分钟 · $3.91<br>官方、我、仓库三格并排，37 / 389 升成大字，背后点阵炸开。</figcaption></figure>
+    <figure><img src="img/t-xhigh.jpg" alt="xhigh 版:官方新闻稿卡翻面,连到达芬奇图标" loading="lazy" width="800" height="450" style="aspect-ratio:16/9;outline:2px solid var(--accent);outline-offset:2px"><figcaption><b>xhigh · 挑中</b>　43 分钟 · $10.44<br>一张两面卡，「交替」就翻面。按我的三条意见续改 11 分钟、$3.51。</figcaption></figure>
+  </div>
+  <p class="muted" style="margin-top:10px">Claude Code 合并后抽帧看，觉得这段 40 秒都是同一个构图、最容易划走，就单独拿出来三档各跑一版。我的三条意见：开头的 3D 倾斜保留；人物不用放大；官方和社区不用来回翻，并排放在左边就好，人物小窗的出现和散落「有点太 low」。</p>
+
+  <div class="gal-h"><h3>合并后再修一次</h3></div>
+  <div class="principles">
+    <div><b>8 段拼起来，接缝处有 5 个小毛病</b><p>比如「第 1 遍」卡片空了 3 秒才出内容、MCP 段结束和人脸之间露出半秒空背景、对话窗升起后空挂 3 秒。Claude Code 列成一张单子交给一个 claude -p，11 分钟、$3.34 一次修完，别的画面一帧不动。</p></div>
+    <div><b>先自己看，再给我看</b><p>每段跑完，Claude Code 先抽帧自己看一遍，再一次只开一个预览给我，附一张「口播说到 / 旧版 / 新版」对照表。我回「要」才开下一段。</p></div>
+  </div>
+</section>
+
+<section id="prompt">
+  <div class="sec-head">
+    <div class="eyebrow">提示词</div>
+    <h2>给每个 claude -p 的提示词长什么样</h2>
+    <p class="lead">8 段每段一份，五六千字，结构一样。Claude Code 只写事实和规矩，它自己觉得画面该怎么做，一句没写进去。</p>
+  </div>
+  <div class="prompt">
+    <ol class="p-outline">
+      <li><b>你负责哪一段</b><span>帧号范围、这段讲什么；先看现在的画面，判断有没有更好的呈现方式，好的可以留，不好的大胆推翻。</span></li>
+      <li><b>整条视频</b><span>这条片讲什么、三条轨是什么、工程说明在哪。</span></li>
+      <li><b>你这段的口播</b><span>逐句原文加帧号，还有前一句和后一句。</span></li>
+      <li><b>现版代码和真素材</b><span>现在的代码在哪、截好的真网页有哪些；官方页面上没写的，别编。</span></li>
+      <li><b>作者看这条片时说过的原话</b><span>原样贴进去，见右下。</span></li>
+      <li><b>导演</b><span>一段固定的话，见右上。</span></li>
+      <li><b>硬性要求</b><span>只改这段，前后一帧不变；人声只来自口播轨；重点守安全框、不进字幕带；字和数字只用口播和工程文档里有的；网页素材必须是真页面，可以自己开浏览器截；时间按口播里的字对齐，不写死帧数。</span></li>
+      <li><b>怎么看效果</b><span>先渲现版看一遍；改完渲关键帧静帧、打开图片自己看，低清渲整段抽帧拼图看节奏；类型检查要过。</span></li>
+      <li><b>交片</b><span>写一份出片说明：用大白话说这版怎么呈现、比现版好在哪、改了哪些文件。</span></li>
+    </ol>
+    <div>
+      <div class="p-quote"><span class="h">【导演】</span>
+画面里出现什么、怎么编排，全部由内容决定；风格只决定它们怎么被画出来、怎么动。
+这是一支大师级的动态设计短片，出自顶级动效导演之手。
+- 读懂内容，找到一个贯穿全片的视觉构思：让一个主角从头演到尾，画面在它身上一路生长、变化，像一个连续的长镜头。
+- 让画面自己把事讲清楚：观众只看画面的变化，就能看懂每一步。
+- 每个动作都在表演：有预备、发力、超调和回落，快慢分明；节奏像一首曲子，有起承转合，最大的动作落在高潮。
+- 每一帧都经得起暂停：构图饱满，尺度对比大胆，焦点明确，随手截一帧就是一张好海报。
+- 第一帧就抓人，结尾是一个精心设计的定格。</div>
+      <div class="saids">
+        <blockquote>我觉得整体画面，我的人物就是露脸的部分有点少。不过画面倒还是还行。有点回形针的那种感觉了，但是里面的动画不够精细。</blockquote>
+        <blockquote>素材不对，素材应该是官方的、真实的网页素材，以及真实的仓库页面素材。</blockquote>
+        <blockquote>我的口播小窗口，不要放大我的人物。</blockquote>
+        <blockquote>还是原版吧。只是更朝中心靠一点。</blockquote>
+      </div>
+    </div>
+  </div>
+  <p class="muted" style="margin-top:14px">每份提示词还附了一句我的口味：认可深蓝点阵底、真实界面和真网页、品牌蓝点缀、干净的扁平插画道具；不要满屏文字卡、页眉小标题、①②③ 编号和出处小字。</p>
+</section>
+
+<section id="ratio">
+  <div class="sec-head">
+    <div class="eyebrow">改 4:3</div>
+    <h2>16:9 做完了，整条改成 4:3</h2>
+    <p class="lead">10-11 下午我看到顶流科技博主都换成了 4:3。Claude Code 建议这条别改、下一条再说，因为每一段的取景坐标都写死在 16:9 上，等于包装重排一遍。我说：「就这条视频更换成 4:3，你多开几个 -p 去做不就行了吗？5 个不够就 10 个。」手机竖着刷时，1080 宽的屏幕上 16:9 只有 608 高，4:3 有 810 高，画面大了约三分之一。</p>
+  </div>
+  <div class="stats in">
+    <div class="stat"><b>1<small>个</small></b><span>xhigh 改底座、定版式（$8.30）</span></div>
+    <div class="stat"><b>8<small>个</small></b><span>high 每段重排一段</span></div>
+    <div class="stat"><b>≈70<small>分钟</small></b><span>从开跑到合完</span></div>
+    <div class="stat"><b>$28.31</b><span>9 次合计</span></div>
+  </div>
+  <div class="layout">
+    <div style="display:grid;gap:10px">
+      <div class="lay-fig" id="layfig" data-guides="on">
+        <img src="img/m-stats.jpg" alt="4:3 成片画面:左边是开源仓库卡和官方新闻稿卡,右边是人物竖卡" width="1200" height="900">
+        <svg viewBox="0 0 1440 1080" aria-hidden="true">
+          <rect x="28" y="22" width="1384" height="1036" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="12 8" opacity=".85"/>
+          <rect x="72" y="54" width="1296" height="972" fill="none" stroke="#34C759" stroke-width="4"/>
+          <rect x="0" y="895" width="1440" height="105" fill="#FFCC00" opacity=".35"/>
+          <rect x="28" y="22" width="1012" height="858" fill="#0A66D6" opacity=".16" stroke="#0A66D6" stroke-width="4"/>
+          <rect x="1072" y="151" width="340" height="600" rx="28" fill="none" stroke="#FF9F0A" stroke-width="5"/>
+        </svg>
+      </div>
+      <button class="toggle" id="laytoggle" type="button" aria-pressed="true">隐藏辅助线</button>
+    </div>
+    <ul class="lay-keys">
+      <li><i style="background:#fff;box-shadow:inset 0 0 0 2px #8A8A8F"></i><span><b>外框 2%</b>：窗口、截图、画中画、时间线条最多放到这里，底边可以压进字幕带。</span></li>
+      <li><i style="background:#34C759"></i><span><b>重点框 5%</b>：这一秒正在讲的东西（划亮的行、点的按钮、大字、人脸）必须在框里，而且不进字幕带。判据只有一个：被边裁掉一条、被字幕盖住一截，观众会不会漏看。这是 10-12 我看顶级 AI 博主的片子后提出来的：安全区该护的是主体内容，不是所有东西。</span></li>
+      <li><i style="background:#FFCC00"></i><span><b>字幕带</b>：画布 y 895–1000。后期在达芬奇里把字幕放在这条带的正中。</span></li>
+      <li><i style="background:#0A66D6"></i><span><b>左区</b>：1012 宽，网页、软件界面、B-roll 主体都放这里。16:9 的窗宽度取满。</span></li>
+      <li><i style="background:#FF9F0A"></i><span><b>人物竖卡</b>：340×600，只在右边，人不放大也不缩小，只裁两边书架和肩膀。段与段交接那一帧，人物必须落在全屏、竖卡、竖卡进出三个标准位置之一。</span></li>
+    </ul>
+  </div>
+
+  <div class="gal-h"><h3>章节卡：两张盖、三张切</h3><span class="muted">10-13 重做</span></div>
+  <div class="cards2">
+    <figure><img src="img/ch1.jpg" alt="章节卡 ① 剪气口 · 谁来剪?" loading="lazy" width="1200" height="900"><figcaption><b>①② 盖在画面上</b>　口播照常说，卡从右边滑进、往左漂、滑出。我说：「这一段直接就标题卡盖上去，人物说话正常说就行了。」</figcaption></figure>
+    <figure><img src="img/ch4.jpg" alt="章节卡 ④ 实操 · 真跑一遍" loading="lazy" width="1200" height="900"><figcaption><b>③④⑤ 切开插进去</b>　切口挑在换气全静的地方，按声音包络实测找。空档只放卡、没有口播，放完接回。试过让正片跟着卡一起滑进来，我说不行，还是硬切。</figcaption></figure>
+  </div>
+  <figure class="barfig barclip"><video src="clips/bar.mp4" poster="clips/bar.jpg" muted loop playsinline preload="none" aria-label="顶部进度条里两个小人在走" width="1200" height="80"></video><figcaption><b>顶部进度条</b>　分段起点就是章节卡出现的那一帧。我的要求：「像之前做的《日落大道》MV 那样子……两个结伴而行，你追我赶，或者走一走又停下来想一想。」一个停下冒「…」，另一个走过去回头「?」，想通了「!」再跑着超过去；结尾两人从条里跳出来，落到播放器上挥手。进度条单独渲成透明底 4K，叠在达芬奇最上面一轨。</figcaption></figure>
+</section>
+
+<section id="post">
+  <div class="sec-head">
+    <div class="eyebrow">后期</div>
+    <h2>达芬奇里的活，AI 用脚本做</h2>
+    <p class="lead">4K 母带进达芬奇后，Claude Code 通过达芬奇的脚本接口建时间线、铺进度条、挪口播、套人声链、铺音效、调配乐、导出和体检。字幕拖上时间线、改字幕样式这两步接口做不了，它把位置量好告诉我，我在界面里点。</p>
+  </div>
+  <div class="post">
+    <div>
+      <span class="fig">后挪 2 帧</span><h3>对口型</h3>
+      <p>实测这条片声音比口型早 2.2 帧，口播轨整体往后挪 2 帧。我听着觉得「声音出现的有点慢」，自己拖回了 0，让 AI「导出一个移动 2 帧的和没有移动 2 帧的小样，分别用数据来告诉我」：</p>
+      <div class="lip" aria-label="挪 2 帧后声音早 0.5 帧,不挪声音早 2.5 帧">
+        <div class="lip-row"><span>不挪</span><div class="t"><span class="ok" style="left:50%;width:15%"></span><i style="left:calc(50% - 25%);width:25%;background:#B4BAC6"></i></div><span class="num">早 2.5 帧</span></div>
+        <div class="lip-row"><span>挪 2 帧</span><div class="t"><span class="ok" style="left:50%;width:15%"></span><i style="left:calc(50% - 5%);width:5%;background:var(--accent)"></i></div><span class="num">早 0.5 帧</span></div>
+      </div>
+      <p class="muted">中线 = 声画正好对齐。挪后在广电标准（ITU-R BT.1359、EBU R37）的范围内，留 2 帧。</p>
+    </div>
+    <div>
+      <span class="fig">B6 链</span><h3>人声混音</h3>
+      <p>EQ → 压缩 → 去齿音 → 限制器，是我之前定的一套人声链。这套预设一套上去会把整条时间线的音轨重建，配乐和音效会没掉，所以 AI 在副本上只给口播套链，导出处理好的人声，再放回成片的口播轨；原声留在一条关着的备用轨。套链后 350 Hz 的闷声压下去，1–4 kHz 清晰度提了 2–3 dB。</p>
+      <p>它也试过把进链音量提 3 dB 让压缩器多干活，结果去齿音削得太狠、8 kHz 以上掉 4 dB，声音发闷，没用。</p>
+    </div>
+    <div>
+      <span class="fig">比人声低 10 dB</span><h3>音效和配乐</h3>
+      <p>音效从画面代码里导出 120 个动作点，按清单铺到音效轨。我听完说「很多音效有点太 low」，挑了两种最刺耳的删掉；AI 又给每个点配了第二种音色（B 组）让我切换着听，我说不匹配，撤了；最后从 Mixkit 补了 24 声，5 张章节卡进出统一成一对新声音。</p>
+      <p>配乐按我 10-08 定的标准：说话时比人声低 10 dB。低 11–12 dB 手机外放几乎听不到，低 5 dB 停顿处会和人声挤在一起。</p>
+    </div>
+    <div>
+      <span class="fig">172 条</span><h3>字幕</h3>
+      <p>每条一行、不超过 16 字，文字取审过的逐字稿。按最终切卡的时间重新生成，三张切开的卡上没有字幕。第一条从第 0 帧起：达芬奇拖 SRT 时按第一条对齐，从第 2 帧起会让对口型的 2 帧白挪。</p>
+      <p>位置按 4:3 字幕带的正中算：字幕中心离画面底边 265 px（4K），字高和上一期一样 108 px。AI 导小样逐帧量出来，我在界面里调，再导小样复量到 264–265 px。</p>
+    </div>
+    <div style="grid-column: span 2">
+      <span class="fig">✅ 可发</span><h3>导出后音频体检</h3>
+      <table class="check">
+        <tr><td>整片响度</td><td>-14.9 LUFS</td></tr>
+        <tr><td>真峰值 / 削波</td><td>-1.1 dBTP，没有削波</td></tr>
+        <tr><td>配乐比人声低</td><td>9.7 dB（标准 10 dB）</td></tr>
+        <tr><td>左右声道</td><td>平衡</td></tr>
+        <tr><td>和混音人声对齐</td><td>抽查 17 处，0 位移</td></tr>
+        <tr><td>视频 / 音频码率</td><td>44.7 Mbps / AAC 320 kbps</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="pits">
+    <div class="pit pit-h"><span>遇到的问题</span><span>怎么处理的</span></div>
+    <div class="pit"><span>我觉得挪了 2 帧后「声音有点慢」</span><span class="a">导挪 / 不挪两段小样实测：挪后早 0.5 帧、不挪早 2.5 帧，留 2 帧。</span></div>
+    <div class="pit"><span>第一次量声音：配乐比人声还响 14 dB，全片削顶</span><span class="a">配乐先拉到 -24 dB，套完人声链后再按「低 10 dB」精调，峰值降到 -3.6 dBFS。</span></div>
+    <div class="pit"><span>时间线上贴的是插卡前的旧字幕，第 3 张卡后提前 2.5 秒，片尾提前 7.5 秒</span><span class="a">按最终切卡重新生成；有一句转写比开口早 5 帧、会跑到卡上，一起修了。</span></div>
+    <div class="pit"><span>字幕比 4:3 字幕带高了约 170 px，还少了黑底框</span><span class="a">导带字幕的小样量出来，告诉我往下调多少；我在界面里改完，它再导小样复量。</span></div>
+    <div class="pit"><span>脚本让达芬奇导出，进度卡在 0% 不动</span><span class="a">任务设好后在界面上点「渲染」就正常。AI 用模拟鼠标点了一下，导出跑完。</span></div>
+    <div class="pit"><span>音频体检要求配乐低 15–20 dB，和我定的 10 dB 打架，每条片都会报「不可发」</span><span class="a">我拍板以 10 dB 为准，AI 把体检工具的门槛改成 9–13 dB 可发。</span></div>
+  </div>
+</section>
+
+<section id="said">
+  <div class="sec-head">
+    <div class="eyebrow">我说过的话</div>
+    <h2>挑毛病的那几句</h2>
+    <p class="lead">159 条消息里，大多数是「要」「继续」「打开我看看」。真正改变了片子的是下面这些。</p>
+  </div>
+  <div class="said">
+    <div><span class="t">10-10</span><q>他们看起来让我眼睛都好花呀。就是没有那种大海自然的感觉。</q><span class="a">五种模拟模型背景全撤，后来三版大海也撤了，回到原版波涌底只调光。</span></div>
+    <div><span class="t">10-10</span><q>这个录屏的也得单独导出，要不然现在完全是盖住我的人的……最终得要三个视频，这样子的话，在 Remotion 上它做才好做。</q><span class="a">三条轨分开导出，后面所有取景都靠它。</span></div>
+    <div><span class="t">10-11</span><q>你用 -p 去单独的看每一段的内容，可不可以有更好的呈现方式，分段去看，一个看一段。</q><span class="a">8 段并行重做。</span></div>
+    <div><span class="t">10-11</span><q>要，但是不要露出平台。可以用抖音的。</q><span class="a">开场换成抖音主页真截图，平台标志、「抖音号」那一行都盖掉。截图用我平时的浏览器登录后截，不用无头浏览器。</span></div>
+    <div><span class="t">10-11</span><q>就这条视频更换成 4:3，你多开几个 -p 去做不就行了吗？</q><span class="a">一个 xhigh 定版式，8 个 high 并行重排。</span></div>
+    <div><span class="t">10-12</span><q>这个安全区，是要所有的画面都在里面吗？……是有安全区，但是这个安全区是不是主体内容的安全啊？</q><span class="a">安全区拆成两层：外框 2%、重点框 5%。</span></div>
+    <div><span class="t">10-12</span><q>一大段没有声音，没有内容在这里干嘛，这么大的错误你说没问题？</q><span class="a">AI 录屏里那 11 秒快放本来该垫口播，AI 却把它单独排成一段哑段。改成只当 B-roll 垫两句口播，哑段删掉，成片短了 322 帧。</span></div>
+    <div><span class="t">10-12</span><q>这个片段需要重新设计一下……不好看，风格也不统一。</q><span class="a">选模型那段换成真 CC 的 /model 窗口；结尾换回人物缩进抖音播放器那版。</span></div>
+    <div><span class="t">10-13</span><q>你的切分有点太乱了。我不喜欢，而且昨天没给我确定就渲染了。</q><span class="a">章节卡重做：不要 logo 卡，①② 盖、③④⑤ 切，每个切口前后的帧都截出来检查。</span></div>
+    <div><span class="t">10-13</span><q>9754 怎么还会出现上一段的内容呢？切分的不精细。</q><span class="a">⑤ 卡后不再出现上一段的画面，卡滑走直接是全屏人脸。</span></div>
+    <div><span class="t">10-13</span><q>你导出一个移动 2 帧的和没有移动 2 帧的小样，分别用数据来告诉我。</q><span class="a">见上面「对口型」。</span></div>
+  </div>
+</section>
+
+<section id="lesson">
+  <div class="sec-head">
+    <div class="eyebrow">收获</div>
+    <h2>做完这条，我记住了三件事</h2>
+  </div>
+  <div class="takeaways">
+    <div class="tk"><div class="n">1</div><div><h3>大改动不怕，多开几个 -p</h3><p>整条从 16:9 改 4:3，听着像重做一遍。先让一个 xhigh 定死版式，再 8 个 high 并行各排一段，约 70 分钟、$28 就合完了。</p></div></div>
+    <div class="tk"><div class="n">2</div><div><h3>一次只看一段</h3><p>8 段一起丢给我会懵。一次开一个预览，配一张「说到哪 / 旧版 / 新版」的表，我只用回「要」或者哪里不对。</p></div></div>
+    <div class="tk"><div class="n">3</div><div><h3>凭感觉的问题，用数据回答</h3><p>我说「声音有点慢」，AI 不改帧数，而是导两段小样测给我看。配乐大小、字幕高低也一样，都是导小样量出来的。</p></div></div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="sec-head">
+    <div class="eyebrow">问答</div>
+    <h2>常见问题</h2>
+  </div>
+  <div class="faq">
+    <div><h3>这条视频是怎么做的？</h3><p>就是片子里讲的那条流程。口播是我录的，Claude Code 在达芬奇里初剪、把建议删的地方染成玫红色，我看完手动剪气口；包装在 Remotion 里写代码做，8 段画面每段交给一个 claude -p 重做，我逐段在预览里点头后合并；最后回达芬奇，AI 用脚本对口型、混音、铺音效、配乐、量字幕位置、导出和体检。</p></div>
+    <div><h3>这条视频里，人做了什么，AI 做了什么？</h3><p>我出想法、录口播、剪口误和气口、给口播调色美颜、看片挑毛病、拍板，4 天里发了 159 条消息；字幕拖上时间线和改字幕样式这两步达芬奇脚本做不了，也是我在界面里点的。其余都是 AI：Claude Code 在 13 段对话里动手 1,898 次；claude -p 另跑了 21 次、操作 1,495 次。</p></div>
+    <div><h3>给 claude -p 的提示词是怎么写的？</h3><p>每段一份，五六千字：这段是什么、整条视频讲什么、这段逐句口播和帧号、现版代码和真素材在哪、我看片时说过的原话、一段导演要求、硬性要求、怎么自己看效果、交片时写一份出片说明。Claude Code 自己的想法一句没写进去。<a href="#prompt">看结构和导演那段原文 ↑</a></p></div>
+    <div><h3>为什么改成 4:3？</h3><p>手机竖着刷的时候，1080 宽的屏幕上 16:9 的画面只有 608 高，4:3 有 810 高，画面大了约三分之一。做法是先用一个 xhigh 档的 claude -p 改底座、定版式，再开 8 个 high 档的 claude -p 每段一个并行重排，约 70 分钟、$28。</p></div>
+    <div><h3>发布是 AI 点的吗？</h3><p>不是。AI 会自己打开浏览器上传视频、传封面、写标题和简介，最后的发布键是我手动点的。</p></div>
+    <div><h3>剪气口为什么不交给 AI？</h3><p>同一句录两遍时，AI 默认留更完整的第二遍，我有时想要第一遍的感觉；我故意停的地方，AI 也会当成停顿剪掉。所以只让 AI 把建议删的地方染成玫红色，我从头到尾看一遍再删。</p></div>
+    <div><h3>一共花了多少钱？</h3><p>21 次 claude -p 合计约 $142（按 API 价格折算）：8 段首轮 $84.79，按我的意见续改两段 $4.62，合并后修补 $3.34，MCP 段三档加续改 $20.77，改 4:3 $28.31。Claude Code 主会话的花费没有统计。</p></div>
+  </div>
+
+  <footer>
+    <p>消息条数和操作次数来自 10-10 到 10-13 的 13 段对话记录和 21 次 claude -p 的记录。-p 的用时、花费、打开图片次数取自每次运行的结果记录，按 API 价格折算；续跑的那几次记录的是累计数，按差额算。「三版对照」前两张是用 10-11 当时的代码重新渲的。口型、混音、字幕位置、体检的数字都是导出小样或成片后实测的。「我说过的话」摘自对话记录原文。配图和循环片段从成片截取。</p>
+    <p>陈与小金 · 用 Claude Code、Remotion、DaVinci Resolve 制作 · <a href="https://github.com/chenyuxiaojin/cyxj-videos/tree/main/2026-10-13-workflow">文字版</a> · <a href="https://github.com/chenyuxiaojin/cyxj-videos">GitHub 仓库</a> · <a href="../">全部幕后</a></p>
+  </footer>
+</section>
+
+</main>
+<div id="tip" hidden></div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var T = 10421 / 30;
+  var fmtT = function (s) { var m = Math.floor(s / 60), r = Math.floor(s - m * 60); return m + ':' + (r < 10 ? '0' : '') + r; };
+
+  // ── 片子讲的七步 ──
+  var STEPS = [
+    ['录口播', 'me', 'w1-rec', '「首先我会录制一条口播，就像你现在看到的这条视频一样。」'],
+    ['初剪 + 染色', 'ai', 'w1-cc', '把素材路径丢给 Claude Code，它在达芬奇里去掉长静音，把建议删的地方染成玫红色。'],
+    ['剪气口', 'me', 'w2-dv', '我从头到尾看一遍玫红色，再手动删。哪一遍更有感觉、哪里是故意停的，AI 判断不了。'],
+    ['Remotion 包装', 'ai', 'w4-studio', '动效和 B-roll 全在 Remotion 里写代码做。'],
+    ['4K ProRes 导出', 'ai', 'w3-guide', '4K 30 帧，选苹果的 ProRes：编码快，缺点是文件极大。'],
+    ['AI 压缩', 'ai', 'w3-prores', '一条 9 分 52 秒的 4K ProRes 有 60.5 GB，AI 压成 mp4。'],
+    ['浏览器发布', 'me', 'w3-pub', 'AI 打开浏览器上传、传封面、写标题简介；发布键我手动点。']
+  ];
+  var steps = $('steps'), pimg = $('pipe-img'), pcap = $('pipe-cap');
+  steps.innerHTML = STEPS.map(function (s, i) {
+    return '<li><button type="button" data-i="' + i + '" aria-pressed="' + (i === 0) + '"><i class="who ' + s[1] + '">' + (s[1] === 'me' ? '我' : 'AI') + '</i>' + s[0] + '</button></li>';
+  }).join('');
+  var pick = function (i) {
+    var s = STEPS[i];
+    pimg.src = 'img/' + s[2] + '.jpg'; pimg.alt = s[0];
+    pcap.textContent = (i + 1) + '. ' + s[0] + '：' + s[3];
+    steps.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.i === i)); });
+  };
+  steps.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) pick(+b.dataset.i); });
+  pick(0);
+  STEPS.forEach(function (s) { var im = new Image(); im.src = 'img/' + s[2] + '.jpg'; });
+
+  // ── 8 段画面:[名字, 成片区间, 一句话, -p 首轮(分钟,$,看图次数), 重做前, -p 版, 成片说明, 我说的] ──
+  var SEG = [
+    ['开场', [[0, 17.4]], '缩成右侧竖卡，左边升起我的抖音主页真截图；「从 5 月份」甩到印着日期的那张封面，「95%」砸出来。', [13.4, 6.77, 18], '17 秒全是露脸推近', '账号页 → 封面墙 →「95%」', 'o-95', '要，但是不要露出平台。可以用抖音的。', '续改 5.6 分钟：截图换成抖音主页，平台痕迹盖掉。'],
+    ['两只手分工', [[17.4, 72.0]], '橙色 ✻ 是 AI，白鼠标是我。录两遍「12345」，AI 默认留第二遍，我选第一遍；我故意停的 47 帧被 ✻ 染红剪掉。', [26.6, 11.00, 28], '一条素材条，没有人', '加了「两只手」：✻ 和白鼠标，人物在右边竖卡', 'w1-take', 'P2 是要改成啥呀？……要', '合并后修了一处：「第 1 遍」卡片空了 3 秒。'],
+    ['染色进真达芬奇', [[72.0, 109.3]], '整条素材抽掉静音、染色，「染色之后的画面」直接落进真达芬奇时间线。', [17.5, 8.16, 16], '只有一条染色素材条', '人物变成上方「监视器」，下方素材条，一起落进真达芬奇', 'w2-dye', '要', ''],
+    ['导出到发布', [[109.3, 157.5]], 'Studio 里一帧画布撑成 4K、落到 iMac 上渲染，Remotion 官方编码页划亮 ProRes，胀到 60.5 GB 再压成 mp4，最后鼠标点下发布。', [35.5, 15.74, 34], '一个 ProRes 文件图标', '那一帧画布当主角，一路变成文件、压缩、发布', 'w3-prores', '要，然后压成 MP4 那一个，画面不要太小了。', '续改 2.6 分钟：压完的 mp4 留着原文件的虚线轮廓，前后一比就看出大小。'],
+    ['六站总览 + 选模型', [[160.0, 184.2], [221.9, 237.6]], '人物缩成六站的第一张卡，其余五站从它身上弹出、收进对话窗；后半截是真 CC 的 /model 窗口。', [31.5, 12.85, 40], '全屏露脸', '六站卡全是真画面，收进一扇对话窗', 'w4-six', '要', '10-12 选模型那段又换成真 CC 的 /model 窗口：旧的全屏名牌版「不好看，风格也不统一」。'],
+    ['达芬奇 MCP', [[184.2, 221.9]], '3D 推进 GitHub 仓库页，贡献者里我的头像亮起；开源卡和官方新闻稿卡上下排、各连一根线到达芬奇；「慢慢转向官方」光整句挪过去。', [14.3, 6.52, 18], '官方新闻稿一页 + 右边人物', '两条路通向达芬奇，说到谁谁亮', 'm-cards', '要', '之后又单独三档各跑一版，挑 xhigh，见下面。'],
+    ['录屏读屏', [[240.3, 317.5]], '全是真录屏：说到哪行推到哪行、品牌蓝划亮，CC 的报告表里「粉色 · 建议删」那行染红。', [30.0, 17.20, 67], '达芬奇整屏原样摆着', '镜头隔着肩膀读屏，说到哪行推到哪行', 'w6-dv', '要', '10-12 修了录屏推近时的抖动；「但是我想……」那几句版式不变，「和刚刚的一样就好」。'],
+    ['快放 + 设备 + 结尾', [[317.5, 322.6], [325.1, T]], 'CC 终端和 Studio 快放垫口播；讲设备坐着讲不动；结尾缩进抖音播放器，往期回顾滚上来。', [18.0, 6.55, 23], '设备处挂一张蓝色名牌', '设备上挂标注：对焦框、引线、名牌', 'dev', '要', '10-12 我又改了主意：讲设备「保持坐播的样子不动」，「蓝色的 20-70 镜头这种东西太丑」，标注全去掉。']
+  ];
+  var NUM = '①②③④⑤⑥⑦⑧';
+  $('segwall').innerHTML = SEG.map(function (s, i) {
+    var span = s[1].map(function (r) { return fmtT(r[0]) + '–' + fmtT(r[1]); }).join('，');
+    return '<figure class="seg"><div class="v"><video src="clips/s' + (i + 1) + '.mp4" poster="clips/s' + (i + 1) + '.jpg" muted loop playsinline preload="none" aria-label="第 ' + (i + 1) + ' 段：' + s[0] + '" width="640" height="480"></video><span class="n">P' + (i + 1) + '</span></div>' +
+      '<h4>' + NUM[i] + ' ' + s[0] + '<span>' + span + '</span></h4><p>' + s[2] + '</p><span class="m">-p 首轮 ' + s[3][0] + ' 分钟 · $' + s[3][1].toFixed(2) + ' · 看图 ' + s[3][2] + ' 次</span></figure>';
+  }).join('');
+
+  // ── 三版对照 ──
+  $('evolist').innerHTML = SEG.map(function (s, i) {
+    var n = i + 1;
+    return '<div class="evo-row"><div class="evo-lab"><h3>' + NUM[i] + ' ' + s[0] + '</h3>' +
+      '<span class="m">-p 首轮 ' + s[3][0] + ' 分钟 · $' + s[3][1].toFixed(2) + ' · 打开自己渲的图 ' + s[3][2] + ' 次</span>' +
+      '<q>' + s[7] + '</q>' + (s[8] ? '<p>' + s[8] + '</p>' : '') + '</div>' +
+      '<div class="evo-imgs">' +
+      '<figure><img src="img/v' + n + '-old.jpg" alt="重做前:' + s[4] + '" loading="lazy" width="800" height="450"><figcaption><b>重做前</b>　' + s[4] + '</figcaption></figure>' +
+      '<figure><img src="img/v' + n + '-p169.jpg" alt="-p 重做:' + s[5] + '" loading="lazy" width="800" height="450"><figcaption><b>-p 重做</b>　' + s[5] + '</figcaption></figure>' +
+      '<figure><img src="img/' + s[6] + '.jpg" alt="4:3 成片" loading="lazy" width="1200" height="900"><figcaption><b>4:3 成片</b></figcaption></figure>' +
+      '</div></div>';
+  }).join('');
+
+  // ── 成片时间线 ──
+  var CH = [[0, '开场'], [72.0, '剪气口'], [113.8, '动效与导出'], [157.5, '工具流程梳理'], [237.8, '实操演示'], [322.6, '设备']];
+  var CARDS = [[72.0, 74.5, '① 剪气口 · 谁来剪？（盖）', 1], [113.8, 116.3, '② 动效与导出 · 怎么走？（盖）', 1], [157.5, 160.0, '③ 工具流程梳理（切）', 0], [237.8, 240.3, '④ 实操 · 真跑一遍（切）', 0], [322.6, 325.1, '⑤ 设备和收尾（切）', 0]];
+  var TALK = [[0, 157.5], [160.0, 237.8], [240.3, 322.6], [325.1, T]];
+  var SCREEN = [[240.3, 317.5]];
+  var AIREC = [[110.1, 115.1], [172.2, 176.9], [318.0, 322.6]];
+  var pos = function (a, b) { return 'left:' + (a / T * 100) + '%;width:' + ((b - a) / T * 100) + '%'; };
+  var bars = function (arr, cls, tip) { return arr.map(function (r) { return '<div class="tl-b ' + cls + '" style="' + pos(r[0], r[1]) + '" data-tip="' + tip + '：' + fmtT(r[0]) + ' – ' + fmtT(r[1]) + '"></div>'; }).join(''); };
+  var t = '<div class="tl-lab">章节<small>片子顶部那条</small></div><div class="tl-track ch">' + CH.map(function (c, i) {
+    var e = i + 1 < CH.length ? CH[i + 1][0] : T;
+    return '<div class="tl-b c fit" style="' + pos(c[0], e) + '" data-tip="' + c[1] + '：' + fmtT(c[0]) + ' – ' + fmtT(e) + '">' + c[1] + '</div>';
+  }).join('') + '</div>';
+  t += '<div class="tl-lab">8 段画面<small>claude -p 各做一段</small></div><div class="tl-track">';
+  SEG.forEach(function (s, i) { s[1].forEach(function (r) { t += '<div class="tl-b s fit" style="' + pos(r[0], r[1]) + '" data-tip="' + NUM[i] + ' ' + s[0] + '：' + fmtT(r[0]) + ' – ' + fmtT(r[1]) + '">' + (i + 1) + '</div>'; }); });
+  t += '</div><div class="tl-lab">口播<small>唯一的声音</small></div><div class="tl-track">' + bars(TALK, 't', '口播') + '</div>';
+  t += '<div class="tl-lab">原录屏<small>我操作的屏幕</small></div><div class="tl-track">' + bars(SCREEN, 't', '原录屏') + '</div>';
+  t += '<div class="tl-lab">AI 录屏<small>只垫口播</small></div><div class="tl-track">' + bars(AIREC, 't', 'AI 录屏') + '</div>';
+  t += '<div class="tl-lab">章节卡<small>Claude Code</small></div><div class="tl-track">' + CARDS.map(function (c) {
+    return '<div class="tl-b k' + (c[3] ? ' o' : '') + '" style="' + pos(c[0], c[1]) + '" data-tip="' + c[2] + '：' + fmtT(c[0]) + '"></div>';
+  }).join('') + '</div><div></div><div class="tl-axis">';
+  for (var m = 0; m <= 5; m++) t += '<span style="left:' + (m * 60 / T * 100) + '%">' + m + ':00</span>';
+  $('tl').innerHTML = t + '</div>';
+  $('tl-legend').innerHTML = '<span><i class="sw" style="background:var(--p)"></i>claude -p 做的画面</span><span><i class="sw" style="background:var(--track)"></i>素材轨在用</span><span><i class="sw" style="background:var(--card)"></i>切开插卡</span><span><i class="sw" style="box-shadow:inset 0 0 0 1.5px var(--card)"></i>盖在画面上</span>';
+  var fit = function () {
+    document.querySelectorAll('.tl-b.fit').forEach(function (el) { el.style.color = ''; if (el.scrollWidth > el.clientWidth + 1) el.style.color = 'transparent'; });
+  };
+  window.addEventListener('load', fit); window.addEventListener('resize', fit); fit();
+
+  // ── 4:3 辅助线开关 ──
+  var lf = $('layfig'), lt = $('laytoggle');
+  lt.addEventListener('click', function () {
+    var on = lf.dataset.guides !== 'on';
+    lf.dataset.guides = on ? 'on' : 'off';
+    lt.setAttribute('aria-pressed', String(on));
+    lt.textContent = on ? '隐藏辅助线' : '显示辅助线';
+  });
+
+  // ── 分工格子:一格 = 10 次 ──
+  document.querySelectorAll('.units').forEach(function (el) {
+    var n = Math.round(+el.dataset.n / 10), s = '';
+    for (var i = 0; i < n; i++) s += '<i style="background:' + el.dataset.c + '"></i>';
+    el.innerHTML = s;
+  });
+
+  // ── 循环片段:进入视口才播,减少动态时不自动播 ──
+  var vids = document.querySelectorAll('video');
+  if (!reduce && window.IntersectionObserver) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) { if (v.preload === 'none') v.preload = 'auto'; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      });
+    }, { rootMargin: '120px' });
+    vids.forEach(function (v) { io.observe(v); });
+  } else {
+    vids.forEach(function (v) { v.controls = true; });
+  }
+
+  // ── 悬停提示 ──
+  var tipEl = $('tip');
+  var show = function (el) {
+    tipEl.textContent = el.dataset.tip; tipEl.hidden = false;
+    var r = el.getBoundingClientRect(), w = tipEl.offsetWidth;
+    var x = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), window.innerWidth - w - 8);
+    var y = r.top - tipEl.offsetHeight - 8; if (y < 8) y = r.bottom + 8;
+    tipEl.style.left = x + 'px'; tipEl.style.top = y + 'px';
+  };
+  var hide = function () { tipEl.hidden = true; };
+  document.querySelectorAll('[data-tip]').forEach(function (el) {
+    el.tabIndex = 0;
+    el.addEventListener('pointerenter', function () { show(el); });
+    el.addEventListener('pointerleave', hide);
+    el.addEventListener('focus', function () { show(el); });
+    el.addEventListener('blur', hide);
+  });
+  window.addEventListener('scroll', hide, { passive: true });
+
+  // ── 导航条高亮当前段 ──
+  var links = document.querySelectorAll('.chapters a');
+  var secs = Array.prototype.map.call(links, function (a) { return document.querySelector(a.getAttribute('href')); });
+  var mark = function () {
+    var y = window.scrollY + 120, cur = 0;
+    secs.forEach(function (s, i) { if (s && s.offsetTop <= y) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  };
+  window.addEventListener('scroll', mark, { passive: true }); mark();
+})();
+</script>
+</body>
+</html>

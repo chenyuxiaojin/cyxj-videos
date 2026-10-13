@@ -7,10 +7,26 @@
 <!-- 新一期:在最上面加一个 <tr>,把「最新一期」挪给它 -->
 <table>
 <tr>
+<td width="46%"><a href="https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/"><img src="2026-10-13-workflow/cover.jpg" alt="视频制作流程全公开封面"></a></td>
+<td>
+
+**最新一期** · 2026-10-13
+
+### [这是我用 AI 做了5个月的视频制作流程](https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/)
+
+讲我怎么做视频的这条片，自己也是这么做出来的：8 段画面每段一个 claude -p 重做，整条改成 4:3，后期在达芬奇里由 AI 用脚本完成。每段重做前、-p 版、成片三版对照，附给 -p 的提示词。
+
+这条片 4 天做完：我发了 159 条消息，Claude Code 动手 1,898 次，claude -p 另跑 21 次、约 $142。
+
+[看这期是怎么做出来的 →](https://chenyuxiaojin.github.io/cyxj-videos/2026-10-13-workflow/) · [文字版](2026-10-13-workflow/)
+
+</td>
+</tr>
+<tr>
 <td width="46%"><a href="https://chenyuxiaojin.github.io/cyxj-videos/2026-10-08-iq-inversion/"><img src="2026-10-08-iq-inversion/cover.jpg" alt="思考档位智商倒挂封面"></a></td>
 <td>
 
-**最新一期** · 2026-10-08
+2026-10-08
 
 ### [如何选择正确的模型档位？](https://chenyuxiaojin.github.io/cyxj-videos/2026-10-08-iq-inversion/)
 
